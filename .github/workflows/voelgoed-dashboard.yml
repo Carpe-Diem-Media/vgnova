@@ -53,7 +53,7 @@ jobs:
 
   source:
     name: Canonical source checks
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out the exact revision
         uses: actions/checkout@v4
@@ -118,7 +118,7 @@ jobs:
     name: Publish Platform Core artifact
     needs: [platform_gate]
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.platform_gate.result == 'success' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out the exact revision
         uses: actions/checkout@v4
