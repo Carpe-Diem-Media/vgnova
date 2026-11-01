@@ -787,24 +787,6 @@ def verify_runtime_overlay_proof(
         builder_module.validate_assembled_bootstrap(plugin_root, runtime_php_paths, patch_text)
     except builder_module.BuildFailure as error:
         raise CheckFailure(f"Assembled archive has invalid executable bootstrap wiring: {error}") from error
-    plugin_text = (plugin_root / "includes/Plugin.php").read_text(encoding="utf-8", errors="strict")
-    lifecycle_tokens = builder_module.php_method_body_tokens(
-        plugin_text,
-        "Plugin",
-        "register",
-        "assembled Plugin::register() schema-install check",
-    )
-    schema_install = [
-        ("T_STRING", "PersonRelationshipSchema"),
-        ("T_DOUBLE_COLON", "::"),
-        ("T_STRING", "install"),
-    ]
-    if any(
-        builder_module.token_matches(lifecycle_tokens, index, schema_install)
-        for index in range(len(lifecycle_tokens))
-    ):
-        raise CheckFailure("Assembled Plugin::register() must not install the Person relationship schema.")
-
     lint_path = temporary_root / "RuntimeMutationSession.php"
     lint_path.write_bytes(guard_bytes)
     lint = command(["php", "-l", str(lint_path)], cwd=repo_root)
@@ -1290,11 +1272,11 @@ def run_negative_cases(
     fixture = create_fixture(repo_root, commit, cases / "commented-person-include")
     patch_file = fixture / PATCH_PATH
     patch_text = patch_file.read_text(encoding="utf-8")
-    person_include = "+    'includes/Person/PersonRelationshipContract.php',"
+    person_include = "+    'includes/Person/PersonRelatedContentFields.php',"
     if patch_text.count(person_include) != 1:
         raise CheckFailure("Cannot prepare commented Person relationship include fixture.")
     patch_file.write_text(
-        patch_text.replace(person_include, "+    // 'includes/Person/PersonRelationshipContract.php',", 1),
+        patch_text.replace(person_include, "+    // 'includes/Person/PersonRelatedContentFields.php',", 1),
         encoding="utf-8",
     )
     commit_fixture_changes(fixture, "fixture: comment out Person relationship include")
@@ -1310,13 +1292,13 @@ def run_negative_cases(
     fixture = create_fixture(repo_root, commit, cases / "commented-person-lifecycle")
     patch_file = fixture / PATCH_PATH
     patch_text = patch_file.read_text(encoding="utf-8")
-    person_registration = "+        $this->register_component('person_relationship_admin', PersonRelationshipAdmin::class);"
+    person_registration = "+        $this->register_component('person_related_content_fields', PersonRelatedContentFields::class);"
     if patch_text.count(person_registration) != 1:
         raise CheckFailure("Cannot prepare commented Person relationship lifecycle fixture.")
     patch_file.write_text(
         patch_text.replace(
             person_registration,
-            "+        /* $this->register_component('person_relationship_admin', PersonRelationshipAdmin::class); */",
+            "+        /* $this->register_component('person_related_content_fields', PersonRelatedContentFields::class); */",
             1,
         ),
         encoding="utf-8",

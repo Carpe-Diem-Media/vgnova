@@ -138,41 +138,20 @@ setup failure boundary has a standalone regression check at
 Created-record ownership and failure-safe cleanup have focused regressions at
 `site-code/runtime-tests/tests/run-event-participation-qa-cleanup-tests.php`.
 
-## Simple Person relationships for Articles and Courses
+## Article and Course Person relationships
 
-Article and Masteriyo Course ACF fields are the authoritative relationship
-source. The supported fields are `primary_author`, `additional_authors`,
-`expert_contributors`, and `reviewed_by` on Articles, and `lead_instructor`,
-`additional_instructors`, and `experts` on Courses. Platform Core validates
-those values and projects them into the disposable
-`vg_person_relationship_index` table for reverse Person reads. The index can be
-rebuilt from source fields; it does not own publication access or membership
-entitlement. Person records do not store copied Article or Course lists.
+The Article and Course ACF fields remain authoritative. ACF updates one
+role-specific Person Relationship field from each source field. Those Person
+fields are derived and hidden on Person edit screens. Bricks consumes them
+through native Posts Query Loops, with public templates showing published
+related records only. No custom reverse relationship index, repository,
+reconciler, or CLI exists.
 
-The source module classes are assembled only through
-`site-code/voelgoed-platform-core/integration.patch`. That patch loads all
-Person relationship classes and registers the editor lifecycle and WP-CLI
-component. It does not install the index schema at plugin load. Schema setup,
-full rebuild, and repair require the guarded maintenance commands:
+The source-only schema checks run with:
 
 ```sh
-wp vg-person-relationship-index setup
-wp vg-person-relationship-index rebuild
-wp vg-person-relationship-index reconcile --format=json
-wp vg-person-relationship-index reconcile --repair --format=json
+php site-code/voelgoed-platform-core/tests/run-person-native-relationship-tests.php
 ```
-
-Run the source-only relationship tests with:
-
-```sh
-php site-code/voelgoed-platform-core/tests/run-person-relationship-tests.php
-```
-
-These checks do not access or mutate the Local WordPress runtime. Runtime
-setup, rebuild, reconciliation repair, and deployment are separate guarded
-operations. Do not derive Course people from WordPress or Masteriyo authors,
-Woo Products, Product Contribution, Topics, FCM, legacy `medewerker` records,
-or QA fixtures.
 
 ## Product People, Product Contribution, and Bricks adapters
 

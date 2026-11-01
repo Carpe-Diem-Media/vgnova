@@ -8,7 +8,7 @@
             "name": "lead_instructor",
             "aria-label": "",
             "type": "post_object",
-            "instructions": "Select canonical Person records. Draft and private People may be assigned while this source is not published.",
+            "instructions": "Select canonical Person records. Published, draft, and private People are available. This source field owns the relationship. Public templates display published related records only.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -28,7 +28,9 @@
             "return_format": "id",
             "multiple": 0,
             "allow_null": 1,
-            "bidirectional_target": [],
+            "bidirectional_target": [
+                "field_vg_person_courses_lead_instructor"
+            ],
             "ui": 1
         },
         {
@@ -37,7 +39,7 @@
             "name": "additional_instructors",
             "aria-label": "",
             "type": "post_object",
-            "instructions": "Select canonical Person records. Draft and private People may be assigned while this source is not published.",
+            "instructions": "Select canonical Person records. Published, draft, and private People are available. This source field owns the relationship. Public templates display published related records only.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -57,7 +59,9 @@
             "return_format": "id",
             "multiple": 1,
             "allow_null": 1,
-            "bidirectional_target": [],
+            "bidirectional_target": [
+                "field_vg_person_courses_additional_instructor"
+            ],
             "ui": 1
         },
         {
@@ -66,7 +70,7 @@
             "name": "experts",
             "aria-label": "",
             "type": "post_object",
-            "instructions": "Select canonical Person records. Draft and private People may be assigned while this source is not published.",
+            "instructions": "Select canonical Person records. Published, draft, and private People are available. This source field owns the relationship. Public templates display published related records only.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -86,7 +90,9 @@
             "return_format": "id",
             "multiple": 1,
             "allow_null": 1,
-            "bidirectional_target": [],
+            "bidirectional_target": [
+                "field_vg_person_courses_expert"
+            ],
             "ui": 1
         }
     ],
