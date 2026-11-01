@@ -1,0 +1,20 @@
+{
+  "file_name": "10-vg-bricks-medewerker-queries.php",
+  "title": "[Bricks] Medewerker — Query loop support",
+  "description": "Bricks Query Loop vars for Medewerker MVP (ACF relationships).",
+  "type": "PHP",
+  "status": "published",
+  "run_at": "all",
+  "condition": {
+    "status": "no",
+    "run_if": "assertive",
+    "items": [
+      []
+    ]
+  },
+  "tags": "medewerker,bricks,acf,query-loop",
+  "group": "Medewerkers",
+  "priority": 10,
+  "load_as_file": "",
+  "load_in_block_editor": ""
+}

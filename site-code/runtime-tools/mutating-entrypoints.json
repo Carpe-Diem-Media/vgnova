@@ -11,6 +11,13 @@
             "classification": "library"
         },
         {
+            "path": "site-code/bin/update-fluent-snippet.php",
+            "classification": "mutating",
+            "session_guard_required": true,
+            "guard_function": "vg_runtime_mutation_assert_session",
+            "purpose": "maintenance"
+        },
+        {
             "path": "site-code/bin/tests/fixtures/ignored/ignored-publication.php",
             "classification": "test_only"
         },
@@ -39,6 +46,14 @@
         },
         {
             "path": "site-code/event-participation/tests/run-event-participation-foundation-tests.php",
+            "classification": "test_only"
+        },
+        {
+            "path": "site-code/fluent-snippets/10-vg-bricks-medewerker-queries.php",
+            "classification": "library"
+        },
+        {
+            "path": "site-code/fluent-snippets/tests/run-source-tests.php",
             "classification": "test_only"
         },
         {
