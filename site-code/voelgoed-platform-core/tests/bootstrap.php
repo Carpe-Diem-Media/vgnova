@@ -344,7 +344,6 @@ $GLOBALS['vgpc_test_get_posts_handler'] = null;
     $GLOBALS['vgpc_test_get_field_cache'] = [];
     $GLOBALS['vgpc_test_database_sequence'] = [];
     $GLOBALS['wpdb'] = new VGPC_TestWpdb();
-    $GLOBALS['vgpc_test_dbdelta_sql'] = [];
     WP_CLI::$commands = [];
     WP_CLI::$messages = [];
     $_POST = [];
@@ -362,12 +361,6 @@ function current_user_can(string $capability, int $object_id = 0): bool { return
 function set_transient(string $key, mixed $value, int $expiration = 0): bool { $GLOBALS['vgpc_test_transients'][$key] = $value; return true; }
 function get_transient(string $key): mixed { return $GLOBALS['vgpc_test_transients'][$key] ?? false; }
 function delete_transient(string $key): bool { unset($GLOBALS['vgpc_test_transients'][$key]); return true; }
-
-function dbDelta(string $sql): array
-{
-    $GLOBALS['vgpc_test_dbdelta_sql'][] = $sql;
-    return ['wp_vg_person_relationship_index' => 'Created'];
-}
 
 function vgpc_test_same(mixed $expected, mixed $actual, string $message): void
 {

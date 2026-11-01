@@ -1,0 +1,231 @@
+{
+    "key": "group_vg_person_related_content",
+    "title": "Person Related Content",
+    "fields": [
+        {
+            "key": "field_vg_person_articles_primary_author",
+            "label": "Person: Articles as primary author",
+            "name": "person_articles_primary_author",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Maintained from the authoritative Article field.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": 0,
+            "max": 0,
+            "return_format": "id",
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_vg_person_articles_additional_author",
+            "label": "Person: Articles as additional author",
+            "name": "person_articles_additional_author",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Maintained from the authoritative Article field.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": 0,
+            "max": 0,
+            "return_format": "id",
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_vg_person_articles_expert_contributor",
+            "label": "Person: Articles as expert contributor",
+            "name": "person_articles_expert_contributor",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Maintained from the authoritative Article field.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": 0,
+            "max": 0,
+            "return_format": "id",
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_vg_person_articles_reviewed_by",
+            "label": "Person: Articles reviewed by",
+            "name": "person_articles_reviewed_by",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Maintained from the authoritative Article field.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "post"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": 0,
+            "max": 0,
+            "return_format": "id",
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_vg_person_courses_lead_instructor",
+            "label": "Person: Courses as lead instructor",
+            "name": "person_courses_lead_instructor",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Maintained from the authoritative Course field.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "mto-course"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": 0,
+            "max": 0,
+            "return_format": "id",
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_vg_person_courses_additional_instructor",
+            "label": "Person: Courses as additional instructor",
+            "name": "person_courses_additional_instructor",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Maintained from the authoritative Course field.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "mto-course"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": 0,
+            "max": 0,
+            "return_format": "id",
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_vg_person_courses_expert",
+            "label": "Person: Courses as expert",
+            "name": "person_courses_expert",
+            "aria-label": "",
+            "type": "relationship",
+            "instructions": "Maintained from the authoritative Course field.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "mto-course"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": 0,
+            "max": 0,
+            "return_format": "id",
+            "bidirectional_target": []
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "person"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "Derived Article and Course relationships maintained from authoritative source fields.",
+    "show_in_rest": false,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1793528508
+}

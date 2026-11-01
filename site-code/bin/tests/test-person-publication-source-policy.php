@@ -51,7 +51,7 @@ unlink($repositoryRoot . '/' . $temporaryProductionPath);
 $patchPath = $repositoryRoot . '/site-code/voelgoed-platform-core/integration.patch';
 $originalPatch = file_get_contents($patchPath);
 publication_policy_assert(is_string($originalPatch), 'The executable integration patch must be readable.');
-$patchAnchor = '+        // Schema setup remains an explicit guarded WP-CLI operation.';
+$patchAnchor = '+        $this->register_component(\'product_role_seeder\', ProductRoleSeeder::class);';
 publication_policy_assert(str_contains($originalPatch, $patchAnchor), 'The patch fixture anchor must exist.');
 try {
     file_put_contents($patchPath, str_replace($patchAnchor, '+        wp_publish_post($post);', $originalPatch));
