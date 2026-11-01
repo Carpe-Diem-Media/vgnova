@@ -24,6 +24,7 @@ const VG_RUNTIME_MUTATION_POLICY_FUNCTIONS = [
     'wp_set_object_terms', 'wp_remove_object_terms', 'wp_insert_term', 'wp_update_term', 'wp_delete_term',
     'add_option', 'update_option', 'delete_option', 'add_site_option', 'update_site_option', 'delete_site_option',
     'update_field', 'update_sub_field', 'acf_update_value', 'acf_save_post', 'delete_field',
+    'updatesnippet',
     'set_template_settings',
     'wp_schedule_single_event', 'wp_schedule_event', 'wp_clear_scheduled_hook', 'wp_unschedule_event',
 ];

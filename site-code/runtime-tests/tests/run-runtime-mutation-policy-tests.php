@@ -75,6 +75,29 @@ $test('guarded mutator is accepted', static function (): void {
     });
 });
 
+$test('FluentSnippets updateSnippet requires and recognizes the PE-007 guard', static function (): void {
+    vg_runtime_mutation_policy_with_temp_root(static function (string $root): void {
+        $mutatorPath = $root . '/mutator.php';
+        $inventoryPath = $root . '/inventory.json';
+        file_put_contents($inventoryPath, vg_runtime_mutation_policy_inventory([
+            vg_runtime_mutation_policy_entry('mutator.php', 'mutating', [
+                'session_guard_required' => true,
+                'guard_function' => 'vg_runtime_mutation_assert_session',
+                'purpose' => 'maintenance',
+            ]),
+        ]));
+
+        file_put_contents($mutatorPath, '<?php \FluentSnippets\App\Helpers\Helper::updateSnippet([]);');
+        $unguarded = vg_runtime_mutation_policy_check($root, $inventoryPath, ['mutator.php']);
+        vg_runtime_mutation_policy_test(! $unguarded['valid'], 'An unguarded FluentSnippets update passed policy.');
+
+        file_put_contents($mutatorPath, '<?php vg_runtime_mutation_assert_session("vgnova-local-10039"); \FluentSnippets\App\Helpers\Helper::updateSnippet([]);');
+        $guarded = vg_runtime_mutation_policy_check($root, $inventoryPath, ['mutator.php']);
+        vg_runtime_mutation_policy_test($guarded['valid'], implode("\n", $guarded['errors']));
+        vg_runtime_mutation_policy_test($guarded['mutation_files'] === 1, 'Policy did not classify Helper::updateSnippet as a persistent mutation.');
+    });
+});
+
 $test('read-only and test-only files may contain inspected or stubbed APIs', static function (): void {
     vg_runtime_mutation_policy_with_temp_root(static function (string $root): void {
         file_put_contents($root . '/reader.php', '<?php $posts = get_posts([]);');
