@@ -53,6 +53,11 @@ final class PersonNativeRelationshipSchemaTest
             $this->assert_same(0, $field['min'] ?? null, "{$field_key} must allow zero related records.");
             $this->assert_same(0, $field['max'] ?? null, "{$field_key} must use ACF's unlimited maximum.");
             $this->assert_same([], $field['bidirectional_target'] ?? [], "{$field_key} must not point back to a source field.");
+            $this->assert_true(
+                ! array_key_exists('bidirectional', $field)
+                || in_array($field['bidirectional'], [null, false, 0], true),
+                "{$field_key} Person reverse field must leave bidirectional updates disabled or absent."
+            );
             $this->assert_true(! array_key_exists('multiple', $field), "{$field_key} must use native Relationship multiplicity without an unsupported multiple setting.");
         }
     }
@@ -113,6 +118,7 @@ final class PersonNativeRelationshipSchemaTest
             $this->assert_same($multiple, $field['multiple'] ?? null, "{$field_key} cardinality must remain unchanged.");
             $this->assert_same(1, $field['allow_null'] ?? null, "{$field_key} must remain optional.");
             $this->assert_same(0, $field['required'] ?? null, "{$field_key} must remain non-required.");
+            $this->assert_same(1, $field['bidirectional'] ?? null, "{$field_key} must enable native ACF bidirectional updates from source to Person reverse field.");
             $this->assert_same([$target_key], $field['bidirectional_target'] ?? null, "{$field_key} must update only its approved Person target.");
             $this->assert_same(self::INSTRUCTIONS, $field['instructions'] ?? null, "{$field_key} instructions must describe native relationship ownership and public visibility.");
         }
