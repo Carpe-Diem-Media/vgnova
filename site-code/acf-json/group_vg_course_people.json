@@ -31,6 +31,7 @@
             "bidirectional_target": [
                 "field_vg_person_courses_lead_instructor"
             ],
+            "bidirectional": 1,
             "ui": 1
         },
         {
@@ -62,6 +63,7 @@
             "bidirectional_target": [
                 "field_vg_person_courses_additional_instructor"
             ],
+            "bidirectional": 1,
             "ui": 1
         },
         {
@@ -93,6 +95,7 @@
             "bidirectional_target": [
                 "field_vg_person_courses_expert"
             ],
+            "bidirectional": 1,
             "ui": 1
         }
     ],
