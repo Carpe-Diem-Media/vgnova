@@ -96,6 +96,11 @@ final class PersonNativeRelationshipSchemaTest
     {
         $group = $this->load_group($filename);
         $this->assert_same($group_key, $group['key'] ?? null, "{$filename} group key must remain unchanged.");
+        $this->assert_true(
+            is_int($group['modified'] ?? null)
+            && $group['modified'] > 0,
+            "{$filename} modified timestamp is required so native ACF Local JSON synchronization can detect semantic source revisions."
+        );
         $this->assert_same([
             [[
                 'param' => 'post_type',
