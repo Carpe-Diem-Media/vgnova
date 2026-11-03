@@ -172,12 +172,16 @@ function vg_content_topic_woo_qa_ids(WP_Query $query): array
 function vg_content_topic_woo_qa_assert_topic_main_query(WP_Query $query, string $case): void
 {
     vg_content_topic_woo_qa_check($query->is_main_query(), $case . ' did not execute as the main query.');
+    $term = $query->get_queried_object();
+    vg_content_topic_woo_qa_check($term instanceof WP_Term && $term->taxonomy === 'content_topic' && $term->slug === $query->get('term'), $case . ' lost its canonical queried taxonomy or term.');
+    vg_content_topic_woo_qa_check(! str_contains(serialize($query->get('tax_query')), 'product_visibility'), $case . ' retained Product visibility clauses.');
     vg_content_topic_woo_qa_check(($query->query_vars['post_type'] ?? null) === 'post', $case . ' did not constrain the topic main query to Articles.');
     vg_content_topic_woo_qa_check(($query->query_vars['post_status'] ?? null) === 'publish', $case . ' changed the published status constraint.');
     vg_content_topic_woo_qa_check(
         ($query->query_vars['orderby'] ?? null) === ['date' => 'DESC', 'ID' => 'DESC'],
         $case . ' changed date and ID descending order.'
     );
+    vg_content_topic_woo_qa_check(($query->query_vars['order'] ?? null) === 'DESC', $case . ' changed the descending archive order.');
     vg_content_topic_woo_qa_check(empty($query->query_vars['wc_query']) && empty($query->query_vars['product_query']), $case . ' became a WooCommerce product query.');
     vg_content_topic_woo_qa_check(empty($query->query_vars['meta_key']), $case . ' retained a WooCommerce Product meta key.');
     $sql = strtolower((string) $query->request);
