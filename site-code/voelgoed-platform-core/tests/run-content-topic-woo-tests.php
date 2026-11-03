@@ -191,6 +191,7 @@ function ctw_run_hook(string $hook, mixed ...$args): void
 function ctw_set_request(bool $main, bool $admin, ?string $taxonomy, mixed $term): void
 {
     $GLOBALS['wp_query'] = new WP_Query();
+    $GLOBALS['wp'] = (object) ['matched_query' => $taxonomy === 'content_topic' ? 'content_topic=geloof' : 'post_type=product'];
     $GLOBALS['ctw_is_main'] = $main;
     $GLOBALS['ctw_admin'] = $admin;
     $GLOBALS['ctw_taxonomy'] = $taxonomy;
@@ -305,6 +306,10 @@ try {
 } catch (Throwable $error) {
     throw new RuntimeException('Registration must be safe when WooCommerce is absent.', 0, $error);
 }
+
+ctw_set_request(true, false, 'content_topic', ctw_canonical_term());
+$GLOBALS['wp']->matched_query = 'post_type=product';
+ctw_same(false, apply_filters('woocommerce_coming_soon_exclude', false), 'A Topic query string on the Shop route must not bypass store protection.');
 
 // The installed LMS also sorts shared-taxonomy archives at PHP_INT_MAX - 10.
 // Canonical main-loop ownership must survive a late catalogue configuration.
