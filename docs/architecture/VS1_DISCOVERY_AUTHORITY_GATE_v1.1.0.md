@@ -32,7 +32,7 @@ FCM_RULING=ADAPT
 SOURCE_RUNTIME_PARITY=PASS
 ```
 
-There is no current architecture decision for Article-to-Person or Person-to-Course. The discovery journey is still blocked because the runtime has no approved Topic-to-Article-to-Person-to-Course record path and Home has no working canonical Topic destination.
+The Article-to-Person and Person-to-Course architecture decisions are settled by NF-PERSON. The discovery journey remains blocked because the runtime has no approved Topic-to-Article-to-Person-to-Course record path, and Home has no working canonical Topic destination.
 
 ## Native capability review
 
