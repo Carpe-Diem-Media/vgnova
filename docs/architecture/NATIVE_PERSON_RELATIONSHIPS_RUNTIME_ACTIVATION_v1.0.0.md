@@ -12,12 +12,16 @@ BEHAVIORAL_QA=PASS
 ADMIN_FIELD_HIDE_QA=PASS
 NATIVE_BRICKS_RELATIONSHIPS=IMPLEMENTED
 FRONTEND_LIFECYCLE_QA=PASS
+MASTERIYO_EFFECTIVE_COURSE_ORDER=date_DESC
+ACTIVATION_SEQUENCE_DEVIATION=RECORDED
+PRODUCT_PERSON_CARD_REGRESSION=PASS
 PE008_HEALTH=PASS
 HALLMARK_PAGE_REVIEW=31_FAIL_0_WARN
+PRODUCT_SINGLE_HALLMARK=20_FAIL_1_REFLEX_0_WARN
 FRONTEND_COMPLETION=NOT_CLAIMED
 ```
 
-The native ACF relationship contract and its Bricks presentation are active in the Local VGNova runtime. The relationship and lifecycle checks passed. Hallmark still reports page-level failures in the shared header and Masteriyo course shell, so this record does not mark the full frontend pages complete.
+The native ACF relationship contract and its Bricks presentation are active in the Local VGNova runtime. The relationship, lifecycle, and Product Person Card regression checks passed. Hallmark still reports page-level failures in shared site systems, so this record does not mark the full frontend pages complete.
 
 ## Authority and native-capability review
 
@@ -95,9 +99,17 @@ Inspection of the installed Bricks 2.4.3 Posts query (`themes/bricks/includes/qu
 
 Masteriyo’s Bricks Integration add-on was installed but inactive. It was enabled through Masteriyo’s add-on API under PE-007. The existing Masteriyo setting now enables the custom Bricks template with source `bricks` and template ID `1733`. The template’s post type is `masteriyo-single-course`. Course fixtures were created through the Masteriyo course model and store, not by raw post insertion, for frontend rendering checks.
 
-Masteriyo 3.4.3’s installed default course archive order is `order_by=date`, `order=DESC`; its native archive sorting reads those settings. The Person-to-Course loops use that date-descending order. The active site override could not be read during this pass: the `masteriyo/settings-get` ability rejected its response against its declared output schema, and local WP-CLI could not establish a database connection. The loop order matches Masteriyo’s native default; a site-specific override remains unverified.
+Masteriyo 3.4.3 stores site settings in the WordPress `masteriyo_settings` option. A fresh read-only WP-CLI inspection through the approved Local socket found explicit `course_archive.display.order_by=date` and `course_archive.display.order=DESC` values in that option. A second WP-CLI read confirmed the effective values returned by `masteriyo_get_setting()` are also `date` and `DESC`.
+
+The installed resolver in `learning-management-system/includes/Helper/core.php:4002-4012` reads `masteriyo_settings` and overlays the saved value on plugin defaults with `array_replace_recursive()`. The installed defaults at lines 4299-4300 are also `date` and `DESC`. `learning-management-system/includes/FrontendQuery.php:534-535` uses the saved settings when the archive request has no explicit `order` or `orderby` query argument. An active site-level order is therefore present and matches the plugin default. The effective Course listing order is **date descending**. The three Person-to-Course loops already use `orderby=date`, `order=DESC`, so no Bricks runtime change was required.
 
 The seven Person sections and all seven source-side sections use the required non-empty ACF condition. Empty-fixture pages returned no unrelated Person, Article, or Course cards.
+
+## Activation sequencing deviation
+
+The original v0.1.0 specification, section 7, required a disposable normal Person profile-save preservation check before ACF synchronization. Actual runtime chronology was different: reverse/source ACF activation occurred, `group_vg_article_people` and `group_vg_course_people` were synchronized, and the successful normal Person profile-save preservation QA was completed afterward on disposable fixtures using the visible `person_professional_title` field (`field_vg_person_professional_title`). All seven reverse values were preserved.
+
+No representative Person was modified; Person 1705 remained untouched. No rollback or re-sync was performed solely to reproduce the historical ordering. This sequencing deviation is retained here explicitly rather than rewriting the execution history.
 
 ## Bricks save details and width correction
 
@@ -119,9 +131,21 @@ The checks verified source-role cards and canonical Person links on Article/Cour
 
 The latest lifecycle run used fixture IDs 1821–1826. All six were hard-deleted; each had `post_exists=false` and zero postmeta rows.
 
+## Product Person Card regression
+
+Product Single Template 124 uses Product Person Card component `dc8611` as the direct child of its canonical Product People loop. A read-only runtime inventory found no published canonical Product–Person association suitable for this check, so the regression used disposable native fixtures: WooCommerce Products 1833 and 1836, canonical People 1832 and 1835, and native Product Contributions 1834 and 1837. Product People resolved each disposable Person through the existing `ProductContributionService` path. No existing Product or Person was edited.
+
+Anonymous Product Single renders were intercepted by WooCommerce Coming Soon. Each check used the established request-scoped `woocommerce_coming_soon_exclude` filter restricted to a GET of the exact disposable Product path with its QA token. The filter file was removed after each check. `woocommerce_coming_soon=yes` and `woocommerce_store_pages_only=yes` remained unchanged.
+
+The Product Single render showed the canonical Person title, ACF professional title, and `Bekyk profiel` action. The action URL matched the Person permalink. Keyboard Tab reached the action with `:focus-visible`; the computed outline was a solid 3 px black ring. Pressing Enter opened the canonical `/mense/{slug}/` Person page with the matching profile title. At the rendered 1280×800 viewport, the Product main area, relationship section, and 282 px card had no horizontal overflow. The browser reported zero console entries and zero failed network requests. The PHP error log size and SHA-256 matched its pre-check values. Hallmark separately reported the known shared-header `resizeTimeout` redeclaration; it was not attributed to `dc8611`.
+
+Both disposable fixture sets were hard-deleted under PE-007. Post-check verification found no fixture posts or postmeta, no temporary bypass file, and unchanged Coming Soon options. The Bricks Product template and component were not modified during this regression pass.
+
 ## Hallmark review and remaining page findings
 
 Hallmark v2.0.0 reviewed populated disposable Person, Article, and Course pages after the width correction. It rendered 15 screenshots across the three routes and reported **31 FAIL, 0 WARN**. For the final focus check, a temporary copy of Hallmark added read-only diagnostics around its focus measurement; the gate logic and render checks were unchanged. It reported no failure on the new relationship role cards or Person content width.
+
+The required Product Single `sloplint --scope component --url … --render` pass rendered five screenshots and reported **20 FAIL, 1 REFLEX, 0 WARN** across the Product page. None of the reported selectors was the Product Person Card or its `Bekyk profiel` action. Findings were on surrounding header text and focus states, WooCommerce quantity/add-to-cart controls, the existing share and accordion controls, and the known shared-header `resizeTimeout` redeclaration. These page-level findings are recorded for separate follow-up and were not changed in this PR, as requested. The relationship-specific Product Person Card remained clear in both the browser regression and this lint run.
 
 Remaining failures are in surrounding page systems:
 
@@ -132,8 +156,8 @@ The relationship feature is implemented and passed its data, editor, empty-state
 
 ## Health, cleanup, and mutation record
 
-The canonical PE-008 runtime health check passed before and after the behavioral/frontend QA, and again after the final Hallmark fixture cleanup. Each run returned `ok=true`; all nine checks passed: `lifecycle_registered`, `no_php_diagnostics`, `no_unexpected_output`, `plugin_class_loaded`, `plugin_entrypoint_active`, `runtime_identity`, `session_valid`, `site_name_available`, and `wordpress_bootstrapped`.
+The canonical PE-008 runtime health check passed before and after the behavioral/frontend QA, after the original Hallmark fixture cleanup, and again after the post-review Product regression cleanup. Each run returned `ok=true`; all nine checks passed: `lifecycle_registered`, `no_php_diagnostics`, `no_unexpected_output`, `plugin_class_loaded`, `plugin_entrypoint_active`, `runtime_identity`, `session_valid`, `site_name_available`, and `wordpress_bootstrapped`.
 
-All runtime mutations ran as children of `site-code/bin/vgnova-runtime-mutate.php` under PE-007. The full set of disposable fixture groups created during this programme was 1726–1728, 1757–1762, 1765–1767, 1779–1781, 1782–1819, 1821–1826, and 1829–1831. Each QA helper verified its own fixture cleanup. A final read-only scan of all 62 fixture IDs found no remaining posts or postmeta. No fixture targeted Person 1705.
+All runtime mutations ran as children of `site-code/bin/vgnova-runtime-mutate.php` under PE-007. The programme fixture groups were 1726–1728, 1757–1762, 1765–1767, 1779–1781, 1782–1819, 1821–1826, 1829–1831, and the post-review Product regression fixtures 1832–1837. The earlier read-only scan found no remaining posts or postmeta for the first 62 fixtures. The six post-review fixtures were separately checked after deletion and each had `post_exists=false` with zero postmeta rows. The first Product browser runner stopped before cleanup; a fresh PE-007 session verified the three fixture owners and contribution endpoints, then hard-deleted them. No fixture targeted Person 1705.
 
-The approved ACF group syncs were already complete when this implementation resumed; they were not repeated. Runtime changes in this pass were limited to the Bricks templates and component listed above, the Masteriyo Bricks integration setting/add-on, and disposable QA fixtures. No Member Perks configuration was changed. No relationship backfill, custom storage, direct SQL, production content edit, or merge was performed.
+The approved ACF group syncs were already complete when this implementation resumed; they were not repeated during this post-review pass. The earlier relationship implementation changed the listed Bricks templates and component and enabled the Masteriyo Bricks integration add-on under PE-007. This post-review pass made no ACF or Bricks setting changes; it only created and removed the disposable Product fixtures and temporary scoped bypass under PE-007. No Member Perks configuration, relationship backfill, custom relationship storage, or non-disposable content was changed. No direct SQL write or merge was performed.
