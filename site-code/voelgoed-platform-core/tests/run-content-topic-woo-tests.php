@@ -92,7 +92,7 @@ function get_term(int $term_id, string $taxonomy = ''): mixed
 
 function get_option(string $name, mixed $default = false): mixed
 {
-    return $name === 'woocommerce_store_pages_only' ? $GLOBALS['ctw_store_pages_only'] : $default;
+    return $name === 'woocommerce_store_pages_only' ? $GLOBALS['ctw_store_pages_only'] : ($name === 'posts_per_page' ? 10 : $default);
 }
 
 function apply_filters(string $hook, mixed $value, mixed ...$args): mixed
@@ -122,10 +122,12 @@ function ctw_same(mixed $expected, mixed $actual, string $message): void
 final class WP_Query
 {
     public array $query_vars;
+    public array $query;
 
     public function __construct(array $query_vars = [])
     {
         $this->query_vars = $query_vars;
+        $this->query = $query_vars;
     }
 
     public function is_main_query(): bool { return $GLOBALS['ctw_is_main']; }
@@ -310,10 +312,12 @@ ctw_set_request(true, false, 'content_topic', ctw_canonical_term());
 add_action('pre_get_posts', static function (WP_Query $query): void {
     $query->set('orderby', 'meta_value_num');
     $query->set('meta_key', '_price');
+    $query->set('posts_per_page', 12);
 }, PHP_INT_MAX - 10);
-$late_catalogue = new WP_Query();
+$late_catalogue = new WP_Query(['posts_per_page' => 2]);
 ctw_run_hook('pre_get_posts', $late_catalogue);
 ctw_same(['date' => 'DESC', 'ID' => 'DESC'], $late_catalogue->get('orderby'), 'Late catalogue settings must not replace the editorial ordering.');
+ctw_same(2, $late_catalogue->get('posts_per_page'), 'Native pagination must survive late catalogue settings.');
 ctw_same('', $late_catalogue->get('meta_key'), 'Catalogue price metadata must not exclude editorial posts.');
 
 // The installed Woo version uses priority 10; also exercise that normal registration.
