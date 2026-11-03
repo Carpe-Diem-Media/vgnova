@@ -27,7 +27,7 @@ This successor refreshes the Plan A dataset only. IDs and slugs below are runtim
 | Nuwe Jy Topic | Canonical `content_topic` root, slug `nuwe-jy`; 0 assigned Articles | Canonical taxonomy term | Available as the required Topic, but it has no eligible Article path. |
 | Article 375 | "Integer maximus sapien in bibendum."; published; no Topic or NF-PERSON fields | `SYNTHETIC_OR_UNRESOLVED` | Excluded. The provenance audit classifies its pseudo-Latin copy as placeholder and leaves its origin unresolved. |
 | Person 1705 | Lynette Beer; published; `mentor` and `kenner`; no approved profile content, Topic, Article, or Course relationships | `OWNER_AUTHORIZED` for identity and classifications only | Not selected. Do not add a bio, profile image, Topic, or relationship to make it eligible. |
-| Published Masteriyo Courses | Five published records; no `content_topic`, NF-PERSON role fields, or Woo Product mapping; editorial provenance is unconfirmed | Unverified staging content | None selected. The titles are not sufficient proof of real editorial use. |
+| Published Masteriyo Courses | Five published records; no `content_topic` or NF-PERSON role fields; editorial provenance is unconfirmed | Unverified staging content | None selected. The titles are not sufficient proof of real editorial use. |
 | Draft Masteriyo Course | "Untitled Course"; draft; no slug or Person/Topic relationship | Draft/system content | Excluded. |
 
 The five published Course titles are "Selfsorg vir Besige Ma's", "Geloof & Identiteit", "Finansiële Vryheid Basiese", "Gesonde Huwelik: Kommunikasie", and "Mindfulness vir Vroue". These names help the owner identify records for review; they do not approve their provenance or role relationships.

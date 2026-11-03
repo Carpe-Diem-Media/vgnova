@@ -100,7 +100,7 @@ The current database has no representative Article-to-Person or Person-to-Course
 
 ### Masteriyo Courses
 
-There are five published Courses and one draft. None has a `content_topic` assignment or a populated NF-PERSON instructor field. None has a linked Woo Product. Course titles and runtime IDs are evidence only; the published records have no confirmed editorial provenance. The draft "Untitled Course" is not a candidate.
+There are five published Courses and one draft. None has a `content_topic` assignment or a populated NF-PERSON instructor field. Course titles and runtime IDs are evidence only; the published records have no confirmed editorial provenance. The draft "Untitled Course" is not a candidate.
 
 The public canonical Course route `/leer/mindfulness-vroue/` returned HTTP 200 and did not show Lynette or an unrelated Person relationship.
 
