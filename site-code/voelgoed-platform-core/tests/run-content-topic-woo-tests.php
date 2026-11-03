@@ -282,6 +282,20 @@ ctw_same(false, apply_filters('woocommerce_coming_soon_exclude', false, 99), '40
 
 ctw_assert(count($registered) === 1 && array_values($registered)[0][0] !== $woo_callback, 'Registration must replace the Woo callback once at its original priority.');
 
+// Genuine store classifications retain both native query and visibility ownership.
+foreach (['product_cat', 'product_tag', 'pa_colour', 'shop', 'product'] as $taxonomy) {
+    ctw_set_request(true, false, $taxonomy, new WP_Term(45, $taxonomy));
+    $store = new WP_Query(['post_type' => 'product']);
+    $before = count($woo_query->calls);
+    ctw_run_hook('pre_get_posts', $store);
+    ctw_same($before + 1, count($woo_query->calls), 'Store query must reach Woo: ' . $taxonomy);
+    ctw_same('product_query', $store->get('wc_query'), 'Store catalogue query must survive: ' . $taxonomy);
+    ctw_same(false, apply_filters('woocommerce_coming_soon_exclude', false), 'Store protection must survive: ' . $taxonomy);
+    ctw_same(true, apply_filters('woocommerce_coming_soon_exclude', true), 'Earlier exclusions remain owned by Woo/extensions.');
+}
+ctw_set_request(true, false, 'content_topic', new WP_Term(31, 'product_cat'));
+ctw_same(false, apply_filters('woocommerce_coming_soon_exclude', false), 'A mismatched queried term must not bypass protection.');
+
 $GLOBALS['ctw_woo'] = null;
 try {
     (new $class_name())->register();
@@ -289,5 +303,29 @@ try {
 } catch (Throwable $error) {
     throw new RuntimeException('Registration must be safe when WooCommerce is absent.', 0, $error);
 }
+
+// The installed LMS also sorts shared-taxonomy archives at PHP_INT_MAX - 10.
+// Canonical main-loop ownership must survive a late catalogue configuration.
+ctw_set_request(true, false, 'content_topic', ctw_canonical_term());
+add_action('pre_get_posts', static function (WP_Query $query): void {
+    $query->set('orderby', 'meta_value_num');
+    $query->set('meta_key', '_price');
+}, PHP_INT_MAX - 10);
+$late_catalogue = new WP_Query();
+ctw_run_hook('pre_get_posts', $late_catalogue);
+ctw_same(['date' => 'DESC', 'ID' => 'DESC'], $late_catalogue->get('orderby'), 'Late catalogue settings must not replace the editorial ordering.');
+ctw_same('', $late_catalogue->get('meta_key'), 'Catalogue price metadata must not exclude editorial posts.');
+
+// The installed Woo version uses priority 10; also exercise that normal registration.
+$GLOBALS['ctw_hooks'] = [];
+$GLOBALS['ctw_woo'] = new CtwWooContainer(new CtwWooQuery());
+add_action('pre_get_posts', [$GLOBALS['ctw_woo']->query, 'pre_get_posts']);
+(new $class_name())->register();
+ctw_run_hook('wp_loaded');
+ctw_set_request(true, false, 'content_topic', ctw_canonical_term());
+$normal_priority = new WP_Query();
+ctw_run_hook('pre_get_posts', $normal_priority);
+ctw_same('', $normal_priority->get('wc_query'), 'Woo priority 10 must also be isolated.');
+ctw_same('post', $normal_priority->get('post_type'), 'Woo priority 10 keeps editorial main query.');
 
 echo "Content Topic WooCommerce compatibility tests passed.\n";
