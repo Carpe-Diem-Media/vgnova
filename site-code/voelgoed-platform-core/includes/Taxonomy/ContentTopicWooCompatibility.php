@@ -84,7 +84,16 @@ final class ContentTopicWooCompatibility
 
     private function is_topic_main_query(\WP_Query $query): bool
     {
+        global $wp;
+
         if (is_admin() || ! $query->is_main_query() || ! $query->is_tax('content_topic') || $query->is_404()) {
+            return false;
+        }
+        // A Topic query string can make the Shop query look like a taxonomy
+        // archive. Only WordPress's matched canonical rewrite owns this route.
+        $route = [];
+        parse_str((string) ($wp->matched_query ?? ''), $route);
+        if (! isset($route['content_topic'])) {
             return false;
         }
         $term = $query->get_queried_object();

@@ -134,6 +134,8 @@ function vg_content_topic_woo_qa_main_query(array $extra_vars, array $baseline_h
     vg_content_topic_woo_qa_restore_hooks($baseline_hooks);
     $previous_query = $GLOBALS['wp_query'] ?? null;
     $previous_the_query = $GLOBALS['wp_the_query'] ?? null;
+    $previous_matched_query = $GLOBALS['wp']->matched_query ?? '';
+    $GLOBALS['wp']->matched_query = 'content_topic=' . rawurlencode((string) ($extra_vars['term'] ?? ''));
 
     $query = new WP_Query();
     $GLOBALS['wp_query'] = $query;
@@ -148,7 +150,7 @@ function vg_content_topic_woo_qa_main_query(array $extra_vars, array $baseline_h
         $GLOBALS['wp']->handle_404($query);
     }
 
-    $GLOBALS['vg_content_topic_woo_qa_query_context'][spl_object_id($query)] = [$previous_query, $previous_the_query];
+    $GLOBALS['vg_content_topic_woo_qa_query_context'][spl_object_id($query)] = [$previous_query, $previous_the_query, $previous_matched_query];
     return $query;
 }
 
@@ -158,7 +160,8 @@ function vg_content_topic_woo_qa_restore_query_globals(WP_Query $query): void
     if (! isset($GLOBALS['vg_content_topic_woo_qa_query_context'][$key])) {
         return;
     }
-    [$previous_query, $previous_the_query] = $GLOBALS['vg_content_topic_woo_qa_query_context'][$key];
+    [$previous_query, $previous_the_query, $previous_matched_query] = $GLOBALS['vg_content_topic_woo_qa_query_context'][$key];
+    $GLOBALS['wp']->matched_query = $previous_matched_query;
     $GLOBALS['wp_query'] = $previous_query;
     $GLOBALS['wp_the_query'] = $previous_the_query;
     unset($GLOBALS['vg_content_topic_woo_qa_query_context'][$key]);
@@ -554,6 +557,8 @@ try {
     vg_content_topic_woo_qa_restore_hooks($baseline_hooks);
     $previous_store_query = $GLOBALS['wp_query'] ?? null;
     $previous_store_the_query = $GLOBALS['wp_the_query'] ?? null;
+    $previous_store_matched_query = $GLOBALS['wp']->matched_query ?? '';
+    $GLOBALS['wp']->matched_query = 'post_type=product';
     $store_query = new WP_Query();
     $GLOBALS['wp_query'] = $store_query;
     $GLOBALS['wp_the_query'] = $store_query;
@@ -562,7 +567,7 @@ try {
         'post_status' => 'publish',
         'posts_per_page' => 20,
     ]);
-    $GLOBALS['vg_content_topic_woo_qa_query_context'][spl_object_id($store_query)] = [$previous_store_query, $previous_store_the_query];
+    $GLOBALS['vg_content_topic_woo_qa_query_context'][spl_object_id($store_query)] = [$previous_store_query, $previous_store_the_query, $previous_store_matched_query];
     vg_content_topic_woo_qa_check(($store_query->query_vars['post_type'] ?? null) === 'product', 'A native Product query no longer uses the Product post type.');
     vg_content_topic_woo_qa_check(($store_query->query_vars['wc_query'] ?? null) === 'product_query', 'The native WooCommerce shop query did not retain WooCommerce query mode.');
     vg_content_topic_woo_qa_check(in_array($root_product, vg_content_topic_woo_qa_ids($store_query), true), 'The native WooCommerce Product query did not return the visible QA Product.');
