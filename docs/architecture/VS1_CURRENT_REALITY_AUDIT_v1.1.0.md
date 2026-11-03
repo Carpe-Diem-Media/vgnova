@@ -5,7 +5,7 @@
 | Status | Fresh read-only Plan A rebaseline |
 | Version | 1.1.0 |
 | Audit date | 2026-11-03 |
-| Source base | `origin/main` = `8f32fe3dbc94d6e02c4f11227e90e91ff4b9053a` |
+| Source base | `origin/main` = `5413d3e20a7117ba0da1a4363143b18dcf9e6726` |
 | Work branch | `feat/vs1-discovery-chain` |
 | Runtime | VG Nova Local, `http://localhost:10039/` |
 
@@ -13,13 +13,15 @@ This successor updates only evidence that could have changed since v1.0.0. The O
 
 ## Repository and merge verification
 
-The isolated worktree was created from the exact current `origin/main` SHA above. PR #78 is merge commit `8f32fe3dbc94d6e02c4f11227e90e91ff4b9053a`, with parents `c450475971de722378a1658157a3a24838e467f7` and `cb2bedd62e13c95bb8febd44e2375936912ae8e3`.
+PR #78 is merge commit `8f32fe3dbc94d6e02c4f11227e90e91ff4b9053a`, with parents `c450475971de722378a1658157a3a24838e467f7` and `cb2bedd62e13c95bb8febd44e2375936912ae8e3`. After PR #79 merged, current `origin/main` advanced to `5413d3e20a7117ba0da1a4363143b18dcf9e6726`. PR #79 changed only `AGENTS.md` to route Bricks and frontend work through the local Bricks MCP. The Platform Core source is unchanged.
 
 Post-merge [workflow `41613026611`](https://github.com/JCSchoeman96/vgnova/actions/runs/41613026611) completed successfully on that exact merge SHA. Dashboard checks, Canonical source checks, and VG Nova Platform Gate all succeeded.
 
+Current-main [workflow `41620681843`](https://github.com/JCSchoeman96/vgnova/actions/runs/41620681843) also completed successfully on exact SHA `5413d3e20a7117ba0da1a4363143b18dcf9e6726`. Dashboard checks, Canonical source checks, Platform Core artifact publication, and VG Nova Platform Gate all succeeded.
+
 ## Runtime identity and Platform Core parity
 
-Read-only WP-CLI inspection used the Local PHP 8.5.12 binary and Local database socket. No credentials were read or printed.
+The Bricks MCP endpoint returned HTTP 401 from this workspace, and no Bricks MCP tool is connected here. The repository permits WP-CLI or the local shell as a read-only fallback, so runtime inspection used WP-CLI with the Local PHP 8.5.12 binary and Local database socket. No credentials were read or printed.
 
 | Item | Current runtime |
 |---|---|
@@ -131,7 +133,7 @@ WORDPRESS_CONTENT_MUTATIONS=0
 ## Current conclusion
 
 ```text
-REPO_BASELINE=8f32fe3dbc94d6e02c4f11227e90e91ff4b9053a
+REPO_BASELINE=5413d3e20a7117ba0da1a4363143b18dcf9e6726
 SOURCE_RUNTIME_PARITY=PASS
 HOME_TO_TOPIC_GATE=GAP
 TOPIC_TO_ARTICLE_GATE=GAP

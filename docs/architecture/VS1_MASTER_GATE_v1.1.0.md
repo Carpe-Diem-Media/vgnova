@@ -5,7 +5,7 @@
 | Status | BLOCKED |
 | Version | 1.1.0 |
 | Audit date | 2026-11-03 |
-| Repository base | `8f32fe3dbc94d6e02c4f11227e90e91ff4b9053a` |
+| Repository base | `5413d3e20a7117ba0da1a4363143b18dcf9e6726` |
 | Scope | Plan A discovery rebaseline only |
 
 This successor refreshes the current state of Plan A after PR #78. It preserves v1.0.0 as historical evidence and does not re-audit or change membership commerce, Course fulfilment, email, analytics, Event/Product regressions, or the separate legacy Person migration.
@@ -30,7 +30,7 @@ VS1_MASTER_GATE=BLOCKED
 FRONTEND_COMPLETION=NOT_CLAIMED
 ```
 
-The exact-main post-merge workflow for `8f32fe3dbc94d6e02c4f11227e90e91ff4b9053a` passed Dashboard checks, Canonical source checks, and VG Nova Platform Gate.
+The exact-main post-merge workflow for `8f32fe3dbc94d6e02c4f11227e90e91ff4b9053a` passed Dashboard checks, Canonical source checks, and VG Nova Platform Gate. Current main is `5413d3e20a7117ba0da1a4363143b18dcf9e6726`, which changes only repository Bricks MCP routing guidance. Its exact-SHA workflow `41620681843` passed Dashboard checks, Canonical source checks, Platform Core artifact publication, and VG Nova Platform Gate. See the [current reality audit](VS1_CURRENT_REALITY_AUDIT_v1.1.0.md) for both run records.
 
 ## Plan A gate table
 

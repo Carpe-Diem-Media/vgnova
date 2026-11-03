@@ -5,7 +5,7 @@
 | Status | BLOCKED BY REPRESENTATIVE DATA |
 | Version | 1.1.0 |
 | Audit date | 2026-11-03 |
-| Repository base | `8f32fe3dbc94d6e02c4f11227e90e91ff4b9053a` |
+| Repository base | `5413d3e20a7117ba0da1a4363143b18dcf9e6726` |
 | Runtime | VG Nova Local, `http://localhost:10039/` |
 
 This successor replaces only stale discovery findings in v1.0.0. Article-to-Person and Person-to-Course architecture decisions are settled by NF-PERSON. The implementation below uses those approved fields, templates, and native queries. It does not reopen Person architecture or migrate legacy `medewerker` records.
