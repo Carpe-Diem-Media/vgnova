@@ -24,7 +24,7 @@ Do not weaken production code, add compatibility branches, or preserve PHP
 8.0–8.4 support unless a separately approved concrete deployment requirement
 requires it.
 
-Use Novamira MCP as the primary WordPress runtime interface. Use WP-CLI or the local shell for read-only verification and as a fallback. Direct SQL writes are exceptional and require a documented reason and explicit task scope.
+Use the Bricks MCP for Bricks Builder and frontend work on the local Voelgoed site. Its endpoint is `http://localhost:10039/wp-json/mcp/mcp-adapter-default-server`. Do not use the Novamira MCP endpoint for that work. Some abilities on the Bricks endpoint may retain a `novamira/` name prefix; invoke them through the Bricks MCP. Use Novamira MCP for other WordPress runtime tasks. Use WP-CLI or the local shell for read-only verification and as a fallback. Direct SQL writes are exceptional and require a documented reason and explicit task scope.
 
 Local runtime references:
 
@@ -33,7 +33,8 @@ Local runtime references:
 - SQL directory: `/home/jcschoeman96/Local Sites/voelgoed-novamira/app/sql/`
 
 ## Rules
-- Prefer Novamira MCP for WordPress inspection and changes.
+- For Bricks Builder and frontend inspection or changes, use the Bricks MCP at `/wp-json/mcp/mcp-adapter-default-server` on `localhost:10039`.
+- For other WordPress runtime inspection or changes, prefer Novamira MCP.
 - Inspect before editing: understand templates, components, globals, variables, and dynamic data first.
 - Treat this site as staging only; avoid destructive actions unless explicitly approved.
 - Prefer Bricks-native controls over custom PHP, JS, or CSS when possible.
