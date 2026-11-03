@@ -67,6 +67,7 @@ final class ContentTopicWooCompatibility
         $query->set('order', 'DESC');
         $query->set('wc_query', '');
         $query->set('meta_key', '');
+        $query->set('posts_per_page', $query->query['posts_per_page'] ?? get_option('posts_per_page'));
     }
 
     /** Exempt editorial discovery only in store-only mode, never site-wide mode. */
