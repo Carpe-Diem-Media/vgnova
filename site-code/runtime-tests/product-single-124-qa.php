@@ -1113,6 +1113,11 @@ function vg_product_single_124_qa_expected_state(array $snapshot): void
         'Owner-approved canonical Person 1705 differs from the Task 10A state.'
     );
     vg_product_single_124_qa_check(
+        is_array($snapshot['published_medewerker_product_ids_for_753'] ?? null)
+            && ! in_array(767, $snapshot['published_medewerker_product_ids_for_753'], true),
+        'Published-only Person 753 reverse Product query includes pending Product 767 or could not be evaluated.'
+    );
+    vg_product_single_124_qa_check(
         $snapshot['participation_count'] === VG_PRODUCT_SINGLE_124_QA_EXPECTED_PARTICIPATION_COUNT,
         'Event Participation count differs from Task 1 baseline.'
     );
@@ -1194,6 +1199,9 @@ function vg_product_single_124_qa_snapshot(): array
             break;
         }
     }
+    $published_medewerker_product_ids = function_exists('vg_bricks_query_posts_with_relationship_field')
+        ? vg_bricks_query_posts_with_relationship_field('produk_medewerkers', 753, ['product'])
+        : null;
     $copy_path = WP_CONTENT_DIR . '/fluent-snippet-storage/9-acf-product-copy.php';
 
     return [
@@ -1211,6 +1219,7 @@ function vg_product_single_124_qa_snapshot(): array
         'callers' => vg_product_single_124_qa_query_callers(),
         'template772_reverse_mode' => $reverse_mode,
         'fluent_snippet_integrity' => vg_product_single_124_qa_fluent_snippet_state(),
+        'published_medewerker_product_ids_for_753' => $published_medewerker_product_ids,
         'copy_hash' => is_file($copy_path) ? hash_file('sha256', $copy_path) : null,
         'person_count' => vg_product_single_124_qa_post_count('person'),
         'person_ids' => vg_product_single_124_qa_person_ids(),
