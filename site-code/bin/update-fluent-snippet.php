@@ -153,6 +153,34 @@ function vg_fs001_sibling_inventory(string $storageDirectory): array
     return $inventory;
 }
 
+/** @param array<string,mixed> $entries @param array<string,mixed> $expectedMetadata @return list<array{key:string,file_name:string,title:string,status:string}> */
+function vg_fs001_conflicting_draft_entries(array $entries, array $expectedMetadata): array
+{
+    $conflicts = [];
+    $expectedTitle = (string) ($expectedMetadata['title'] ?? '');
+
+    foreach ($entries as $key => $entry) {
+        if (! is_array($entry)) {
+            throw new RuntimeException('FluentSnippets draft index contains a malformed entry.');
+        }
+
+        $fileName = (string) ($entry['file_name'] ?? '');
+        $title = (string) ($entry['title'] ?? $entry['name'] ?? '');
+        if ((string) $key === VG_FS001_FILE_NAME
+            || $fileName === VG_FS001_FILE_NAME
+            || ($expectedTitle !== '' && $title === $expectedTitle)) {
+            $conflicts[] = [
+                'key' => (string) $key,
+                'file_name' => $fileName,
+                'title' => $title,
+                'status' => (string) ($entry['status'] ?? ''),
+            ];
+        }
+    }
+
+    return $conflicts;
+}
+
 /** @return array<string,mixed> */
 function vg_fs001_capture_state(string $storageDirectory): array
 {
@@ -166,19 +194,37 @@ function vg_fs001_capture_state(string $storageDirectory): array
     if (! is_string($storageHash)) {
         throw new RuntimeException('The FluentSnippets storage file could not be hashed.');
     }
+    $storageContents = file_get_contents($snippetPath);
+    if (! is_string($storageContents) || hash('sha256', $storageContents) !== $storageHash) {
+        throw new RuntimeException('The FluentSnippets storage file changed while its state was being captured.');
+    }
     $record = vg_fs001_read_record(VG_FS001_FILE_NAME);
+    if (($record['file'] ?? null) !== $snippetPath) {
+        throw new RuntimeException('FluentSnippets model resolved the snippet outside its registered storage path.');
+    }
     $config = \FluentSnippets\App\Helpers\Helper::getIndexedConfig(false);
-    if (! is_array($config)) {
+    if (! is_array($config)
+        || ! is_array($config['published'] ?? null)
+        || ! is_array($config['draft'] ?? null)) {
         throw new RuntimeException('The FluentSnippets derived index could not be read.');
+    }
+    $stableMetadata = vg_fs001_stable_metadata($record['meta'], VG_FS001_FILE_NAME);
+    $indexHash = hash_file('sha256', $indexPath);
+    if (! is_string($indexHash)) {
+        throw new RuntimeException('The FluentSnippets derived index could not be hashed.');
     }
 
     return [
         'record' => $record,
-        'stable_metadata' => vg_fs001_stable_metadata($record['meta'], VG_FS001_FILE_NAME),
+        'stable_metadata' => $stableMetadata,
         'storage_sha256' => $storageHash,
+        'storage_contents' => $storageContents,
+        'index_sha256' => $indexHash,
+        'storage_path' => $snippetPath,
         'siblings' => vg_fs001_sibling_inventory($storageDirectory),
         'published_index_entry' => $config['published'][VG_FS001_FILE_NAME] ?? null,
         'draft_index_entry' => $config['draft'][VG_FS001_FILE_NAME] ?? null,
+        'conflicting_draft_entries' => vg_fs001_conflicting_draft_entries($config['draft'], $stableMetadata),
     ];
 }
 
@@ -190,6 +236,145 @@ function vg_fs001_assert_published_index_entry(mixed $entry, array $expectedMeta
         || ($entry['status'] ?? null) !== 'published'
         || ($entry['file_name'] ?? null) !== VG_FS001_FILE_NAME) {
         throw new RuntimeException('FluentSnippets index does not contain the expected published snippet.');
+    }
+}
+
+function vg_fs001_assert_no_output_source(string $source): void
+{
+    if (! str_starts_with($source, "<?php\n") || str_contains($source, "\r")) {
+        throw new RuntimeException('Approved FluentSnippets source has an invalid PHP opening token or line ending.');
+    }
+
+    try {
+        $tokens = token_get_all($source, TOKEN_PARSE);
+    } catch (ParseError $error) {
+        throw new RuntimeException('Approved FluentSnippets source does not parse.', 0, $error);
+    }
+
+    foreach ($tokens as $token) {
+        if (! is_array($token)) {
+            continue;
+        }
+        if (in_array($token[0], [T_INLINE_HTML, T_ECHO, T_PRINT, T_CLOSE_TAG], true)) {
+            throw new RuntimeException('Approved FluentSnippets source contains direct output.');
+        }
+    }
+}
+
+function vg_fs001_assert_storage_wrapper(string $contents, string $parsedCode): void
+{
+    $startMarker = '// <Internal Doc Start>';
+    $currentGuard = '<?php if (!defined("ABSPATH")) { return;} // <Internal Doc End> ?>';
+    $legacyGuard = "<?php if (!defined('ABSPATH')) {" . PHP_EOL . "    return;" . PHP_EOL . "} // <Internal Doc End> ?>";
+    if (! str_starts_with($contents, "<?php\n")
+        || substr_count($contents, $startMarker) !== 1
+        || substr_count($contents, '// <Internal Doc End> ?>') !== 1) {
+        throw new RuntimeException('FluentSnippets storage wrapper markers are missing or duplicated.');
+    }
+
+    $guardPosition = false;
+    $matchedGuard = null;
+    foreach ([$currentGuard, $legacyGuard] as $baseGuard) {
+        $position = strpos($contents, $baseGuard);
+        if (is_int($position)) {
+            if ($matchedGuard !== null) {
+                throw new RuntimeException('FluentSnippets storage wrapper contains multiple accepted guards.');
+            }
+            $newlineFollows = substr($contents, $position + strlen($baseGuard), strlen(PHP_EOL)) === PHP_EOL;
+            $guardPosition = $position;
+            $matchedGuard = $baseGuard . ($newlineFollows ? PHP_EOL : '');
+        }
+    }
+    if (! is_int($guardPosition)
+        || ! is_string($matchedGuard)
+        || $guardPosition < strpos($contents, $startMarker)) {
+        throw new RuntimeException('FluentSnippets storage wrapper does not use its registered ABSPATH guard.');
+    }
+
+    $metadataWrapper = substr($contents, 0, $guardPosition);
+    try {
+        $tokens = token_get_all($metadataWrapper, TOKEN_PARSE);
+    } catch (ParseError $error) {
+        throw new RuntimeException('FluentSnippets metadata wrapper does not parse.', 0, $error);
+    }
+    foreach ($tokens as $token) {
+        if (! is_array($token)
+            || ! in_array($token[0], [T_OPEN_TAG, T_COMMENT, T_DOC_COMMENT, T_WHITESPACE, T_CLOSE_TAG], true)) {
+            throw new RuntimeException('FluentSnippets metadata wrapper contains unexpected executable code.');
+        }
+    }
+
+    $storedCode = substr($contents, $guardPosition + strlen($matchedGuard));
+    if ($storedCode !== $parsedCode) {
+        throw new RuntimeException('FluentSnippets storage contains code outside the parsed executable body.');
+    }
+}
+
+/** @param array<string,mixed> $state @param array{source:string,metadata:array<string,mixed>} $approved */
+function vg_fs001_assert_current_integrity_state(array $state, array $approved): void
+{
+    $record = $state['record'] ?? null;
+    $source = $approved['source'] ?? null;
+    $expectedMetadata = $approved['metadata'] ?? null;
+    if (! is_array($record)
+        || ! is_array($record['meta'] ?? null)
+        || ! is_string($record['code'] ?? null)
+        || ! is_string($source)
+        || ! is_array($expectedMetadata)) {
+        throw new RuntimeException('FluentSnippets current-state evidence is incomplete.');
+    }
+
+    vg_fs001_assert_no_output_source($source);
+    if (! is_string($state['storage_contents'] ?? null)) {
+        throw new RuntimeException('FluentSnippets storage wrapper evidence is missing.');
+    }
+    vg_fs001_assert_storage_wrapper($state['storage_contents'], $record['code']);
+    $actualMetadata = vg_fs001_stable_metadata($record['meta'], VG_FS001_FILE_NAME);
+    if (($record['status'] ?? null) !== 'published'
+        || $record['code'] !== $source
+        || hash('sha256', $record['code']) !== VG_FS001_SOURCE_SHA256
+        || $actualMetadata !== $expectedMetadata
+        || ($state['stable_metadata'] ?? null) !== $actualMetadata
+        || ($state['storage_path'] ?? null) !== (VG_FS001_WP_ROOT . '/wp-content/fluent-snippet-storage/' . VG_FS001_FILE_NAME)) {
+        throw new RuntimeException('FluentSnippets current record differs from the approved source, metadata, status, or storage path.');
+    }
+
+    foreach (['storage_sha256', 'index_sha256'] as $hashKey) {
+        if (! is_string($state[$hashKey] ?? null)
+            || preg_match('/\A[a-f0-9]{64}\z/', $state[$hashKey]) !== 1) {
+            throw new RuntimeException('FluentSnippets current-state hash is invalid: ' . $hashKey . '.');
+        }
+    }
+    if (! is_array($state['siblings'] ?? null)
+        || ! is_array($state['conflicting_draft_entries'] ?? null)
+        || $state['conflicting_draft_entries'] !== []
+        || ($state['draft_index_entry'] ?? null) !== null) {
+        throw new RuntimeException('FluentSnippets current state contains an invalid sibling inventory or conflicting draft.');
+    }
+    foreach ($state['siblings'] as $fileName => $hash) {
+        if (! is_string($fileName)
+            || ! is_string($hash)
+            || preg_match('/\A[a-f0-9]{64}\z/', $hash) !== 1) {
+            throw new RuntimeException('FluentSnippets sibling inventory contains invalid evidence.');
+        }
+    }
+
+    vg_fs001_assert_published_index_entry($state['published_index_entry'] ?? null, $expectedMetadata);
+}
+
+/** @param array<string,mixed> $before @param array<string,mixed> $after */
+function vg_fs001_assert_state_unchanged(array $before, array $after): void
+{
+    foreach ([
+        'record', 'stable_metadata', 'storage_sha256', 'index_sha256', 'storage_path',
+        'siblings', 'published_index_entry', 'draft_index_entry', 'conflicting_draft_entries',
+        'runtime_identity', 'storage_realpath',
+    ] as $key) {
+        if (! array_key_exists($key, $before)
+            || ! array_key_exists($key, $after)
+            || $before[$key] !== $after[$key]) {
+            throw new RuntimeException('FluentSnippets runtime state changed during QA: ' . $key . '.');
+        }
     }
 }
 

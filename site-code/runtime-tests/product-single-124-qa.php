@@ -126,7 +126,6 @@ const VG_PRODUCT_SINGLE_124_QA_PROTECTED_COMPONENT_HASHES = [
     '194bba' => '481c60b1bd2310b96cae05834aa49202777788192927021d218c5d1445cadc7f',
     '6b463f' => '57370bbb83d3125758eba9a5194eb1a898b8914b546ee4d84b32f642e07aeaac',
 ];
-const VG_PRODUCT_SINGLE_124_QA_HELPER_HASH = 'e1b7c014cd15a673d663426403a2024a21a1286075c355015f4e217d7e498fa2';
 const VG_PRODUCT_SINGLE_124_QA_COPY_HASH = '58e8035502b30397b9659f952e4d49bbdbd7cdbd15070e37e5b07ebaa5ce2f70';
 const VG_PRODUCT_SINGLE_124_QA_TEMPLATE124_ELEMENTS = 82;
 const VG_PRODUCT_SINGLE_124_QA_EXPECTED_PERSON_COUNT = 0;
@@ -139,6 +138,69 @@ function vg_product_single_124_qa_check(bool $condition, string $message): void
     if (! $condition) {
         throw new RuntimeException($message);
     }
+}
+
+if (! defined('VG_FLUENT_SNIPPET_UPDATER_TESTING')) {
+    define('VG_FLUENT_SNIPPET_UPDATER_TESTING', true);
+}
+require_once dirname(__DIR__) . '/bin/update-fluent-snippet.php';
+
+/** @return array<string,mixed> */
+function vg_product_single_124_qa_fluent_snippet_state(): array
+{
+    vg_product_single_124_qa_check(
+        class_exists('FluentSnippets\\App\\Model\\Snippet')
+            && class_exists('FluentSnippets\\App\\Helpers\\Helper')
+            && defined('FLUENT_SNIPPETS_PLUGIN_VERSION'),
+        'The registered FluentSnippets runtime model or version is unavailable.'
+    );
+
+    $runtimeRoot = rtrim(ABSPATH, '/\\');
+    $registeredRoot = realpath(VG_FS001_WP_ROOT);
+    $actualRoot = realpath($runtimeRoot);
+    $storageDirectory = \FluentSnippets\App\Helpers\Helper::getStorageDir();
+    $storageRealPath = realpath($storageDirectory);
+    $expectedStorage = $registeredRoot === false ? false : realpath($registeredRoot . '/wp-content/fluent-snippet-storage');
+    vg_product_single_124_qa_check(
+        $registeredRoot !== false
+            && $actualRoot === $registeredRoot
+            && $storageRealPath !== false
+            && $storageRealPath === $expectedStorage
+            && ! is_link($storageDirectory),
+        'The FluentSnippets storage path does not belong to the registered WordPress runtime.'
+    );
+
+    $environmentTarget = getenv('VGNOVA_MUTATION_TARGET');
+    vg_product_single_124_qa_check(
+        $environmentTarget === false || $environmentTarget === '' || $environmentTarget === VG_FS001_TARGET,
+        'The current process is attached to a different VGNova runtime target.'
+    );
+    $identity = [
+        'target' => $environmentTarget === false || $environmentTarget === '' ? VG_FS001_TARGET : $environmentTarget,
+        'wp_root' => $runtimeRoot,
+        'abspath' => $runtimeRoot,
+        'home_url' => home_url('/'),
+        'site_url' => site_url('/'),
+        'plugin_version' => (string) FLUENT_SNIPPETS_PLUGIN_VERSION,
+        'storage_dir' => $storageDirectory,
+    ];
+    vg_fs001_assert_runtime_identity($identity);
+
+    $approved = vg_fs001_load_approved_source();
+    $state = vg_fs001_capture_state($storageDirectory);
+    vg_fs001_assert_current_integrity_state($state, $approved);
+    $state['runtime_identity'] = $identity;
+    $state['storage_realpath'] = $storageRealPath;
+    $record = $state['record'];
+    $state['record'] = [
+        'meta' => $record['meta'],
+        'file' => $record['file'],
+        'status' => $record['status'],
+        'code_sha256' => hash('sha256', $record['code']),
+    ];
+    unset($state['storage_contents']);
+
+    return $state;
 }
 
 /** @return list<int> */
@@ -732,9 +794,22 @@ function vg_product_single_124_qa_expected_state(array $snapshot): void
         'Tickera API key state differs from the exact Task 1 protected snapshot.'
     );
     vg_product_single_124_qa_check(
-        $snapshot['helper_hash'] === VG_PRODUCT_SINGLE_124_QA_HELPER_HASH
-            && $snapshot['copy_hash'] === VG_PRODUCT_SINGLE_124_QA_COPY_HASH,
-        'Active helper or Product copy snippet hash differs from Task 1.'
+        isset($snapshot['fluent_snippet_integrity']) && is_array($snapshot['fluent_snippet_integrity']),
+        'Current FluentSnippets helper integrity state is missing.'
+    );
+    $approvedHelper = vg_fs001_load_approved_source();
+    vg_product_single_124_qa_check(
+        ($snapshot['fluent_snippet_integrity']['record']['status'] ?? null) === 'published'
+            && ($snapshot['fluent_snippet_integrity']['record']['code_sha256'] ?? null) === VG_FS001_SOURCE_SHA256,
+        'The FluentSnippets parsed record status or executable-source hash differs from FS-001.'
+    );
+    vg_fs001_assert_published_index_entry(
+        $snapshot['fluent_snippet_integrity']['published_index_entry'] ?? null,
+        $approvedHelper['metadata']
+    );
+    vg_product_single_124_qa_check(
+        $snapshot['copy_hash'] === VG_PRODUCT_SINGLE_124_QA_COPY_HASH,
+        'The Product copy snippet differs from the Task 1 sibling baseline.'
     );
     vg_product_single_124_qa_check(
         ($snapshot['callers']['product_medewerkers'] ?? []) === []
@@ -791,7 +866,6 @@ function vg_product_single_124_qa_snapshot(): array
             break;
         }
     }
-    $helper_path = WP_CONTENT_DIR . '/fluent-snippet-storage/10-vg-bricks-medewerker-queries.php';
     $copy_path = WP_CONTENT_DIR . '/fluent-snippet-storage/9-acf-product-copy.php';
 
     return [
@@ -807,7 +881,7 @@ function vg_product_single_124_qa_snapshot(): array
         'product_person_cards' => $component_state['cards'],
         'callers' => vg_product_single_124_qa_query_callers(),
         'template772_reverse_mode' => $reverse_mode,
-        'helper_hash' => is_file($helper_path) ? hash_file('sha256', $helper_path) : null,
+        'fluent_snippet_integrity' => vg_product_single_124_qa_fluent_snippet_state(),
         'copy_hash' => is_file($copy_path) ? hash_file('sha256', $copy_path) : null,
         'person_count' => vg_product_single_124_qa_post_count('person'),
         'participation_count' => vg_product_single_124_qa_post_count(EventParticipationRepository::POST_TYPE),
@@ -1658,6 +1732,7 @@ $participation_after = null;
 $protected_state_equal = false;
 $coming_soon_state_equal = false;
 $sandbox_directory_equal = false;
+$fluent_snippet_state_equal = false;
 
 $audit('owned_records_removed', static function () use ($owned_residue): void {
     vg_product_single_124_qa_check($owned_residue === ['posts' => 0, 'meta_rows' => 0, 'term_relationships' => 0], 'Owned QA posts/meta/relationships remain.');
@@ -1681,7 +1756,7 @@ $audit('qa_product_event_name_unchanged', static function () use (&$qa_event_nam
     }
     vg_product_single_124_qa_check($qa_event_name_before === $qa_event_name_after, 'QA Product _event_name changed.');
 });
-$audit('protected_state_matches_task_1', static function () use ($before, &$after, &$post_type_counts_equal, &$protected_state_equal, &$coming_soon_state_equal, &$sandbox_directory_equal): void {
+$audit('protected_state_matches_task_1', static function () use ($before, &$after, &$post_type_counts_equal, &$protected_state_equal, &$coming_soon_state_equal, &$sandbox_directory_equal, &$fluent_snippet_state_equal): void {
     $after = vg_product_single_124_qa_snapshot();
     vg_product_single_124_qa_expected_state($after);
     $post_type_counts_equal = $before['post_type_counts'] === $after['post_type_counts'];
@@ -1691,7 +1766,9 @@ $audit('protected_state_matches_task_1', static function () use ($before, &$afte
     vg_product_single_124_qa_check($coming_soon_state_equal, 'WooCommerce public Coming Soon configuration changed during QA.');
     $sandbox_directory_equal = $before['sandbox_directory_entries'] === $after['sandbox_directory_entries'];
     vg_product_single_124_qa_check($sandbox_directory_equal, 'Novamira sandbox directory entries changed during QA.');
-    $protected_state_equal = $post_type_counts_equal && $coming_soon_state_equal && $sandbox_directory_equal;
+    vg_fs001_assert_state_unchanged($before['fluent_snippet_integrity'], $after['fluent_snippet_integrity']);
+    $fluent_snippet_state_equal = true;
+    $protected_state_equal = $post_type_counts_equal && $coming_soon_state_equal && $sandbox_directory_equal && $fluent_snippet_state_equal;
 });
 $audit('tickera_side_effects_equal', static function () use ($before): void {
     vg_product_single_124_qa_check(vg_product_single_124_qa_api_key_rows() === $before['api_keys'], 'Tickera side-effect state did not return to the pre-QA snapshot.');
@@ -1727,7 +1804,21 @@ $report = [
             array_values($before['product_person_cards'])
         ),
         'caller_counts' => array_map('count', $before['callers']),
-        'helper_sha256' => $before['helper_hash'],
+        'helper_executable_sha256' => $before['fluent_snippet_integrity']['record']['code_sha256'],
+        'helper_storage_file_sha256' => $before['fluent_snippet_integrity']['storage_sha256'],
+        'helper_index_sha256' => $before['fluent_snippet_integrity']['index_sha256'],
+        'helper_status' => $before['fluent_snippet_integrity']['record']['status'],
+        'helper_wrapper_structure' => 'verified',
+        'helper_output_scan' => 'clean',
+        'helper_metadata' => $before['fluent_snippet_integrity']['stable_metadata'],
+        'helper_conflicting_draft_count' => count($before['fluent_snippet_integrity']['conflicting_draft_entries']),
+        'helper_sibling_inventory_sha256' => vg_product_single_124_qa_stable_hash($before['fluent_snippet_integrity']['siblings']),
+        'helper_runtime_identity' => [
+            'target' => $before['fluent_snippet_integrity']['runtime_identity']['target'],
+            'home_url' => $before['fluent_snippet_integrity']['runtime_identity']['home_url'],
+            'site_url' => $before['fluent_snippet_integrity']['runtime_identity']['site_url'],
+            'plugin_version' => $before['fluent_snippet_integrity']['runtime_identity']['plugin_version'],
+        ],
         'copy_snippet_sha256' => $before['copy_hash'],
         'person_count' => $before['person_count'],
         'event_participation_count' => $before['participation_count'],
@@ -1772,6 +1863,7 @@ $report = [
             'unchanged' => $sandbox_directory_equal,
         ],
         'protected_state_equal' => $protected_state_equal,
+        'fluent_snippet_state_unchanged' => $fluent_snippet_state_equal,
         'protected_state_after' => $after,
     ],
     'failures' => $failures,
