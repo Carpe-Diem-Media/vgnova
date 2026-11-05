@@ -46,6 +46,28 @@ Local runtime references:
 - If MCP is unavailable, say so clearly and do not invent results.
 - PR's are mandatory for external independent review
 
+## Temporary content for staging
+
+Use temporary, representative content on the staging site to build and test
+complete journeys without waiting for final Voelgoed editorial content. This
+includes articles, courses and lessons, products, events, people, media and
+their relationships where needed. Staging content may be fictional or otherwise
+non-Voelgoed; it must exercise the real fields, templates and native workflows
+needed for the test.
+
+- Clearly identify and inventory temporary records and their dependencies so
+  they can be found, replaced and removed. Do not present invented claims,
+  biographies, images or relationships as facts about real people.
+- Use media that is permitted for the intended staging use. Keep temporary
+  content and test transactions out of production and real customer workflows.
+- Do not treat a successful fixture-based test as approval or proof of real
+  content, rights, relationships, production readiness or a real-data gate.
+  Replace fixtures with approved content and verify their consumers before
+  production launch or any acceptance gate that explicitly requires real data.
+- Continue to use the repository's runtime mutation coordination and the
+  applicable task's authorization, safety and rollback requirements. This rule
+  does not itself authorize a runtime mutation or publication.
+
 # VG Nova Native-First Development Policy
 
 ## Status
