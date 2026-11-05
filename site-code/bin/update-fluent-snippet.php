@@ -66,7 +66,8 @@ function vg_fs001_effective_load_settings(array $metadata): array
 {
     // FluentSnippets 10.56 parseBlock() defaults both omitted fields to ''. CodeRunner
     // enables them only for 'yes', so an omitted key and an explicit empty value are
-    // equivalent disabled settings for these two approved empty-valued fields.
+    // equivalent disabled settings for these two approved empty-valued fields. Keep
+    // the operators aligned with CodeRunner.php:151 and :180 respectively.
     return [
         'load_as_file' => ($metadata['load_as_file'] ?? null) == 'yes',
         'load_in_block_editor' => ($metadata['load_in_block_editor'] ?? '') === 'yes',

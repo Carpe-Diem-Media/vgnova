@@ -231,6 +231,52 @@ $test('omitted approved empty load flags retain disabled execution semantics', s
     }
 });
 
+$test('current FluentSnippets state rejects enabled model-record load flags', static function () use ($approved, $makeCurrentState, $assert): void {
+    foreach (['load_as_file', 'load_in_block_editor'] as $field) {
+        $state = $makeCurrentState();
+        $state['record']['meta'][$field] = 'yes';
+        $assert(
+            vg_fs001_effective_load_settings($state['record']['meta'])[$field] === true,
+            'The enabled model-record load flag was not recognized: ' . $field . '.'
+        );
+
+        try {
+            vg_fs001_assert_current_integrity_state($state, $approved);
+        } catch (RuntimeException $error) {
+            $assert(
+                $error->getMessage() === 'FluentSnippets current record differs from the approved source, metadata, status, or storage path.',
+                'The model-record flag failed for an unexpected reason: ' . $field . '.'
+            );
+            continue;
+        }
+
+        throw new RuntimeException('Enabled model-record load flag was accepted: ' . $field . '.');
+    }
+});
+
+$test('current FluentSnippets state rejects enabled published-index load flags', static function () use ($approved, $makeCurrentState, $assert): void {
+    foreach (['load_as_file', 'load_in_block_editor'] as $field) {
+        $state = $makeCurrentState();
+        $state['published_index_entry'][$field] = 'yes';
+        $assert(
+            vg_fs001_effective_load_settings($state['published_index_entry'])[$field] === true,
+            'The enabled published-index load flag was not recognized: ' . $field . '.'
+        );
+
+        try {
+            vg_fs001_assert_current_integrity_state($state, $approved);
+        } catch (RuntimeException $error) {
+            $assert(
+                $error->getMessage() === 'FluentSnippets index does not contain the expected published snippet.',
+                'The published-index flag failed for an unexpected reason: ' . $field . '.'
+            );
+            continue;
+        }
+
+        throw new RuntimeException('Enabled published-index load flag was accepted: ' . $field . '.');
+    }
+});
+
 $test('current FluentSnippets state rejects incorrect active-index configuration', static function () use ($approved, $makeCurrentState, $assert): void {
     $state = $makeCurrentState();
     $state['published_index_entry']['run_at'] = 'admin';
