@@ -113,10 +113,129 @@ const VG_PRODUCT_SINGLE_124_QA_EXPECTED_RECORD_HASHES = [
     757 => ['dd4571c80bee776651dbce3c84a3c127d570d0a159b2111169f3238d32c1d1a6', 'c58d6f6328d34842b6a13675035764d175e132c67fe123d14f4b8c47e07377ae'],
     763 => ['278adefcf2d9edd1826aa489f074fed17cd21693a3f2f5f07d354e77384457d4', '518eb2405dd703e9ae74009a126969939f633942c2c4cf7dbc4c5afa33f2a710'],
     765 => ['ddfeba8d1e1e9b2f88532340c401f0021877cf3f941214dba4e7a6ee475a916c', '74ae5f31b7095ddd556985b9cf379295f7c0da34412220642d50e90808667874'],
-    767 => ['8e02c0d733a4fef0d49dfb8970a45d8583e38e1529fa91539d7de66e18178696', '92487ca037d42a709301c313a3c54f24e8f9a8fb42bbdc25bf2a1c5f9125c288'],
+    // Owner-accepted WooCommerce 11.2.1 normalization after the approved pending transition.
+    767 => ['b9d1c3b351a3d4dccad72757dc91545ba162946346152713edafe5e055dcd3ed', '6005906cc5917ff571eea0e47195f0bd5b631021ad00d0a06b694db8012fbf9b'],
     768 => ['d73e67b8fb9aad5459a9ed8ecf14db09b057899f1248976084ed5964ba42f438', '4105508490935bb9508719405a6b33b750770485bae739b78a9f8084f36976db'],
     772 => ['31dea28af3d3a91ec383546ff33dc9f089161f78213859135e81d6704300ad38', '7ced9a53bb6b1373775860958a132b46f650854ce1f9cfe8b71f92698edbf01d'],
     774 => ['89d0df125e10ccc0ebfa79faca414c665022fc445f5546c5a7ff48d0e4f68762', '40d2f52644e5e14fc0e9ead57372c75a87e1f005dc26331dcdb33aa8c36510ef'],
+];
+const VG_PRODUCT_SINGLE_124_QA_PRODUCT_767_NORMALIZED_META_KEYS = [
+    '_backorders',
+    '_download_expiry',
+    '_download_limit',
+    '_downloadable',
+    '_manage_stock',
+    '_product_version',
+    '_sold_individually',
+    '_stock',
+    '_stock_status',
+    '_tax_class',
+    '_tax_status',
+    '_virtual',
+    '_wc_average_rating',
+    '_wc_review_count',
+    'total_sales',
+];
+const VG_PRODUCT_SINGLE_124_QA_PRODUCT_767_TAXONOMIES = [
+    'content_category',
+    'content_topic',
+    'hf_cat_product',
+    'pos_product_visibility',
+    'product_brand',
+    'product_cat',
+    'product_shipping_class',
+    'product_tag',
+    'product_type',
+    'product_visibility',
+];
+const VG_PRODUCT_SINGLE_124_QA_PRODUCT_767_EXPECTED_NORMALIZED_STATE = [
+    'post' => [
+        'id' => 767,
+        'type' => 'product',
+        'status' => 'pending',
+        'slug' => 'test-event-recording-qa2',
+        'title' => 'Test Event Recording QA2',
+        'publicly_viewable' => false,
+    ],
+    'normalized_meta_rows' => [
+        '_backorders' => ['no'],
+        '_download_expiry' => ['-1'],
+        '_download_limit' => ['-1'],
+        '_downloadable' => ['no'],
+        '_manage_stock' => ['no'],
+        '_product_version' => ['11.2.1'],
+        '_sold_individually' => ['no'],
+        '_stock' => [null],
+        '_stock_status' => ['instock'],
+        '_tax_class' => [''],
+        '_tax_status' => ['taxable'],
+        '_virtual' => ['no'],
+        '_wc_average_rating' => ['0'],
+        '_wc_review_count' => ['0'],
+        'total_sales' => ['0'],
+    ],
+    'stored_price_meta' => [
+        '_price' => ['exists' => false, 'values' => []],
+        '_regular_price' => ['exists' => false, 'values' => []],
+        '_sale_price' => ['exists' => false, 'values' => []],
+    ],
+    'taxonomies' => [
+        'content_category' => [],
+        'content_topic' => [],
+        'hf_cat_product' => [],
+        'pos_product_visibility' => [],
+        'product_brand' => [],
+        'product_cat' => [],
+        'product_shipping_class' => [],
+        'product_tag' => [],
+        'product_type' => ['simple'],
+        'product_visibility' => [],
+    ],
+    'acf_relationships' => [
+        'produk_bron_event' => '763',
+        'produk_medewerkers' => ['753'],
+    ],
+    'woocommerce' => [
+        'type' => 'simple',
+        'status' => 'pending',
+        'price_edit' => '',
+        'regular_price_edit' => '',
+        'sale_price_edit' => '',
+        // PMPro filters the view price to zero although the stored edit price is empty.
+        // This baseline requires pending status. It does not approve republishing or a free offer.
+        'filtered_view_price' => 0.0,
+        'is_purchasable' => false,
+        'backorders' => 'no',
+        'manage_stock' => false,
+        'stock_quantity' => null,
+        'stock_status' => 'instock',
+        'sold_individually' => false,
+        'tax_status' => 'taxable',
+        'tax_class' => '',
+        'virtual' => false,
+        'downloadable' => false,
+        'download_limit' => -1,
+        'download_expiry' => -1,
+        'total_sales' => 0,
+        'average_rating' => '0',
+        'review_count' => 0,
+    ],
+    'lookup' => [
+        'product_id' => 767,
+        'sku' => '',
+        'virtual' => 0,
+        'downloadable' => 0,
+        'min_price' => '0.0000',
+        'max_price' => '0.0000',
+        'onsale' => 0,
+        'stock_quantity' => null,
+        'stock_status' => 'instock',
+        'rating_count' => 0,
+        'average_rating' => '0.00',
+        'total_sales' => 0,
+        'tax_status' => 'taxable',
+        'tax_class' => '',
+    ],
 ];
 const VG_PRODUCT_SINGLE_124_QA_TEMPLATE124_PROJECTION_SHA256 = '450bd890a4413699827c8d4536b3d500d9f9555492deb85141580fdeef79dc5b';
 const VG_PRODUCT_SINGLE_124_QA_TEMPLATE124_CORE_SHA256 = '5bf9d2165fc25d30602ffa37a5976199b2542021273edb8e094c0290502f68b4';
@@ -128,7 +247,31 @@ const VG_PRODUCT_SINGLE_124_QA_PROTECTED_COMPONENT_HASHES = [
 ];
 const VG_PRODUCT_SINGLE_124_QA_COPY_HASH = '58e8035502b30397b9659f952e4d49bbdbd7cdbd15070e37e5b07ebaa5ce2f70';
 const VG_PRODUCT_SINGLE_124_QA_TEMPLATE124_ELEMENTS = 82;
-const VG_PRODUCT_SINGLE_124_QA_EXPECTED_PERSON_COUNT = 0;
+// The Task 10A runtime added owner-approved Person 1705 after the historical Task 7B run.
+const VG_PRODUCT_SINGLE_124_QA_EXPECTED_PERSON_COUNT = 1;
+const VG_PRODUCT_SINGLE_124_QA_EXPECTED_PERSON_IDS = [1705];
+const VG_PRODUCT_SINGLE_124_QA_EXPECTED_PERSON_1705_STATE = [
+    'post' => [
+        'id' => 1705,
+        'type' => 'person',
+        'status' => 'publish',
+        'slug' => 'lynette-beer',
+        'title' => 'Lynette Beer',
+        'author' => 0,
+        'post_date_gmt' => '2026-10-26 09:05:12',
+        'post_modified_gmt' => '2026-10-26 09:05:12',
+        'content' => '',
+        'excerpt' => '',
+        'featured_image_id' => 0,
+    ],
+    'meta' => [
+        '_masteriyo_has_content' => ['0'],
+    ],
+    'taxonomies' => [
+        'person_type' => ['kenner', 'mentor'],
+        'content_topic' => [],
+    ],
+];
 const VG_PRODUCT_SINGLE_124_QA_EXPECTED_PARTICIPATION_COUNT = 0;
 const VG_PRODUCT_SINGLE_124_QA_EXPECTED_API_KEY_IDS = [42, 152, 168, 170, 173, 174, 175, 177, 182, 543, 546, 549, 552, 555, 764, 1190, 1192, 1194];
 const VG_PRODUCT_SINGLE_124_QA_EXPECTED_API_KEYS_SHA256 = 'a2a0d4ba8cc6f74b552c6da341faf313385f7ea6edb4107121b546c8734ca3ef';
@@ -246,6 +389,55 @@ function vg_product_single_124_qa_post_count(string $post_type): int
     );
 }
 
+/** @return list<int> */
+function vg_product_single_124_qa_person_ids(): array
+{
+    global $wpdb;
+    $ids = $wpdb->get_col(
+        $wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE post_type = %s ORDER BY ID ASC", 'person')
+    );
+    vg_product_single_124_qa_check($wpdb->last_error === '', 'Could not read canonical Person IDs: ' . $wpdb->last_error);
+
+    return array_map('intval', $ids);
+}
+
+/** Exact owner-approved canonical Person state introduced after the historical Task 7B baseline. */
+function vg_product_single_124_qa_person_1705_state(): array
+{
+    $post = get_post(1705);
+    vg_product_single_124_qa_check($post instanceof WP_Post, 'Owner-approved canonical Person 1705 is missing.');
+
+    $taxonomies = [];
+    foreach (['person_type', 'content_topic'] as $taxonomy) {
+        $terms = wp_get_object_terms(1705, $taxonomy, ['fields' => 'slugs']);
+        vg_product_single_124_qa_check(! is_wp_error($terms), 'Could not read Person 1705 taxonomy ' . $taxonomy . '.');
+        $terms = array_map('strval', $terms);
+        sort($terms, SORT_STRING);
+        $taxonomies[$taxonomy] = $terms;
+    }
+
+    $meta = get_post_meta(1705);
+    ksort($meta, SORT_STRING);
+
+    return [
+        'post' => [
+            'id' => (int) $post->ID,
+            'type' => $post->post_type,
+            'status' => $post->post_status,
+            'slug' => $post->post_name,
+            'title' => $post->post_title,
+            'author' => (int) $post->post_author,
+            'post_date_gmt' => $post->post_date_gmt,
+            'post_modified_gmt' => $post->post_modified_gmt,
+            'content' => $post->post_content,
+            'excerpt' => $post->post_excerpt,
+            'featured_image_id' => (int) get_post_thumbnail_id(1705),
+        ],
+        'meta' => $meta,
+        'taxonomies' => $taxonomies,
+    ];
+}
+
 function vg_product_single_124_qa_post_type_counts(): array
 {
     global $wpdb;
@@ -320,6 +512,105 @@ function vg_product_single_124_qa_record_hashes(int $post_id): array
     return [
         'post' => hash('sha256', serialize(get_object_vars($post))),
         'meta' => hash('sha256', serialize($meta)),
+    ];
+}
+
+/** Exact accepted native state for Product 767, beyond its full post/meta digests. */
+function vg_product_single_124_qa_product_767_normalized_state(): array
+{
+    global $wpdb;
+
+    $post = get_post(767);
+    vg_product_single_124_qa_check($post instanceof WP_Post, 'Protected Product 767 is missing.');
+    $product = wc_get_product(767);
+    vg_product_single_124_qa_check($product instanceof WC_Product, 'WooCommerce Product 767 is unavailable.');
+
+    $normalized_meta_rows = [];
+    foreach (VG_PRODUCT_SINGLE_124_QA_PRODUCT_767_NORMALIZED_META_KEYS as $meta_key) {
+        $normalized_meta_rows[$meta_key] = get_post_meta(767, $meta_key, false);
+    }
+    $stored_price_meta = [];
+    foreach (['_price', '_regular_price', '_sale_price'] as $meta_key) {
+        $stored_price_meta[$meta_key] = [
+            'exists' => metadata_exists('post', 767, $meta_key),
+            'values' => get_post_meta(767, $meta_key, false),
+        ];
+    }
+
+    $taxonomies = [];
+    foreach (VG_PRODUCT_SINGLE_124_QA_PRODUCT_767_TAXONOMIES as $taxonomy) {
+        $terms = wp_get_object_terms(767, $taxonomy, ['fields' => 'slugs']);
+        vg_product_single_124_qa_check(! is_wp_error($terms), 'Could not read Product 767 taxonomy ' . $taxonomy . '.');
+        $terms = array_map('strval', $terms);
+        sort($terms, SORT_STRING);
+        $taxonomies[$taxonomy] = $terms;
+    }
+
+    $lookup_row = $wpdb->get_row(
+        $wpdb->prepare(
+            "SELECT * FROM {$wpdb->prefix}wc_product_meta_lookup WHERE product_id = %d",
+            767
+        ),
+        ARRAY_A
+    );
+    vg_product_single_124_qa_check($wpdb->last_error === '', 'Could not read the Product 767 WooCommerce lookup row: ' . $wpdb->last_error);
+    vg_product_single_124_qa_check(is_array($lookup_row), 'WooCommerce Product 767 lookup row is missing.');
+
+    return [
+        'post' => [
+            'id' => (int) $post->ID,
+            'type' => $post->post_type,
+            'status' => $post->post_status,
+            'slug' => $post->post_name,
+            'title' => $post->post_title,
+            'publicly_viewable' => is_post_publicly_viewable($post),
+        ],
+        'normalized_meta_rows' => $normalized_meta_rows,
+        'stored_price_meta' => $stored_price_meta,
+        'taxonomies' => $taxonomies,
+        'acf_relationships' => [
+            'produk_bron_event' => get_field('produk_bron_event', 767, false),
+            'produk_medewerkers' => get_field('produk_medewerkers', 767, false),
+        ],
+        'woocommerce' => [
+            'type' => $product->get_type(),
+            'status' => $product->get_status(),
+            'price_edit' => $product->get_price('edit'),
+            'regular_price_edit' => $product->get_regular_price('edit'),
+            'sale_price_edit' => $product->get_sale_price('edit'),
+            'filtered_view_price' => $product->get_price('view'),
+            'is_purchasable' => $product->is_purchasable(),
+            'backorders' => $product->get_backorders(),
+            'manage_stock' => $product->get_manage_stock(),
+            'stock_quantity' => $product->get_stock_quantity(),
+            'stock_status' => $product->get_stock_status(),
+            'sold_individually' => $product->get_sold_individually(),
+            'tax_status' => $product->get_tax_status(),
+            'tax_class' => $product->get_tax_class(),
+            'virtual' => $product->get_virtual(),
+            'downloadable' => $product->get_downloadable(),
+            'download_limit' => $product->get_download_limit(),
+            'download_expiry' => $product->get_download_expiry(),
+            'total_sales' => $product->get_total_sales(),
+            'average_rating' => $product->get_average_rating(),
+            'review_count' => $product->get_review_count(),
+        ],
+        'lookup' => [
+            'product_id' => (int) $lookup_row['product_id'],
+            'sku' => (string) $lookup_row['sku'],
+            'virtual' => (int) $lookup_row['virtual'],
+            'downloadable' => (int) $lookup_row['downloadable'],
+            'min_price' => (string) $lookup_row['min_price'],
+            'max_price' => (string) $lookup_row['max_price'],
+            'onsale' => (int) $lookup_row['onsale'],
+            'stock_quantity' => $lookup_row['stock_quantity'],
+            'stock_status' => (string) $lookup_row['stock_status'],
+            'rating_count' => (int) $lookup_row['rating_count'],
+            'average_rating' => (string) $lookup_row['average_rating'],
+            'total_sales' => (int) $lookup_row['total_sales'],
+            'tax_status' => (string) $lookup_row['tax_status'],
+            'tax_class' => (string) $lookup_row['tax_class'],
+        ],
     ];
 }
 
@@ -760,10 +1051,36 @@ function vg_product_single_124_qa_expected_state(array $snapshot): void
         $snapshot['product_fields'] === VG_PRODUCT_SINGLE_124_QA_EXPECTED_PRODUCT_FIELDS,
         'Existing Product People, source Event, legacy relationship, or _event_name fields differ from Task 1.'
     );
+    $product_767_state = $snapshot['product_767_normalized_state'] ?? null;
+    vg_product_single_124_qa_check(
+        is_array($product_767_state)
+            && array_keys($product_767_state) === array_keys(VG_PRODUCT_SINGLE_124_QA_PRODUCT_767_EXPECTED_NORMALIZED_STATE),
+        'Product 767 normalized-state evidence has missing or unexpected sections.'
+    );
+    foreach (VG_PRODUCT_SINGLE_124_QA_PRODUCT_767_EXPECTED_NORMALIZED_STATE as $section => $expected_section) {
+        $actual_section = $product_767_state[$section];
+        if (is_array($expected_section) && is_array($actual_section)) {
+            vg_product_single_124_qa_check(
+                array_keys($actual_section) === array_keys($expected_section),
+                'Product 767 normalized-state section ' . $section . ' has missing or unexpected fields.'
+            );
+            foreach ($expected_section as $field => $expected_value) {
+                vg_product_single_124_qa_check(
+                    $actual_section[$field] === $expected_value,
+                    'Product 767 normalized-state field ' . $section . '.' . $field . ' differs from its owner-approved baseline.'
+                );
+            }
+        } else {
+            vg_product_single_124_qa_check(
+                $actual_section === $expected_section,
+                'Product 767 normalized-state section ' . $section . ' differs from its owner-approved baseline.'
+            );
+        }
+    }
     foreach (VG_PRODUCT_SINGLE_124_QA_EXPECTED_RECORD_HASHES as $id => [$post_hash, $meta_hash]) {
         vg_product_single_124_qa_check(
             $snapshot['records'][$id] === ['post' => $post_hash, 'meta' => $meta_hash],
-            'Protected runtime record ' . $id . ' differs from Task 1.'
+            'Protected runtime record ' . $id . ' differs from its approved current baseline.'
         );
     }
     vg_product_single_124_qa_check(
@@ -783,7 +1100,23 @@ function vg_product_single_124_qa_expected_state(array $snapshot): void
         $snapshot['protected_components'] === VG_PRODUCT_SINGLE_124_QA_PROTECTED_COMPONENT_HASHES,
         'Protected components 6b463f or 194bba differ from Task 1.'
     );
-    vg_product_single_124_qa_check($snapshot['person_count'] === VG_PRODUCT_SINGLE_124_QA_EXPECTED_PERSON_COUNT, 'Person count differs from Task 1 baseline.');
+    vg_product_single_124_qa_check(
+        $snapshot['person_count'] === VG_PRODUCT_SINGLE_124_QA_EXPECTED_PERSON_COUNT,
+        'Person count differs from the current owner-approved baseline.'
+    );
+    vg_product_single_124_qa_check(
+        $snapshot['person_ids'] === VG_PRODUCT_SINGLE_124_QA_EXPECTED_PERSON_IDS,
+        'Canonical Person inventory differs from the owner-approved Task 10A state.'
+    );
+    vg_product_single_124_qa_check(
+        $snapshot['person_1705_state'] === VG_PRODUCT_SINGLE_124_QA_EXPECTED_PERSON_1705_STATE,
+        'Owner-approved canonical Person 1705 differs from the Task 10A state.'
+    );
+    vg_product_single_124_qa_check(
+        is_array($snapshot['published_medewerker_product_ids_for_753'] ?? null)
+            && ! in_array(767, $snapshot['published_medewerker_product_ids_for_753'], true),
+        'Published-only Person 753 reverse Product query includes pending Product 767 or could not be evaluated.'
+    );
     vg_product_single_124_qa_check(
         $snapshot['participation_count'] === VG_PRODUCT_SINGLE_124_QA_EXPECTED_PARTICIPATION_COUNT,
         'Event Participation count differs from Task 1 baseline.'
@@ -866,12 +1199,16 @@ function vg_product_single_124_qa_snapshot(): array
             break;
         }
     }
+    $published_medewerker_product_ids = function_exists('vg_bricks_query_posts_with_relationship_field')
+        ? vg_bricks_query_posts_with_relationship_field('produk_medewerkers', 753, ['product'])
+        : null;
     $copy_path = WP_CONTENT_DIR . '/fluent-snippet-storage/9-acf-product-copy.php';
 
     return [
         'records' => $records,
         'product_ids' => vg_product_single_124_qa_existing_product_ids(),
         'product_fields' => vg_product_single_124_qa_existing_product_fields(),
+        'product_767_normalized_state' => vg_product_single_124_qa_product_767_normalized_state(),
         'template124_projection_sha256' => hash('sha256', serialize($template_projection)),
         'template124_core_sha256' => hash('sha256', serialize($template_post_vars)),
         'template124_meta_sha256' => hash('sha256', serialize($template_meta)),
@@ -882,8 +1219,11 @@ function vg_product_single_124_qa_snapshot(): array
         'callers' => vg_product_single_124_qa_query_callers(),
         'template772_reverse_mode' => $reverse_mode,
         'fluent_snippet_integrity' => vg_product_single_124_qa_fluent_snippet_state(),
+        'published_medewerker_product_ids_for_753' => $published_medewerker_product_ids,
         'copy_hash' => is_file($copy_path) ? hash_file('sha256', $copy_path) : null,
         'person_count' => vg_product_single_124_qa_post_count('person'),
+        'person_ids' => vg_product_single_124_qa_person_ids(),
+        'person_1705_state' => vg_product_single_124_qa_person_1705_state(),
         'participation_count' => vg_product_single_124_qa_post_count(EventParticipationRepository::POST_TYPE),
         'woocommerce_coming_soon' => get_option('woocommerce_coming_soon'),
         'woocommerce_store_pages_only' => get_option('woocommerce_store_pages_only'),
