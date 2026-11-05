@@ -1811,6 +1811,9 @@ $report = [
         'helper_wrapper_structure' => 'verified',
         'helper_output_scan' => 'clean',
         'helper_metadata' => $before['fluent_snippet_integrity']['stable_metadata'],
+        'helper_effective_load_settings' => vg_fs001_effective_load_settings(
+            $before['fluent_snippet_integrity']['record']['meta']
+        ),
         'helper_conflicting_draft_count' => count($before['fluent_snippet_integrity']['conflicting_draft_entries']),
         'helper_sibling_inventory_sha256' => vg_product_single_124_qa_stable_hash($before['fluent_snippet_integrity']['siblings']),
         'helper_runtime_identity' => [

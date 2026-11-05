@@ -61,6 +61,18 @@ function vg_fs001_stable_metadata(array $metadata, ?string $fileName = null): ar
     ];
 }
 
+/** @param array<string,mixed> $metadata @return array{load_as_file:bool,load_in_block_editor:bool} */
+function vg_fs001_effective_load_settings(array $metadata): array
+{
+    // FluentSnippets 10.56 parseBlock() defaults both omitted fields to ''. CodeRunner
+    // enables them only for 'yes', so an omitted key and an explicit empty value are
+    // equivalent disabled settings for these two approved empty-valued fields.
+    return [
+        'load_as_file' => ($metadata['load_as_file'] ?? null) == 'yes',
+        'load_in_block_editor' => ($metadata['load_in_block_editor'] ?? '') === 'yes',
+    ];
+}
+
 /** @return array{source:string,metadata:array<string,mixed>} */
 function vg_fs001_load_approved_source(): array
 {
@@ -359,7 +371,16 @@ function vg_fs001_assert_current_integrity_state(array $state, array $approved):
         }
     }
 
-    vg_fs001_assert_published_index_entry($state['published_index_entry'] ?? null, $expectedMetadata);
+    $publishedIndexEntry = $state['published_index_entry'] ?? null;
+    vg_fs001_assert_published_index_entry($publishedIndexEntry, $expectedMetadata);
+    $disabledLoadSettings = [
+        'load_as_file' => false,
+        'load_in_block_editor' => false,
+    ];
+    if (vg_fs001_effective_load_settings($record['meta']) !== $disabledLoadSettings
+        || vg_fs001_effective_load_settings($publishedIndexEntry) !== $disabledLoadSettings) {
+        throw new RuntimeException('FluentSnippets effective load settings differ from the approved disabled configuration.');
+    }
 }
 
 /** @param array<string,mixed> $before @param array<string,mixed> $after */

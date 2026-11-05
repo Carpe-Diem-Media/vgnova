@@ -217,6 +217,20 @@ $test('current FluentSnippets state rejects missing required metadata', static f
     throw new RuntimeException('Missing required metadata was accepted.');
 });
 
+$test('omitted approved empty load flags retain disabled execution semantics', static function () use ($approved, $makeCurrentState, $assert): void {
+    foreach (['load_as_file', 'load_in_block_editor'] as $field) {
+        $state = $makeCurrentState();
+        unset($state['record']['meta'][$field], $state['published_index_entry'][$field]);
+
+        vg_fs001_assert_current_integrity_state($state, $approved);
+        $assert(
+            vg_fs001_effective_load_settings($state['record']['meta'])[$field] === false
+                && vg_fs001_effective_load_settings($state['published_index_entry'])[$field] === false,
+            'An omitted empty-valued field changed the approved execution setting: ' . $field . '.'
+        );
+    }
+});
+
 $test('current FluentSnippets state rejects incorrect active-index configuration', static function () use ($approved, $makeCurrentState, $assert): void {
     $state = $makeCurrentState();
     $state['published_index_entry']['run_at'] = 'admin';
