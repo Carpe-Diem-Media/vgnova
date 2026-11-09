@@ -31,6 +31,10 @@ Deliverable **VGN5B_READONLY_PREFLIGHT**: current `main` SHA/checks, runtime par
 
 ## Phase B — Narrow source correction (if Phase A confirms it is needed)
 
+**Existing candidate to inspect first:** [PR #87 — No Thanks in-place result](https://github.com/JCSchoeman96/vgnova/pull/87) was opened after the initial handoff. It is a **source-only proposal**, not automatically merged or deployed. Use its **current exact head**, review/test/CI and authority before deciding whether a separate patch is still needed; do not duplicate the fix in another subsystem.
+
+
+
 - Change only the Start-vs-Dismiss result handling and related tests/source documentation. Preserve R2 protections: stale dismissal must be an error; authenticated promotion before dismissal; guest cookie never cleared on failure; no return-to/browser URLs.
 - Confirm native Bricks feedback type and whether a page refresh or front-end state re-render is necessary. A successful server-side dismissal must not leave a misleading still-active reminder in the DOM or unexpectedly navigate.
 - Add and run focused regression; run full `site-code/bin/check-source.sh`, mutation policy, deterministic six-overlay build, PHP 8.5 lint and new-head CI.
