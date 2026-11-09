@@ -30,6 +30,7 @@ BUILDER_PATH = "site-code/bin/build-platform-core.py"
 PATCH_PATH = "site-code/voelgoed-platform-core/integration.patch"
 CANONICAL_OVERLAY_PATHS = (
     "site-code/voelgoed-platform-core/includes/Runtime",
+    "site-code/voelgoed-platform-core/includes/JourneyIntent",
     "site-code/voelgoed-platform-core/includes/Person",
     "site-code/voelgoed-platform-core/includes/Taxonomy",
     "site-code/voelgoed-platform-core/includes/Event",
@@ -38,7 +39,7 @@ CANONICAL_OVERLAY_PATHS = (
 RUNTIME_GUARD_SOURCE_PATH = f"{CANONICAL_OVERLAY_PATHS[0]}/RuntimeMutationSession.php"
 RUNTIME_GUARD_PLUGIN_PATH = "includes/Runtime/RuntimeMutationSession.php"
 OVERLAY_PATHS = CANONICAL_OVERLAY_PATHS
-CANONICAL_LIFECYCLE_OVERLAY_MODULES = ("Taxonomy", "Event", "Product", "Person")
+CANONICAL_LIFECYCLE_OVERLAY_MODULES = ("Taxonomy", "Event", "Product", "Person", "JourneyIntent")
 FIXTURE_PATHS = (ROOT_PLUGIN, *OVERLAY_PATHS, PATCH_PATH, BUILDER_PATH)
 ARCHIVE_NAME = "voelgoed-platform-core.tar.gz"
 MANIFEST_NAME = "voelgoed-platform-core.manifest.json"
@@ -75,7 +76,7 @@ class CheckFailure(RuntimeError):
 def require_canonical_overlay_paths(paths: object, *, context: str) -> None:
     if not isinstance(paths, (tuple, list)) or tuple(paths) != CANONICAL_OVERLAY_PATHS:
         raise CheckFailure(
-            f"{context} overlay paths differ from the exact ordered five-overlay contract."
+            f"{context} overlay paths differ from the exact ordered six-overlay contract."
         )
 
 
@@ -127,9 +128,9 @@ def run_overlay_contract_guard_case(repo_root: Path, commit: str) -> None:
     )
     if lifecycle_modules != CANONICAL_LIFECYCLE_OVERLAY_MODULES:
         raise CheckFailure(
-            "Committed builder lifecycle modules must include Taxonomy, Event, Product, and Person; Runtime is a dependency overlay."
+            "Committed builder lifecycle modules must include Taxonomy, Event, Product, Person, and JourneyIntent; Runtime is a dependency overlay."
         )
-    print("PASS source contract: builder and verifier use Runtime, Person, Taxonomy, Event, Product in canonical order")
+    print("PASS source contract: builder and verifier use Runtime, JourneyIntent, Person, Taxonomy, Event, Product in canonical order")
     print("PASS source contract: Runtime overlay remains outside lifecycle component discovery")
 
 
@@ -2761,7 +2762,7 @@ def main() -> int:
             manifest_b.get("overlay_source_paths"),
             context="Build B manifest",
         )
-        print("PASS manifest contract: generated manifests report the exact ordered five-overlay paths")
+        print("PASS manifest contract: generated manifests report the exact ordered six-overlay paths")
         if manifest_a != manifest_b:
             raise CheckFailure("Build A and B manifest semantic content differs.")
         if archive_path_a.read_bytes() != archive_path_b.read_bytes():

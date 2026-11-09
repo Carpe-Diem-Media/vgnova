@@ -9,6 +9,7 @@ php site-code/voelgoed-platform-core/tests/run-content-topic-woo-tests.php
 php site-code/voelgoed-platform-core/tests/run-event-participation-tests.php
 php site-code/voelgoed-platform-core/tests/run-event-participation-bricks-tests.php
 php site-code/voelgoed-platform-core/tests/run-event-role-seeder-tests.php
+php site-code/voelgoed-platform-core/tests/run-journey-intent-tests.php
 php site-code/voelgoed-platform-core/tests/run-product-contribution-tests.php
 php site-code/voelgoed-platform-core/tests/run-product-people-tests.php
 php site-code/voelgoed-platform-core/tests/run-person-native-relationship-tests.php

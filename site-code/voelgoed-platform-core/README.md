@@ -3,12 +3,12 @@
 This directory contains the canonical Platform Core domain modules in the
 `vgnova` repository. The tracked root plugin at `voelgoed-platform-core/` is
 the assembly base; this module owns the runtime mutation session guard,
-`content_topic`, Event Participation, Product People, and Product Contribution
-overlays. The tracked
-`integration.patch` is an assembly input that adds the five overlay includes
-and the Taxonomy, Event, Product, and Person lifecycle registrations to a
-disposable build tree. Runtime supplies a bootstrap dependency and has no
-lifecycle registration. Person relationship classes load through this patch;
+Journey Intent, `content_topic`, Event Participation, Product People, and
+Product Contribution overlays. The tracked `integration.patch` is an assembly
+input that adds the six overlay includes and the Journey Intent, Taxonomy,
+Event, Product, and Person lifecycle registrations to a disposable build tree.
+Runtime supplies a bootstrap dependency and has no lifecycle registration.
+Person relationship classes load through this patch;
 the Admin and CLI components register through Platform Core. Schema setup does
 not run during bootstrap and remains available through the guarded maintenance
 command.
@@ -215,3 +215,46 @@ php site-code/voelgoed-platform-core/tests/run-product-people-tests.php
 assembly. Runtime deployment remains a separate controlled step. Task 8 owns
 the targeted Product Contribution ACF Local JSON sync and Product Role seeding
 command. This source wiring task does not run `wp vg-product-role-setup`.
+
+## Journey Intent
+
+The source-only VS1 Journey Intent module lives in `includes/JourneyIntent/` and
+is assembled through `integration.patch`. It records one current Course return
+intent only after the native Bricks Form action `vgpc_journey_intent` receives
+an explicit `start` submission. The action is registered in Bricks Form's native
+action selector. The form must include the hidden fields
+`vgpc_journey_intent_action`, `vgpc_journey_course_id`, and
+`vgpc_journey_intent_nonce`; `{vgpc_journey_intent_nonce}` is the Bricks dynamic
+tag for the WordPress nonce. A `dismiss` form also submits
+`vgpc_journey_intent_id`, rendered from `{vgpc_journey_intent_id}`, so an old
+reminder cannot dismiss a newer Course intent. `{vgpc_journey_intent_active}`
+supports the native Bricks display condition and
+`{vgpc_journey_intent_course_title}` supplies the current Course title. A
+`dismiss` submission records `DISMISSED`.
+
+Anonymous state is a minimal HMAC-signed, `HttpOnly`, `SameSite=Lax` cookie,
+with `Secure` set on HTTPS. The browser cookie remains one day past the logical
+expiry so a later request can record the `EXPIRED` state; that expired tombstone
+then lasts one day. Authenticated state uses the single user-meta key
+`_vgpc_journey_intent_v1`; a user-scoped MariaDB advisory lock serializes writes
+and anonymous-to-account promotion. The 30-day expiry default is configurable
+with the `vgpc_journey_intent_ttl_days` filter (accepted values: 1–365).
+
+The only Bricks return tag is `{vgpc_journey_intent_return_url}`. It points to a
+fixed `admin-post.php` handler that reads the stored Course ID, verifies the
+Course is still a published, publicly viewable `mto-course`, regenerates its
+permalink, validates the same-site destination, and then uses
+`wp_safe_redirect()`. No browser-provided `return_to` value is accepted or
+stored. `SUPERSEDED` is a replacement transition; earlier records are not kept.
+`COMPLETED` is defined but cannot be set by VGN-5A: a future authoritative
+membership outcome is required. Course viewing alone never creates an intent.
+
+Run the focused, database-free state and integration checks with:
+
+```sh
+php site-code/voelgoed-platform-core/tests/run-journey-intent-tests.php
+```
+
+Bricks template wiring and runtime deployment remain a separate PE-007 task.
+Do not configure a membership product, checkout, discount, course enrollment,
+or completion transition as part of this module.
