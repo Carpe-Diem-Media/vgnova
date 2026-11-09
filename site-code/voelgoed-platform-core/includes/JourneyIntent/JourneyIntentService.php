@@ -98,18 +98,27 @@ final class JourneyIntentService
 
         $user_id = (int) get_current_user_id();
         if ($user_id > 0) {
+            $promoted = $this->promote_guest_intent($user_id);
+            if (is_wp_error($promoted)) {
+                return $promoted;
+            }
+
             $result = $this->lock->with_user_lock($user_id, function () use ($user_id, $expected_intent_id): array|null|\WP_Error {
                 $current = $this->refresh_record(
                     $this->repository->user_intent($user_id),
                     fn (array $intent): bool => $this->repository->save_user_intent($user_id, $intent)
                 );
-                if (
-                    $current === null
-                    || is_wp_error($current)
-                    || $current['intent_id'] !== $expected_intent_id
-                    || $current['status'] !== self::STATUS_ACTIVE
-                ) {
+                if (is_wp_error($current)) {
                     return $current;
+                }
+                if ($current === null || $current['intent_id'] !== $expected_intent_id) {
+                    return new \WP_Error('journey_intent_stale_dismissal', 'Reload the page before dismissing this reminder.');
+                }
+                if ($current['status'] === self::STATUS_DISMISSED) {
+                    return $current;
+                }
+                if ($current['status'] !== self::STATUS_ACTIVE) {
+                    return new \WP_Error('journey_intent_stale_dismissal', 'Reload the page before dismissing this reminder.');
                 }
 
                 $current['status'] = self::STATUS_DISMISSED;
@@ -118,18 +127,24 @@ final class JourneyIntentService
                     ? $current
                     : new \WP_Error('journey_intent_save_failed', 'Could not save the dismissal. Try again.');
             });
-            $this->repository->clear_guest_intent();
+            if (is_array($result) && $result['status'] === self::STATUS_DISMISSED) {
+                $this->repository->clear_guest_intent();
+            }
             return $result;
         }
 
         $current = $this->current_guest_intent();
-        if (
-            $current === null
-            || is_wp_error($current)
-            || $current['intent_id'] !== $expected_intent_id
-            || $current['status'] !== self::STATUS_ACTIVE
-        ) {
+        if (is_wp_error($current)) {
             return $current;
+        }
+        if ($current === null || $current['intent_id'] !== $expected_intent_id) {
+            return new \WP_Error('journey_intent_stale_dismissal', 'Reload the page before dismissing this reminder.');
+        }
+        if ($current['status'] === self::STATUS_DISMISSED) {
+            return $current;
+        }
+        if ($current['status'] !== self::STATUS_ACTIVE) {
+            return new \WP_Error('journey_intent_stale_dismissal', 'Reload the page before dismissing this reminder.');
         }
         $current['status'] = self::STATUS_DISMISSED;
         $current['updated_at'] = ($this->clock)();

@@ -23,6 +23,9 @@ if (! function_exists('update_user_meta')) {
     function update_user_meta(int $user_id, string $key, mixed $value, mixed $previous = ''): int|bool
     {
         unset($previous);
+        if (! empty($GLOBALS['vgji_test_fail_user_meta_write'])) {
+            return false;
+        }
         if (($GLOBALS['vgji_test_user_meta'][$user_id][$key] ?? null) === $value) {
             return false;
         }
@@ -426,6 +429,91 @@ final class JourneyIntentTest
         vgpc_test_same($user_dismissed['updated_at'], $stale_promotion['updated_at'], 'The newer user state timestamp must be preserved.');
     }
 
+    public function test_authenticated_dismissal_promotes_guest_intent_without_login_callback(): void
+    {
+        $this->reset();
+        $GLOBALS['vgpc_test_current_user_id'] = 0;
+        $this->course(615);
+        $service = $this->service();
+        $guest = $service->start_course_intent(615);
+
+        // Simulate a restored authenticated session without wp_login firing.
+        $GLOBALS['vgpc_test_current_user_id'] = 46;
+        $dismissed = $service->dismiss_current_intent($guest['intent_id']);
+
+        vgpc_test_true(is_array($dismissed), 'Authenticated dismissal must recover the anonymous state before applying the action.');
+        vgpc_test_same(JourneyIntentService::STATUS_DISMISSED, $dismissed['status'], 'The promoted intent must be durably dismissed.');
+        vgpc_test_same(
+            JourneyIntentService::STATUS_DISMISSED,
+            $GLOBALS['vgji_test_user_meta'][46][JourneyIntentRepository::USER_META_KEY]['status'] ?? null,
+            'The account must retain DISMISSED after the guest cookie is removed.'
+        );
+        vgpc_test_same(null, $GLOBALS['vgji_test_cookie_value'], 'The guest cookie may be cleared after account persistence.');
+    }
+
+    public function test_authenticated_dismissal_preserves_guest_cookie_when_promotion_storage_fails(): void
+    {
+        $this->reset();
+        $GLOBALS['vgpc_test_current_user_id'] = 0;
+        $this->course(616);
+        $service = $this->service();
+        $guest = $service->start_course_intent(616);
+        $cookie = $GLOBALS['vgji_test_cookie_value'];
+        $GLOBALS['vgpc_test_current_user_id'] = 47;
+        $GLOBALS['vgji_test_fail_user_meta_write'] = true;
+
+        $result = $service->dismiss_current_intent($guest['intent_id']);
+
+        vgpc_test_true(is_wp_error($result), 'Storage failure must reject dismissal rather than report success.');
+        vgpc_test_same('journey_intent_promotion_failed', $result->get_error_code(), 'Promotion failure must be distinguishable from a stale form.');
+        vgpc_test_same($cookie, $GLOBALS['vgji_test_cookie_value'], 'Failed persistence must leave the only guest copy intact.');
+        vgpc_test_same([], $GLOBALS['vgji_test_user_meta'], 'Failed promotion must not claim the intent was saved to the account.');
+    }
+
+    public function test_authenticated_dismissal_preserves_guest_cookie_when_promotion_lock_fails(): void
+    {
+        $this->reset();
+        $GLOBALS['vgpc_test_current_user_id'] = 0;
+        $this->course(617);
+        $service = $this->service();
+        $guest = $service->start_course_intent(617);
+        $cookie = $GLOBALS['vgji_test_cookie_value'];
+        $GLOBALS['vgpc_test_current_user_id'] = 48;
+        $GLOBALS['wpdb']->get_var_handler = static fn (string $query): string => str_contains($query, 'GET_LOCK') ? '0' : '1';
+
+        $result = $service->dismiss_current_intent($guest['intent_id']);
+
+        vgpc_test_true(is_wp_error($result), 'Lock failure must reject dismissal without losing state.');
+        vgpc_test_same('journey_intent_lock_unavailable', $result->get_error_code(), 'Lock failure must remain visible to the caller.');
+        vgpc_test_same($cookie, $GLOBALS['vgji_test_cookie_value'], 'A failed lock must leave the only guest copy intact.');
+        vgpc_test_same([], $GLOBALS['vgji_test_user_meta'], 'No account transition may occur without the user lock.');
+    }
+
+    public function test_stale_dismissal_bricks_form_returns_error_and_preserves_replacement(): void
+    {
+        $this->reset();
+        $GLOBALS['vgpc_test_current_user_id'] = 0;
+        $this->course(640);
+        $this->course(641);
+        $service = $this->service();
+        $old = $service->start_course_intent(640);
+        $new = $service->start_course_intent(641);
+        $bricks = new JourneyIntentBricks($service);
+        $_SERVER['HTTP_ORIGIN'] = 'https://voelgoed.test';
+        $dismiss = new VGJI_TestBricksForm([
+            'form-field-vgpc_journey_intent_action' => 'dismiss',
+            'form-field-vgpc_journey_intent_id' => $old['intent_id'],
+            'form-field-vgpc_journey_intent_nonce' => 'nonce-vgpc_journey_intent',
+        ]);
+
+        $bricks->handle_form_action($dismiss);
+
+        vgpc_test_same('danger', $dismiss->result['type'], 'A stale No Thanks submission must return a form error.');
+        vgpc_test_true(! isset($dismiss->result['redirectTo']), 'A stale dismissal must not be treated as success or redirect.');
+        vgpc_test_same($new['intent_id'], $service->current_intent()['intent_id'], 'A stale form must preserve the newer active intent.');
+        vgpc_test_same(JourneyIntentService::STATUS_ACTIVE, $service->current_intent()['status'], 'The replacement must remain active after stale submission.');
+    }
+
     public function test_bricks_action_requires_nonce_and_exact_same_origin_and_ignores_return_to(): void
     {
         $this->reset();
@@ -550,8 +638,9 @@ final class JourneyIntentTest
 
         $result = $service->dismiss_current_intent($old['intent_id']);
 
-        vgpc_test_same(JourneyIntentService::STATUS_ACTIVE, $result['status'], 'A stale Dismiss form must not change the replacement intent.');
-        vgpc_test_same($new['intent_id'], $result['intent_id'], 'Dismissal must be conditional on the intent ID rendered with the form.');
+        vgpc_test_true(is_wp_error($result), 'A stale dismissal must return an explicit error.');
+        vgpc_test_same('journey_intent_stale_dismissal', $result->get_error_code(), 'Stale state must be distinguishable from successful dismissal.');
+        vgpc_test_same($new['intent_id'], $service->current_intent()['intent_id'], 'Dismissal must be conditional on the intent ID rendered with the form.');
     }
 
     public function test_native_bricks_reminder_tags_are_per_visitor_and_return_only_current_active_data(): void
@@ -607,6 +696,7 @@ final class JourneyIntentTest
         $GLOBALS['vgji_test_ssl'] = true;
         $GLOBALS['vgji_test_redirects'] = [];
         $GLOBALS['vgji_test_nocache_calls'] = 0;
+        $GLOBALS['vgji_test_fail_user_meta_write'] = false;
         $_SERVER = [];
     }
 
