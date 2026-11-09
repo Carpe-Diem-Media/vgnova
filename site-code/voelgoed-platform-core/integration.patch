@@ -1,7 +1,12 @@
 --- a/voelgoed-platform-core.php
 +++ b/voelgoed-platform-core.php
-@@ -25,0 +26,23 @@
+@@ -25,0 +26,28 @@
 +    'includes/Runtime/RuntimeMutationSession.php',
++    'includes/JourneyIntent/JourneyIntentCookie.php',
++    'includes/JourneyIntent/JourneyIntentLock.php',
++    'includes/JourneyIntent/JourneyIntentRepository.php',
++    'includes/JourneyIntent/JourneyIntentService.php',
++    'includes/JourneyIntent/JourneyIntentBricks.php',
 +    'includes/Person/PersonRelatedContentFields.php',
 +    'includes/Taxonomy/ContentTopicTaxonomy.php',
 +    'includes/Taxonomy/ContentTopicWooCompatibility.php',
@@ -26,7 +31,8 @@
 +    'includes/Product/PersonProductsBricks.php',
 --- a/includes/Plugin.php
 +++ b/includes/Plugin.php
-@@ -12,0 +13,14 @@
+@@ -12,0 +13,15 @@
++use Voelgoed\PlatformCore\JourneyIntent\JourneyIntentBricks;
 +use Voelgoed\PlatformCore\Taxonomy\ContentTopicTaxonomy;
 +use Voelgoed\PlatformCore\Taxonomy\ContentTopicWooCompatibility;
 +use Voelgoed\PlatformCore\Taxonomy\ContentTopicMigration;
@@ -41,7 +47,8 @@
 +use Voelgoed\PlatformCore\Product\ProductRoleSeeder;
 +use Voelgoed\PlatformCore\Product\PersonProductsBricks;
 +use Voelgoed\PlatformCore\Person\PersonRelatedContentFields;
-@@ -47,0 +61,14 @@
+@@ -47,0 +62,15 @@
++        $this->register_component('journey_intent_bricks', JourneyIntentBricks::class);
 +        $this->register_component('content_topic_taxonomy', ContentTopicTaxonomy::class);
 +        $this->register_component('content_topic_woo_compatibility', ContentTopicWooCompatibility::class);
 +        $this->register_component('content_topic_migration', ContentTopicMigration::class);
