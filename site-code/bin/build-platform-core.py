@@ -29,13 +29,14 @@ PATCH_PATH = "site-code/voelgoed-platform-core/integration.patch"
 BUILDER_PATH = "site-code/bin/build-platform-core.py"
 OVERLAY_PATHS = (
     "site-code/voelgoed-platform-core/includes/Runtime",
+    "site-code/voelgoed-platform-core/includes/JourneyIntent",
     "site-code/voelgoed-platform-core/includes/Person",
     "site-code/voelgoed-platform-core/includes/Taxonomy",
     "site-code/voelgoed-platform-core/includes/Event",
     "site-code/voelgoed-platform-core/includes/Product",
 )
 # Runtime is a bootstrap dependency overlay, not a lifecycle component namespace.
-LIFECYCLE_OVERLAY_MODULES = ("Taxonomy", "Event", "Product", "Person")
+LIFECYCLE_OVERLAY_MODULES = ("Taxonomy", "Event", "Product", "Person", "JourneyIntent")
 ARCHIVE_NAME = "voelgoed-platform-core.tar.gz"
 MANIFEST_NAME = "voelgoed-platform-core.manifest.json"
 SUPPORTED_FILE_MODES = {"100644": 0o644, "100755": 0o755}

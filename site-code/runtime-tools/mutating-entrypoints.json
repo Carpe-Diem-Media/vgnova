@@ -263,6 +263,34 @@
             "classification": "library"
         },
         {
+            "path": "site-code/voelgoed-platform-core/includes/JourneyIntent/JourneyIntentBricks.php",
+            "classification": "explicit_exemption",
+            "reason": "Visitor-triggered Journey Intent callbacks are ordinary application behavior, not administrative runtime mutations.",
+            "reviewed_scope": "Bricks Form start and dismiss callbacks, login promotion, and fixed Course-return requests for the current visitor intent."
+        },
+        {
+            "path": "site-code/voelgoed-platform-core/includes/JourneyIntent/JourneyIntentCookie.php",
+            "classification": "explicit_exemption",
+            "reason": "The Journey Intent first-party cookie is visitor-scoped application state, not administrative runtime content state.",
+            "reviewed_scope": "Write, verify, and clear the signed vgpc_journey_intent_v1 cookie with fixed security flags and finite expiry."
+        },
+        {
+            "path": "site-code/voelgoed-platform-core/includes/JourneyIntent/JourneyIntentLock.php",
+            "classification": "library"
+        },
+        {
+            "path": "site-code/voelgoed-platform-core/includes/JourneyIntent/JourneyIntentRepository.php",
+            "classification": "explicit_exemption",
+            "reason": "Journey Intent persistence stores only visitor-scoped context and does not mutate editorial or commerce records.",
+            "reviewed_scope": "Save or clear one signed guest intent and the current authenticated user's _vgpc_journey_intent_v1 metadata value."
+        },
+        {
+            "path": "site-code/voelgoed-platform-core/includes/JourneyIntent/JourneyIntentService.php",
+            "classification": "explicit_exemption",
+            "reason": "Journey Intent lifecycle writes are explicit visitor actions and ordinary application state changes, not administrative runtime mutations.",
+            "reviewed_scope": "Start, replace, dismiss, expire, invalidate, and promote at most one current Course Journey Intent under the user lock; no completion or commerce transition."
+        },
+        {
             "path": "site-code/voelgoed-platform-core/includes/Person/PersonRelatedContentFields.php",
             "classification": "library"
         },
@@ -409,6 +437,10 @@
             "classification": "test_only"
         },
         {
+            "path": "site-code/voelgoed-platform-core/tests/JourneyIntentTest.php",
+            "classification": "test_only"
+        },
+        {
             "path": "site-code/voelgoed-platform-core/tests/PersonNativeRelationshipSchemaTest.php",
             "classification": "test_only"
         },
@@ -494,6 +526,10 @@
         },
         {
             "path": "site-code/voelgoed-platform-core/tests/run-event-role-seeder-tests.php",
+            "classification": "test_only"
+        },
+        {
+            "path": "site-code/voelgoed-platform-core/tests/run-journey-intent-tests.php",
             "classification": "test_only"
         },
         {

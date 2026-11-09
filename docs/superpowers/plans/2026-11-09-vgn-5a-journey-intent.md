@@ -6,6 +6,8 @@
 
 **Architecture:** Keep the integration in the canonical `site-code/voelgoed-platform-core/` module. Use a minimal HMAC-signed first-party cookie for anonymous state and one versioned WordPress user-meta value for authenticated state. A small repository/service, per-user WordPress advisory lock, Bricks native Form custom action, and a Bricks dynamic return-link tag provide the required boundaries. No custom table, CPT, ACF field, Woo session, PMPro state, product, subscription, enrollment, or template mutation.
 
+**Assembly requirement:** The existing source contract admitted only five overlays and would omit this new module from a built artifact. The implementation therefore includes a narrow v1.5.0 assembly-contract update adding only the `JourneyIntent` overlay and lifecycle module; the v1.4.0 contract remains unchanged as historical authority.
+
 ## Native capability review
 
 | Capability | What it provides | Fit and remaining limitation |
