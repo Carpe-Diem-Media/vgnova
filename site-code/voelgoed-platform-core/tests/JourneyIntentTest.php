@@ -514,6 +514,39 @@ final class JourneyIntentTest
         vgpc_test_same(JourneyIntentService::STATUS_ACTIVE, $service->current_intent()['status'], 'The replacement must remain active after stale submission.');
     }
 
+    public function test_current_no_thanks_form_dismisses_in_place_without_membership_redirect(): void
+    {
+        $this->reset();
+        $GLOBALS['vgpc_test_current_user_id'] = 0;
+        $this->course(618);
+        $service = $this->service();
+        $active = $service->start_course_intent(618);
+        $bricks = new JourneyIntentBricks($service);
+        $_SERVER['HTTP_ORIGIN'] = 'https://voelgoed.test';
+
+        $fields = [
+            'form-field-vgpc_journey_intent_action' => 'dismiss',
+            'form-field-vgpc_journey_intent_id' => $active['intent_id'],
+            'form-field-vgpc_journey_intent_nonce' => 'nonce-vgpc_journey_intent',
+        ];
+        $dismiss = new VGJI_TestBricksForm($fields);
+        $bricks->handle_form_action($dismiss);
+
+        vgpc_test_same('vgpc_journey_intent', $dismiss->result['action'], 'The native action identity must remain stable.');
+        vgpc_test_same('success', $dismiss->result['type'], 'A current No Thanks action must acknowledge success in place.');
+        vgpc_test_true(! isset($dismiss->result['redirectTo']), 'No Thanks must not redirect the visitor back into membership.');
+        vgpc_test_true(! isset($dismiss->result['redirectTimeout']), 'No Thanks must not schedule a membership redirect.');
+        vgpc_test_same(JourneyIntentService::STATUS_DISMISSED, $service->current_intent()['status'], 'No Thanks must persist DISMISSED.');
+
+        // A repeated submission of the already-dismissed intent is idempotent
+        // and also must not restore ACTIVE or start a new membership redirect.
+        $repeated = new VGJI_TestBricksForm($fields);
+        $bricks->handle_form_action($repeated);
+        vgpc_test_same('success', $repeated->result['type'], 'Repeated No Thanks must remain an idempotent acknowledgement.');
+        vgpc_test_true(! isset($repeated->result['redirectTo']), 'Repeated No Thanks must never redirect.');
+        vgpc_test_same(JourneyIntentService::STATUS_DISMISSED, $service->current_intent()['status'], 'Repeated No Thanks must not resurrect the intent.');
+    }
+
     public function test_bricks_action_requires_nonce_and_exact_same_origin_and_ignores_return_to(): void
     {
         $this->reset();
