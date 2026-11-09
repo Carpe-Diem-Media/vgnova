@@ -8,6 +8,8 @@
 
 This project manages a WordPress Local Flywheel staging site through Novamira MCP in Cursor. For a staging snapshot of URLs, CPTs, field groups, and editor flows, see [`README.md`](README.md).
 
+> **New agent / new thread (VS1, 2026-11-09):** Read [VG Nova VS1 implementation handoff v0.1.0](docs/architecture/VG_NOVA_VS1_IMPLEMENTATION_HANDOFF_v0.1.0.md) **before** a Golden Journey, membership, Course or Journey Intent task; then read the [VGN-5B phased plan](docs/superpowers/plans/2026-11-09-vgn-5b-runtime-binding_v0.1.0.md) for the next read-only local implementation step. The handoff is a dated status snapshot, not permission to mutate or a replacement for this file, locked contracts, Plane, current GitHub CI or a fresh LocalWP read.
+
 ## Source of truth and runtime access
 
 The Git repository is canonical for source-controlled architecture and code. The local WordPress installation is derived runtime state and may also contain database-managed content and configuration. Inspect the runtime before describing live state; do not treat runtime-only edits as source-controlled architecture.
