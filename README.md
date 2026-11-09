@@ -2,6 +2,8 @@
 
 Documentation for the **Voelgoed** WordPress staging site managed through **Novamira** in Cursor. This repo is the agent/docs workspace; the live site runs on Local (currently `http://localhost:10039`).
 
+**Current VS1 implementation status (9 November 2026):** [Versioned Golden Journey handoff](docs/architecture/VG_NOVA_VS1_IMPLEMENTATION_HANDOFF_v0.1.0.md) · [VGN-5B runtime binding plan](docs/superpowers/plans/2026-11-09-vgn-5b-runtime-binding_v0.1.0.md). These are newer than the June 2026 general site inventory below; always verify the live LocalWP target before changing it.
+
 **Related docs:** [`AGENTS.md`](./AGENTS.md) (agent rules and architecture) · [`docs/development/medewerkers-admin-workflow.md`](./docs/development/medewerkers-admin-workflow.md) (people / events / products) · [`docs/development/Voelgoed-Featured-Content-Zero-Code.md`](./docs/development/Voelgoed-Featured-Content-Zero-Code.md) (featured content in Bricks)
 
 **Last inspected:** 5 June 2026 (via Novamira MCP against staging)
