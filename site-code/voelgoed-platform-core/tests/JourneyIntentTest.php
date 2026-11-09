@@ -595,7 +595,8 @@ final class JourneyIntentTest
             'form-field-vgpc_journey_intent_nonce' => 'nonce-vgpc_journey_intent',
         ]);
         $bricks->handle_form_action($dismiss);
-        vgpc_test_same('redirect', $dismiss->result['type'], 'A valid No Thanks form must redirect after dismissal.');
+        vgpc_test_same('success', $dismiss->result['type'], 'A valid No Thanks form must acknowledge dismissal in place.');
+        vgpc_test_true(! isset($dismiss->result['redirectTo']), 'A valid No Thanks form must not return visitors to membership.');
         vgpc_test_same(JourneyIntentService::STATUS_DISMISSED, $service->current_intent()['status'], 'Bricks Dismiss must persist the matching intent as DISMISSED.');
     }
 
