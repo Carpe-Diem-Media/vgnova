@@ -16,6 +16,10 @@ PR [#68](https://github.com/JCSchoeman96/vgnova/pull/68) later fixed the proved 
 
 The socket defect explains the historical LocalWP health-preflight stop. That attempt did not create a deployment journal or stage a candidate, and the runtime tree remained unchanged. PR #68 corrected the transport path. The evidence reviewed here demonstrates no unresolved atomic-swap or recovery defect. The deployment test suite covers fixture rollback and recovery, including Linux `RENAME_EXCHANGE`; it does not demonstrate a successful deployment or recovery on the registered LocalWP site.
 
+PR [#87](https://github.com/JCSchoeman96/vgnova/pull/87) merged on 2026-11-10. Its reviewed source head was `1b9ef7f56bae722ed49d0e26d0e79e573bf04565`; protected `main` now points to merge commit `2420e0ac3d6f39b9e09d969db4d65d0fbe1456c7`. Post-merge workflow [42795332775](https://github.com/JCSchoeman96/vgnova/actions/runs/42795332775) completed successfully, including Dashboard, Canonical Source, VG Nova Platform Gate, and artifact publication.
+
+The published corrected artifact is `voelgoed-platform-core-2420e0ac3d6f39b9e09d969db4d65d0fbe1456c7`, GitHub artifact ID `13753996512`. Its GitHub ZIP SHA-256 is `ffcb2b16dc69dceb22bbc507c022649e0b550ca93c04a12d30ec06ab8932d0ce`. The VGN-5B PR #87 integration handoff in Plane VGN-5 records independent download and verification of the canonical manifest against all 62 regular archive files. That handoff records source commit `2420e0ac3d6f39b9e09d969db4d65d0fbe1456c7`, tree SHA-256 `a6b77b25d5f6bb45456deeaecdbc4387f47ca3656c19360863bc8fa1e364a5ef`, canonical `tar.gz` archive SHA-256 `f33fcb9b243ab4799dbe00c68ab62988b7b377e663388f4257c5bf625a49906d`, manifest SHA-256 `41e67b5641f22de85b22876bffbe6347734a46e44b60b46d45ae94ce231e61ce`, and `includes/JourneyIntent/JourneyIntentBricks.php` SHA-256 `ca99974063e95c10f182386534c7b9c463f37ad2a788b0b35ea19687d7ff7926`. The recorded source-file bytes match the merged source. The GitHub ZIP digest identifies the outer workflow download; it is distinct from the canonical `tar.gz` archive digest.
+
 ## Authority status
 
 GitHub records no submitted review on PR #61 or PR #68. PR #61's description said it must not merge before independent review; the merge did not satisfy that review prerequisite. The v1.0.0 design says Task 10B resumes after PE-008 is independently reviewed. The files and verification above establish merged and tested source, not independent PE-008 approval. No independent PE-008 approval or owner operational authorization was found in the GitHub or Plane records reviewed for this successor.
@@ -29,7 +33,7 @@ PE-008 v1.0.0 points to assembly v1.4.0. Assembly [v1.5.0](PLATFORM_CORE_ASSEMBL
 The documented safety and recovery mechanisms exist in source and have fixture-test evidence. No specific unresolved code-level safety or recovery deficiency is established by the evidence above. Before using the deployer on `vgnova-local-10039`, the execution record still needs:
 
 1. Independent review of the current PE-008 source and its exact artifact/deployment boundary, followed by an explicit approved operational decision. Merged tooling, green CI, PE-007 v1.2.0, and this status correction do not supply that decision.
-2. A corrected post-merge Platform Core artifact from the exact protected `main` commit, with canonical manifest, source SHA, archive and manifest hashes, and `JourneyIntentBricks.php` verified in its file list. PR #87 remains open and unmerged as of this record, so no corrected artifact is identified here.
+2. Immediately before any authorized deployment, independently revalidate the exact selected corrected artifact, its canonical manifest and complete file list, source commit, archive and manifest hashes, and `JourneyIntentBricks.php` hash. The PR #87 integration handoff records prior verification, but that evidence does not replace this deployment-time check.
 3. A separately authorized LocalWP deployment using the PE-007 coordinator as parent and PE-008 as its child. Immediately before that write, recheck registered target identity, the selected live database socket, both database advisory locks, host lock, deployment journal/recovery state, and the full active-plugin before-image. Earlier snapshots are evidence, not mutation guards.
 4. Post-deployment PHP and HTTP health, exact artifact-to-runtime file and hash parity, and retained prior-tree/rollback evidence. If target identity, lock proof, journal topology, health, parity, or rollback state is uncertain, stop and preserve all trees for review. Use only PE-008's guarded recovery path; do not copy files manually or clear locks.
 
@@ -39,8 +43,10 @@ This status successor does not require a live failure injection or deliberate ro
 
 PE-008 source implementation: **MERGED AND TESTED**.
 
-Independent PE-008 operational approval: **NOT EVIDENCED**.
+Corrected artifact: **PUBLISHED**.
 
-LocalWP deployment authorization and corrected deployment artifact: **NOT AVAILABLE**.
+PE-008 independent operational approval: **NOT ESTABLISHED**.
+
+LocalWP deployment: **NOT AUTHORIZED**.
 
 No deployment, mutation session, Bricks edit, database write, checkout, membership activation, enrolment, or `COMPLETED` transition is authorized by this record.
