@@ -8,7 +8,7 @@ This document preserves the historical v1.0.0 contract. It corrects its implemen
 
 ## Source status
 
-PR [#61](https://github.com/JCSchoeman96/vgnova/pull/61) merged the deployer at `bfd6c98f7375a47307311ed534f273024b949e30` from source head `967a555ca86ab41af7199ae4c357b8c0503b3da6`. The merged source includes the artifact verifier binding, registered-target and PE-007 session checks, staged manifest writes, atomic directory exchange, health and parity checks, durable journals, retained rollback paths, recovery commands, and fixture-based tests.
+PR [#61](https://github.com/JCSchoeman96/vgnova/pull/61) merged the deployer at `bfd6c98f7375a47307311ed534f273024b949e30` from source head `967a555ca86ab41af7199ae4c357b8c0503b3da6`. The merged source includes artifact-verifier binding, registered-target and PE-007 session checks, staging from the canonical manifest, atomic directory exchange, health and parity checks, durable journals, retained rollback paths, recovery commands, and fixture-based tests.
 
 PR #61 records 45 Platform Core deployment tests and a passing `./site-code/bin/check-source.sh`. Exact-head workflow [40869081004](https://github.com/JCSchoeman96/vgnova/actions/runs/40869081004) completed with Dashboard, Canonical Source, and VG Nova Platform Gate successful. Artifact publication was skipped for the pull request.
 
