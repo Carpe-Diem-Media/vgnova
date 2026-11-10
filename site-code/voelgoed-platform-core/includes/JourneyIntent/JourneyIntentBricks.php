@@ -171,6 +171,24 @@ final class JourneyIntentBricks
             return;
         }
 
+        // No Thanks dismisses the reminder in place. It must not send the
+        // visitor back into membership or imply that a stale form succeeded.
+        if ($action === 'dismiss') {
+            if (! is_array($result) || ($result['status'] ?? null) !== JourneyIntentService::STATUS_DISMISSED) {
+                $this->set_form_result($form, 'danger', 'Die herinnering kon nie verwyder word nie. Herlaai die blad en probeer weer.');
+                return;
+            }
+
+            $this->set_form_result($form, 'success', 'Die kursusherinnering is verwyder.');
+            return;
+        }
+
+        // Only an explicitly started ACTIVE Course intent may open membership.
+        if (! is_array($result) || ($result['status'] ?? null) !== JourneyIntentService::STATUS_ACTIVE) {
+            $this->set_form_result($form, 'danger', 'Die kursus kon nie onthou word nie. Herlaai die blad en probeer weer.');
+            return;
+        }
+
         $form->set_result([
             'action' => self::FORM_ACTION,
             'type' => 'redirect',
