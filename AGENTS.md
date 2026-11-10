@@ -8,6 +8,10 @@
 
 This project manages a WordPress Local Flywheel staging site through Novamira MCP in Cursor. For a staging snapshot of URLs, CPTs, field groups, and editor flows, see [`README.md`](README.md).
 
+## Staging site
+This LocalWP site is for development and staging, not production. A `cloudflared` process is running on the workstation, but its routes have not been verified. Verify the current ingress before claiming the site is publicly reachable, receives no public traffic, or has zero tunnel exposure.
+
+
 > **VS1 / VGN-5B current entry point (2026-11-10):** Use the [VGN-5B runtime-binding plan v0.1.1](docs/superpowers/plans/2026-11-10-vgn-5b-runtime-binding_v0.1.1.md) for the current sequence and gates. The [implementation handoff v0.1.0](docs/architecture/VG_NOVA_VS1_IMPLEMENTATION_HANDOFF_v0.1.0.md) and [runtime-binding plan v0.1.0](docs/superpowers/plans/2026-11-09-vgn-5b-runtime-binding_v0.1.0.md) remain preserved historical snapshots. Check the locked spec, current Plane decisions, exact GitHub refs/CI and live runtime before acting; none of these documents grants merge or runtime-write authority.
 
 ## Source of truth and runtime access
