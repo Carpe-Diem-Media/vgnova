@@ -2,14 +2,14 @@
 
 > **Project:** Voelgoed Platform Consolidation  
 > **Agent Scope:** AI assistants and automated tooling working within this codebase  
-> **Last Updated:** October 2026
+> **Last Updated:** November 2026
 
 ---
 
 This project manages a WordPress Local Flywheel staging site through Novamira MCP in Cursor. For a staging snapshot of URLs, CPTs, field groups, and editor flows, see [`README.md`](README.md).
 
 ## Staging site
-This LocalWP site is for development and staging, not production. A `cloudflared` process is running on the workstation, but its routes have not been verified. Verify the current ingress before claiming the site is publicly reachable, receives no public traffic, or has zero tunnel exposure.
+This LocalWP site is for development and staging, not production. The owner describes it as local-only, with no intended external access or traffic. A `cloudflared` process was observed running on the workstation on 2026-11-10; its effective ingress was not verified. Unknown ingress does not establish whether this site is externally reachable. Verify the current ingress before making claims about reachability or tunnel exposure. Routing configuration alone does not establish whether public traffic occurred; support claims about actual traffic with relevant traffic records or attribute them to the owner. This note adds no PE-008 deployment prerequisite and does not change the existing PE-008 operational approval or separate deployment-execution authorization.
 
 
 > **VS1 / VGN-5B current entry point (2026-11-10):** Use the [VGN-5B runtime-binding plan v0.1.1](docs/superpowers/plans/2026-11-10-vgn-5b-runtime-binding_v0.1.1.md) for the current sequence and gates. The [implementation handoff v0.1.0](docs/architecture/VG_NOVA_VS1_IMPLEMENTATION_HANDOFF_v0.1.0.md) and [runtime-binding plan v0.1.0](docs/superpowers/plans/2026-11-09-vgn-5b-runtime-binding_v0.1.0.md) remain preserved historical snapshots. Check the locked spec, current Plane decisions, exact GitHub refs/CI and live runtime before acting; none of these documents grants merge or runtime-write authority.
