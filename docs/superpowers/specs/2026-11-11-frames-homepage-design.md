@@ -1,7 +1,7 @@
 # Voelgoed homepage design
 
 Date: 2026-11-11
-Status: Layout A approved in chat; written specification awaiting owner review.
+Status: Layout A and written specification approved by the owner in chat on 2026-11-11.
 
 ## Outcome and authority
 

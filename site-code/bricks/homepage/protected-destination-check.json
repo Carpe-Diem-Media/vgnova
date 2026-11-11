@@ -1,0 +1,6 @@
+{
+  "ability_name": "novamira/execute-php",
+  "parameters": {
+    "code": "$selection=542;add_filter('acf/pre_load_reference',fn($v,$n,$id)=>$n==='home_featured_destination'?'field_vg_home_featured_destination':$v,10,3);add_filter('acf/load_value/name=home_featured_destination',fn()=>542);global $wpdb;$table=$wpdb->posts;$columns=$wpdb->get_col(\"SHOW COLUMNS FROM `$table`\",0);$projection=implode(',',array_map(fn($c)=>$c==='post_password'?\"CASE WHEN ID=542 THEN 'request-only-protected-fixture' ELSE post_password END AS post_password\":\"`$c`\",$columns));$applied=false;$guard=false;add_filter('posts_request',function($sql,$q)use($table,$projection,&$applied,&$guard){if($q->get('post__in')==[542]){$guard=str_contains($sql,\"post_password = ''\");$from=\"FROM $table\";if(str_contains($sql,$from)){$sql=str_replace($from,\"FROM (SELECT $projection FROM `$table`) AS `$table`\",$sql);$applied=true;}}return $sql;},999,2);$r=wp_get_ability('bricks/render-elements')->execute(['postId'=>1926,'responseFormat'=>'detailed']);return ['fixture'=>'request-only derived row with nonempty password; no persisted change','applied'=>$applied,'guard'=>$guard,'featureVisible'=>str_contains($r['html'],'c-homepage__feature-title')];"
+  }
+}
