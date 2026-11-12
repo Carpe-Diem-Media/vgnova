@@ -159,6 +159,7 @@ final class VgBricksTreeWriter
             if (array_intersect($document['allowed_changed_ids'], $document['allowed_added_ids']) !== []) {
                 throw new VgBricksTreeWriterException('Changed and added element ID lists must be disjoint.');
             }
+            self::assertMinimalChange($beforeElements, $elements, $document);
 
             $documents[$postId] = $document;
         }
@@ -197,8 +198,6 @@ final class VgBricksTreeWriter
             if ($current['elements'] !== $document['before_elements']) {
                 throw new VgBricksTreeWriterException("Live Bricks before-image does not exactly match the reviewed tree for target {$postId}.");
             }
-            self::assertMinimalChange($document['before_elements'], $document['elements'], $document);
-
             $normalized = $normalizeElements($postId, $document['elements'], $current);
             if (! is_array($normalized) || $normalized !== $document['elements']) {
                 throw new VgBricksTreeWriterException("Bricks sanitizer changed the planned tree for target {$postId}.");
@@ -266,29 +265,72 @@ final class VgBricksTreeWriter
     /** @param array<string,mixed> $document */
     private static function assertMinimalChange(array $before, array $after, array $document): void
     {
-        self::validateTree($before, 'current tree');
-        $beforeRootIds = array_column($before, 'id');
-        $afterRootIds = array_column($after, 'id');
-        if ($beforeRootIds !== $afterRootIds) {
-            throw new VgBricksTreeWriterException('Planned Bricks tree changes or reorders top-level content.');
-        }
         $beforeById = self::elementsById($before);
         $afterById = self::elementsById($after);
+        $beforeOrder = array_column($before, 'id');
+        $afterExistingOrder = array_values(array_filter(
+            array_column($after, 'id'),
+            static fn (string $id): bool => array_key_exists($id, $beforeById)
+        ));
+        if ($afterExistingOrder !== $beforeOrder) {
+            throw new VgBricksTreeWriterException('Planned Bricks tree reorders existing flat element records.');
+        }
+
+        $beforeRoots = self::rootIds($before);
+        $afterRoots = self::rootIds($after);
+        $afterExistingRoots = array_values(array_filter(
+            $afterRoots,
+            static fn (string $id): bool => array_key_exists($id, $beforeById)
+        ));
+        if ($afterExistingRoots !== $beforeRoots || count($afterRoots) !== count($beforeRoots)) {
+            throw new VgBricksTreeWriterException('Planned Bricks tree changes or adds top-level content.');
+        }
+
         $changed = [];
         $added = [];
-
         foreach ($beforeById as $id => $element) {
             if (! array_key_exists($id, $afterById)) {
                 throw new VgBricksTreeWriterException('Planned Bricks tree deletes existing content.');
             }
-            if ($element !== $afterById[$id]) {
+
+            $afterElement = $afterById[$id];
+            $beforeParent = self::parentId($element);
+            $afterParent = self::parentId($afterElement);
+            if ($beforeParent !== $afterParent) {
+                throw new VgBricksTreeWriterException("Planned Bricks tree reparents existing element {$id}.");
+            }
+
+            $beforeWithoutChildren = $element;
+            $afterWithoutChildren = $afterElement;
+            unset($beforeWithoutChildren['children'], $afterWithoutChildren['children']);
+            if ($beforeWithoutChildren !== $afterWithoutChildren) {
+                throw new VgBricksTreeWriterException("Planned Bricks tree changes existing element {$id} outside its child references.");
+            }
+
+            $beforeChildren = self::childIds($element);
+            $afterChildren = self::childIds($afterElement);
+            if (! self::isSubsequence($beforeChildren, $afterChildren)) {
+                throw new VgBricksTreeWriterException("Planned Bricks tree removes or reorders children of existing element {$id}.");
+            }
+            foreach ($afterChildren as $childId) {
+                if (! in_array($childId, $beforeChildren, true) && array_key_exists($childId, $beforeById)) {
+                    throw new VgBricksTreeWriterException("Planned Bricks tree adds an existing element as a child of {$id}.");
+                }
+            }
+
+            if ($element !== $afterElement) {
                 $changed[] = $id;
             }
         }
-        foreach ($afterById as $id => $_element) {
-            if (! array_key_exists($id, $beforeById)) {
-                $added[] = $id;
+
+        foreach ($afterById as $id => $element) {
+            if (array_key_exists($id, $beforeById)) {
+                continue;
             }
+            if (self::parentId($element) === 0) {
+                throw new VgBricksTreeWriterException('A planned new Bricks element must be attached beneath an existing parent.');
+            }
+            $added[] = $id;
         }
 
         $changed = self::sortIds($changed);
@@ -304,17 +346,48 @@ final class VgBricksTreeWriter
     private static function elementsById(array $tree): array
     {
         $elements = [];
-        $walk = static function (array $nodes) use (&$walk, &$elements): void {
-            foreach ($nodes as $node) {
-                $elements[$node['id']] = $node;
-                $children = $node['children'] ?? [];
-                if (is_array($children)) {
-                    $walk($children);
-                }
-            }
-        };
-        $walk($tree);
+        foreach ($tree as $element) {
+            $elements[$element['id']] = $element;
+        }
         return $elements;
+    }
+
+    /** @return list<string> */
+    private static function rootIds(array $tree): array
+    {
+        $roots = [];
+        foreach ($tree as $element) {
+            if (self::parentId($element) === 0) {
+                $roots[] = $element['id'];
+            }
+        }
+        return $roots;
+    }
+
+    private static function parentId(array $element): string|int
+    {
+        return $element['parent'];
+    }
+
+    /** @return list<string> */
+    private static function childIds(array $element): array
+    {
+        return $element['children'] ?? [];
+    }
+
+    /** @param list<string> $needle
+     *  @param list<string> $haystack
+     */
+    private static function isSubsequence(array $needle, array $haystack): bool
+    {
+        $needleIndex = 0;
+        foreach ($haystack as $value) {
+            if (($needle[$needleIndex] ?? null) === $value) {
+                $needleIndex++;
+            }
+        }
+
+        return $needleIndex === count($needle);
     }
 
     /** @return list<string> */
@@ -337,51 +410,115 @@ final class VgBricksTreeWriter
 
     private static function validateTree(array $tree, string $description): void
     {
-        if (! array_is_list($tree) || $tree === []) {
-            throw new VgBricksTreeWriterException("{$description} must be a non-empty Bricks element list.");
+        if (! array_is_list($tree) || $tree === [] || count($tree) > self::MAX_TREE_NODES) {
+            throw new VgBricksTreeWriterException("{$description} must be a non-empty flat Bricks element list within the node limit.");
         }
 
-        $ids = [];
-        $nodeCount = 0;
-        $walk = static function (array $nodes, int $depth) use (&$walk, &$ids, &$nodeCount, $description): void {
-            if ($depth > self::MAX_TREE_DEPTH) {
-                throw new VgBricksTreeWriterException("{$description} exceeds the Bricks nesting limit.");
+        $elements = [];
+        foreach ($tree as $element) {
+            if (! is_array($element)
+                || ! is_string($element['id'] ?? null)
+                || preg_match('/\A[a-zA-Z0-9]{6,32}\z/', $element['id']) !== 1
+                || isset($elements[$element['id']])
+                || ! is_string($element['name'] ?? null)
+                || $element['name'] === ''
+                || ! is_array($element['settings'] ?? null)
+                || ! array_key_exists('parent', $element)) {
+                throw new VgBricksTreeWriterException("{$description} contains an invalid flat Bricks element or duplicate ID.");
             }
-            foreach ($nodes as $node) {
-                $nodeCount++;
-                if ($nodeCount > self::MAX_TREE_NODES
-                    || ! is_array($node)
-                    || ! is_string($node['id'] ?? null)
-                    || preg_match('/\A[a-zA-Z0-9]{6,32}\z/', $node['id']) !== 1
-                    || isset($ids[$node['id']])
-                    || ! is_string($node['name'] ?? null)
-                    || $node['name'] === ''
-                    || ! is_array($node['settings'] ?? null)) {
-                    throw new VgBricksTreeWriterException("{$description} contains an invalid Bricks element or duplicate ID.");
+
+            $parent = $element['parent'];
+            if ($parent !== 0 && (! is_string($parent) || preg_match('/\A[a-zA-Z0-9]{6,32}\z/', $parent) !== 1)) {
+                throw new VgBricksTreeWriterException("{$description} contains an invalid parent reference.");
+            }
+
+            $children = $element['children'] ?? [];
+            if (! is_array($children) || ! array_is_list($children)) {
+                throw new VgBricksTreeWriterException("{$description} contains an invalid child-ID list.");
+            }
+            $seenChildren = [];
+            foreach ($children as $childId) {
+                if (! is_string($childId)
+                    || preg_match('/\A[a-zA-Z0-9]{6,32}\z/', $childId) !== 1
+                    || isset($seenChildren[$childId])) {
+                    throw new VgBricksTreeWriterException("{$description} contains a nested, invalid, or duplicate child reference.");
                 }
-                $ids[$node['id']] = true;
-                $children = $node['children'] ?? [];
-                if (! is_array($children) || ! array_is_list($children)) {
-                    throw new VgBricksTreeWriterException("{$description} contains an invalid Bricks children list.");
+                $seenChildren[$childId] = true;
+            }
+
+            $elements[$element['id']] = $element;
+        }
+
+        $rootIds = [];
+        foreach ($elements as $id => $element) {
+            $parentId = self::parentId($element);
+            if ($parentId === 0) {
+                $rootIds[] = $id;
+            } elseif (! isset($elements[$parentId])) {
+                throw new VgBricksTreeWriterException("{$description} has a missing parent reference for element {$id}.");
+            } elseif (! in_array($id, self::childIds($elements[$parentId]), true)) {
+                throw new VgBricksTreeWriterException("{$description} has an inconsistent parent/child reference for element {$id}.");
+            }
+
+            foreach (self::childIds($element) as $childId) {
+                if (! isset($elements[$childId])) {
+                    throw new VgBricksTreeWriterException("{$description} has a dangling child reference from element {$id}.");
                 }
-                if ($children !== []) {
-                    $walk($children, $depth + 1);
+                if (self::parentId($elements[$childId]) !== $id) {
+                    throw new VgBricksTreeWriterException("{$description} has an inconsistent child/parent reference for element {$childId}.");
                 }
+            }
+        }
+
+        if ($rootIds === []) {
+            throw new VgBricksTreeWriterException("{$description} has no root elements.");
+        }
+
+        $state = [];
+        $visitParent = static function (string $id, int $depth = 1) use (&$visitParent, &$state, $elements, $description): void {
+            if ($depth > self::MAX_TREE_DEPTH) {
+                throw new VgBricksTreeWriterException("{$description} exceeds the Bricks parent-depth limit.");
+            }
+            if (($state[$id] ?? 0) === 1) {
+                throw new VgBricksTreeWriterException("{$description} contains a parent cycle.");
+            }
+            if (($state[$id] ?? 0) === 2) {
+                return;
+            }
+
+            $state[$id] = 1;
+            $parentId = self::parentId($elements[$id]);
+            if ($parentId !== 0) {
+                $visitParent($parentId, $depth + 1);
+            }
+            $state[$id] = 2;
+        };
+
+        foreach (array_keys($elements) as $id) {
+            $visitParent($id);
+        }
+
+        $reachable = [];
+        $visitChildren = static function (string $id) use (&$visitChildren, &$reachable, $elements): void {
+            if (isset($reachable[$id])) {
+                return;
+            }
+            $reachable[$id] = true;
+            foreach (self::childIds($elements[$id]) as $childId) {
+                $visitChildren($childId);
             }
         };
-        $walk($tree, 1);
+        foreach ($rootIds as $rootId) {
+            $visitChildren($rootId);
+        }
+        if (count($reachable) !== count($elements)) {
+            throw new VgBricksTreeWriterException("{$description} contains orphaned elements.");
+        }
     }
 
     private static function treeNodeCount(array $tree): int
     {
-        $count = 0;
-        foreach ($tree as $element) {
-            $count++;
-            if (is_array($element['children'] ?? null)) {
-                $count += self::treeNodeCount($element['children']);
-            }
-        }
-        return $count;
+        return count($tree);
     }
 
     /** @param list<string> $ids
