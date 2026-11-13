@@ -27,6 +27,7 @@ php site-code/runtime-tests/tests/run-product-contribution-qa-platform-core-inte
 php site-code/runtime-tests/tests/run-runtime-mutation-core-tests.php
 php site-code/runtime-tests/tests/run-runtime-mutation-session-tests.php
 php site-code/runtime-tests/tests/run-runtime-mutation-policy-tests.php
+php site-code/runtime-tests/tests/run-bricks-tree-writer-tests.php
 php site-code/bin/tests/test-person-publication-source-policy.php
 python3 site-code/runtime-tests/tests/test_fcm_self_featured_integration.py
 python3 site-code/runtime-tests/tests/test_platform_core_deployment.py
