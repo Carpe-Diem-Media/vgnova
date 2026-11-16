@@ -200,8 +200,36 @@ final class VGJI_TestBricksForm
     }
 }
 
+if (! function_exists('is_page')) {
+    function is_page(int $page): bool { return ($GLOBALS['vgji_test_page'] ?? 0) === $page; }
+}
+if (! function_exists('plugins_url')) {
+    function plugins_url(string $path, string $plugin): string { return '/test/' . $path; }
+}
+if (! function_exists('wp_enqueue_script')) {
+    function wp_enqueue_script(string $handle, string $src, array $deps, string|bool|null $version, bool $footer): void
+    {
+        $GLOBALS['vgji_test_enqueued'][] = [$handle, $src, $footer];
+    }
+}
+
 final class JourneyIntentTest
 {
+    public function test_focus_script_is_enqueued_only_on_reminder_page(): void
+    {
+        $this->reset();
+        $bricks = new JourneyIntentBricks($this->service());
+        $bricks->register();
+        vgpc_test_true(isset($GLOBALS['vgpc_test_actions']['wp_enqueue_scripts']), 'Focus script hook is missing.');
+        $GLOBALS['vgji_test_enqueued'] = [];
+        $GLOBALS['vgji_test_page'] = 1733;
+        $bricks->enqueue_focus_script();
+        vgpc_test_same([], $GLOBALS['vgji_test_enqueued'], 'Focus script must not load on another page.');
+        $GLOBALS['vgji_test_page'] = 933;
+        $bricks->enqueue_focus_script();
+        vgpc_test_same([['vgpc-journey-intent-focus', '/test/journey-intent-focus.js', true]], $GLOBALS['vgji_test_enqueued'], 'Focus script is not loaded in the footer of the reminder page.');
+    }
+
     public function test_course_view_alone_does_not_create_an_intent_or_cookie(): void
     {
         $this->reset();

@@ -216,6 +216,21 @@ final class VgBricksTreeWriter
                 throw new VgBricksTreeWriterException("Live Bricks tree changed before save for target {$postId}.");
             }
 
+            if ($document['before_elements'] === $document['elements']) {
+                $record = [
+                    'post_id' => $postId,
+                    'before_sha256' => $document['before_sha256'],
+                    'after_sha256' => $document['after_sha256'],
+                    'element_count' => self::treeNodeCount($latest['elements']),
+                    'status' => 'verified_unchanged',
+                ];
+                $completed[] = $record;
+                if ($onCompleted !== null) {
+                    $onCompleted($record);
+                }
+                continue;
+            }
+
             $saveDocument($postId, $document['elements'], $document);
 
             $after = $readDocument($postId);
