@@ -217,6 +217,55 @@ $test('explicit native child additions preserve all existing records and verify 
     }
 });
 
+$test('unchanged document is verified without a native save', static function (): void {
+    [$before, $after] = vg_bricks_tree_writer_fixtures();
+    $after[1733] = $before[1733];
+    $plan = vg_bricks_tree_writer_plan($before, $after, [1733 => ['changed' => [], 'added' => []]]);
+    $state = vg_bricks_tree_writer_state($before);
+    $writes = [];
+    $result = VgBricksTreeWriter::execute(
+        $plan,
+        static function (int $id) use (&$state): array { return $state[$id]; },
+        static fn (int $id, array $candidate): array => $candidate,
+        static function (int $id, array $candidate) use (&$state, &$writes): void {
+            $writes[] = $id;
+            $state[$id]['elements'] = $candidate;
+        }
+    );
+    vg_bricks_tree_writer_test($writes === [933], 'An unchanged document was sent to the native save handler.');
+    vg_bricks_tree_writer_test($result[1]['status'] === 'verified_unchanged', 'Unchanged document was not recorded as verified unchanged.');
+});
+
+$test('unchanged document still rejects a just-in-time edit', static function (): void {
+    [$before, $after] = vg_bricks_tree_writer_fixtures();
+    $after[1733] = $before[1733];
+    $plan = vg_bricks_tree_writer_plan($before, $after, [1733 => ['changed' => [], 'added' => []]]);
+    $state = vg_bricks_tree_writer_state($before);
+    $reads = [];
+    $writes = [];
+    $completed = [];
+    vg_bricks_tree_writer_expect_failure(static function () use ($plan, &$state, &$reads, &$writes, &$completed): void {
+        VgBricksTreeWriter::execute(
+            $plan,
+            static function (int $id) use (&$state, &$reads): array {
+                $reads[$id] = ($reads[$id] ?? 0) + 1;
+                if ($id === 1733 && $reads[$id] === 2) {
+                    $state[$id]['elements'][0]['settings']['class'] = 'concurrent-edit';
+                }
+                return $state[$id];
+            },
+            static fn (int $id, array $candidate): array => $candidate,
+            static function (int $id, array $candidate) use (&$state, &$writes): void {
+                $writes[] = $id;
+                $state[$id]['elements'] = $candidate;
+            },
+            static function (array $record) use (&$completed): void { $completed[] = $record; }
+        );
+    }, 'An unchanged document with a concurrent edit was accepted.');
+    vg_bricks_tree_writer_test($writes === [933], 'The unchanged template was saved.');
+    vg_bricks_tree_writer_test(count($completed) === 1 && $completed[0]['post_id'] === 933, 'Partial completion was not preserved.');
+});
+
 $test('stale target before-image prevents every write', static function (): void {
     [$before, $after] = vg_bricks_tree_writer_fixtures();
     $plan = vg_bricks_tree_writer_plan($before, $after);

@@ -36,9 +36,27 @@ final class JourneyIntentBricks
         add_filter('bricks/dynamic_data/render_tag', [$this, 'render_tag'], 20, 3);
         add_filter('bricks/dynamic_data/render_content', [$this, 'render_content'], 11, 3);
         add_action('bricks/form/action/' . self::FORM_ACTION, [$this, 'handle_form_action'], 10, 1);
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_focus_script']);
         add_action('wp_login', [$this->service, 'promote_after_login'], 10, 2);
         add_action('admin_post_' . self::RETURN_ACTION, [$this, 'handle_return'], 10, 0);
         add_action('admin_post_nopriv_' . self::RETURN_ACTION, [$this, 'handle_return'], 10, 0);
+    }
+
+    /** Focus the existing success message after the reminder is dismissed. */
+    public function enqueue_focus_script(): void
+    {
+        if (! is_page(933)) {
+            return;
+        }
+
+        $script = __DIR__ . '/journey-intent-focus.js';
+        wp_enqueue_script(
+            'vgpc-journey-intent-focus',
+            plugins_url('journey-intent-focus.js', __FILE__),
+            [],
+            hash_file('sha256', $script),
+            true
+        );
     }
 
     /** @param array<string, mixed> $controls @return array<string, mixed> */
