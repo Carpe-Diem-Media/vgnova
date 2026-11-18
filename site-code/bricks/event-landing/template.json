@@ -1,0 +1,1122 @@
+{
+  "title": "Event Landing — Frames",
+  "type": "content",
+  "status": "draft",
+  "settings": {
+    "templatePreviewType": "single",
+    "templatePreviewPostType": "tc_events",
+    "templatePreviewPostId": "542",
+    "templateConditions": []
+  },
+  "elements": [
+    {
+      "id": "03b28c",
+      "name": "div",
+      "label": "Reusable event landing",
+      "settings": {
+        "_cssClasses": "c-event-landing",
+        "_cssCustom": "@media (max-width: 48rem) {\n  .c-event-landing .c-event-landing__hero-inner,\n  .c-event-landing .c-event-landing__info-inner,\n  .c-event-landing .c-event-landing__pricing-inner {\n    grid-template-columns: minmax(0, 1fr);\n    gap: var(--space-l);\n  }\n\n  .c-event-landing .c-event-landing__hero {\n    padding-block-start: var(--section-space-m);\n  }\n\n  .c-event-landing .c-event-landing__hero-media {\n    order: -1;\n  }\n\n  .c-event-landing .c-event-landing__hero-media img {\n    aspect-ratio: 16 / 10;\n  }\n\n  .c-event-landing .c-event-landing__facts-inner,\n  .c-event-landing .c-event-landing__gallery-grid {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n  }\n}\n@media (max-width: 34rem) {\n  .c-event-landing .c-event-landing__facts-inner,\n  .c-event-landing .c-event-landing__quotes,\n  .c-event-landing .c-event-landing__gallery-grid,\n  .c-event-landing .c-event-landing__participants {\n    grid-template-columns: minmax(0, 1fr);\n  }\n\n  .c-event-landing .c-event-landing__ticket {\n    grid-template-columns: minmax(0, 1fr);\n  }\n\n  .c-event-landing .c-event-landing__ticket-buy {\n    grid-column: 1;\n    justify-self: start;\n  }\n}\n@media (prefers-reduced-motion: reduce) {\n  .c-event-landing *,\n  .c-event-landing *::before,\n  .c-event-landing *::after {\n    scroll-behavior: auto;\n    animation-duration: 0.01ms;\n    animation-iteration-count: 1;\n    transition-duration: 0.01ms;\n  }\n}\n@scope (html:has(.c-event-landing)) {\n  html, :scope, body { overflow-x: clip; }\n}\n.c-event-landing {\n  --event-paper: var(--white);\n  --event-surface: var(--base-ultra-light);\n  --event-ink: var(--base-ultra-dark);\n  --event-muted: var(--text-dark-muted);\n  --event-on-accent: var(--text-light);\n  --event-accent: var(--primary);\n  --event-gutter: var(--gutter);\n  --event-section-space: var(--section-space-m);\n  --event-content-width: var(--content-width);\n  color: var(--event-ink);\n  background: var(--event-paper);\n}\n.c-event-landing :where(p, figure, blockquote) {\n  margin-block: 0;\n}\n.c-event-landing__hero {\n  padding-inline: var(--event-gutter);\n}\n.c-event-landing__facts {\n  padding-inline: var(--event-gutter);\n}\n.c-event-landing__proof {\n  padding-inline: var(--event-gutter);\n}\n.c-event-landing__gallery {\n  padding-inline: var(--event-gutter);\n}\n.c-event-landing__cta {\n  padding-inline: var(--event-gutter);\n}\n.c-event-landing__info {\n  padding-inline: var(--event-gutter);\n}\n.c-event-landing__pricing {\n  padding-inline: var(--event-gutter);\n}\n.c-event-landing__hero {\n  padding-block: var(--section-space-m);\n  background: var(--event-surface);\n}\n.c-event-landing__hero-inner {\n  display: grid;\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  gap: var(--space-xl);\n  align-items: center;\n  width: min(100%, var(--event-content-width));\n  margin-inline: auto;\n}\n.c-event-landing__info-inner {\n  display: grid;\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  gap: var(--space-xl);\n  align-items: center;\n  width: min(100%, var(--event-content-width));\n  margin-inline: auto;\n}\n.c-event-landing__pricing-inner {\n  display: grid;\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  gap: var(--space-xl);\n  align-items: center;\n  width: min(100%, var(--event-content-width));\n  margin-inline: auto;\n}\n.c-event-landing__hero-copy {\n  display: grid;\n  justify-items: start;\n  gap: var(--space-m);\n  min-width: 0;\n}\n.c-event-landing__info-copy {\n  display: grid;\n  justify-items: start;\n  gap: var(--space-m);\n  min-width: 0;\n}\n.c-event-landing__cta-copy {\n  display: grid;\n  justify-items: start;\n  gap: var(--space-m);\n  min-width: 0;\n}\n.c-event-landing__title {\n  max-width: 16ch;\n  font-size: var(--h1);\n  line-height: 1.08;\n  text-wrap: balance;\n  overflow-wrap: break-word;\n  min-width: 0;\n}\n.c-event-landing__lede {\n  max-width: 65ch;\n  color: var(--event-muted);\n  font-size: var(--text-l);\n  line-height: 1.55;\n}\n.c-event-landing__hero-media {\n  min-width: 0;\n  overflow: hidden;\n  background: var(--event-surface);\n}\n.c-event-landing__info-media {\n  min-width: 0;\n  overflow: hidden;\n  background: var(--event-surface);\n}\n.c-event-landing__hero-media img {\n  display: block;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}\n.c-event-landing__info-media img {\n  display: block;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}\n.c-event-landing__gallery-grid img {\n  display: block;\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n}\n.c-event-landing__hero-media img {\n  aspect-ratio: 4 / 3;\n  max-height: calc(var(--section-space-l) * 3);\n}\n.c-event-landing__actions {\n  display: flex;\n  flex-wrap: wrap;\n  gap: var(--space-s);\n  align-items: center;\n}\n.c-event-landing__button {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  min-height: var(--space-l);\n  padding: var(--space-xs) var(--space-m);\n  border: 1px solid var(--event-ink);\n  background: var(--event-ink);\n  color: var(--event-on-accent);\n  font-size: var(--text-m);\n  font-weight: 600;\n  line-height: 1.2;\n  text-align: center;\n  text-decoration: none;\n  white-space: nowrap;\n}\n.c-event-landing__button:hover {\n  border-color: var(--event-accent);\n  background: var(--event-accent);\n}\n.c-event-landing__button:focus-visible {\n  outline: 2px solid var(--event-ink);\n  outline-offset: var(--space-3xs, 0.25rem);\n}\n.c-event-landing__button:active {\n  background: var(--event-accent);\n}\n.c-event-landing__button:disabled {\n  border-color: var(--event-muted);\n  background: var(--event-muted);\n  cursor: not-allowed;\n}\n.c-event-landing__button[aria-disabled=\"true\"] {\n  border-color: var(--event-muted);\n  background: var(--event-muted);\n  cursor: not-allowed;\n}\n.c-event-landing__facts {\n  padding-block: var(--space-l);\n}\n.c-event-landing__facts-inner {\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  gap: var(--space-s);\n  width: min(100%, var(--event-content-width));\n  margin-inline: auto;\n}\n.c-event-landing__fact {\n  display: grid;\n  align-content: start;\n  gap: var(--space-xs);\n  min-width: 0;\n  padding: var(--space-m);\n  border-top: 2px solid var(--event-accent);\n  background: var(--event-surface);\n}\n.c-event-landing__fact-label {\n  color: var(--event-muted);\n  font-size: var(--text-s);\n  line-height: 1.4;\n}\n.c-event-landing__fact-value {\n  font-size: var(--h3);\n  line-height: 1.2;\n  overflow-wrap: break-word;\n  min-width: 0;\n}\n.c-event-landing__proof {\n  padding-block: var(--event-section-space);\n}\n.c-event-landing__gallery {\n  padding-block: var(--event-section-space);\n}\n.c-event-landing__info {\n  padding-block: var(--event-section-space);\n}\n.c-event-landing__pricing {\n  padding-block: var(--event-section-space);\n}\n.c-event-landing__section-inner {\n  width: min(100%, var(--event-content-width));\n  margin-inline: auto;\n}\n.c-event-landing__section-title {\n  max-width: 22ch;\n  margin-block-end: var(--space-l);\n  font-size: var(--h2);\n  line-height: 1.12;\n  text-wrap: balance;\n  overflow-wrap: break-word;\n  min-width: 0;\n}\n.c-event-landing__quotes {\n  display: grid;\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  gap: var(--space-m);\n}\n.c-event-landing__quote {\n  display: grid;\n  align-content: start;\n  gap: var(--space-m);\n  min-width: 0;\n  padding: var(--space-l);\n  border-block: 1px solid var(--event-accent);\n}\n.c-event-landing__quote-text {\n  color: var(--event-ink);\n  font-size: var(--text-l);\n  line-height: 1.55;\n}\n.c-event-landing__quote-author {\n  color: var(--event-muted);\n  font-size: var(--text-s);\n  font-style: normal;\n}\n.c-event-landing__gallery-grid {\n  display: grid;\n  grid-template-columns: repeat(3, minmax(0, 1fr));\n  gap: var(--space-s);\n}\n.c-event-landing__gallery-grid img {\n  aspect-ratio: 4 / 3;\n}\n.c-event-landing__cta {\n  padding-block: var(--section-space-m);\n  background: var(--event-ink);\n  color: var(--event-on-accent);\n}\n.c-event-landing__cta-inner {\n  display: flex;\n  flex-wrap: wrap;\n  align-items: center;\n  justify-content: space-between;\n  gap: var(--space-l);\n  width: min(100%, var(--event-content-width));\n  margin-inline: auto;\n}\n.c-event-landing__cta-copy {\n  flex: 1 1 30ch;\n}\n.c-event-landing__cta .c-event-landing__section-title {\n  margin-block-end: 0;\n}\n.c-event-landing__cta .c-event-landing__button {\n  border-color: var(--event-paper);\n  background: var(--event-paper);\n  color: var(--event-ink);\n}\n.c-event-landing__cta .c-event-landing__button:hover {\n  border-color: var(--event-accent);\n  background: var(--event-accent);\n  color: var(--event-on-accent);\n}\n.c-event-landing__cta .c-event-landing__button:active {\n  border-color: var(--event-accent);\n  background: var(--event-accent);\n  color: var(--event-on-accent);\n}\n.c-event-landing__info-inner {\n  align-items: start;\n}\n.c-event-landing__info-media img {\n  aspect-ratio: 4 / 3;\n}\n.c-event-landing__body {\n  max-width: 68ch;\n  color: var(--event-muted);\n  font-size: var(--text-m);\n  line-height: 1.7;\n}\n.c-event-landing__participants {\n  display: grid;\n  grid-template-columns: repeat(2, minmax(0, 1fr));\n  gap: var(--space-s);\n  margin-block-start: var(--space-l);\n}\n.c-event-landing__pricing {\n  background: var(--event-surface);\n}\n.c-event-landing__pricing-inner {\n  align-items: start;\n}\n.c-event-landing__ticket-list {\n  display: grid;\n  gap: var(--space-s);\n  min-width: 0;\n}\n.c-event-landing__ticket {\n  display: grid;\n  grid-template-columns: minmax(0, 1fr) auto;\n  gap: var(--space-m);\n  align-items: center;\n  min-width: 0;\n  padding: var(--space-m);\n  border-block: 1px solid var(--event-muted);\n  background: var(--event-paper);\n}\n.c-event-landing__ticket-main {\n  display: grid;\n  gap: var(--space-xs);\n  min-width: 0;\n}\n.c-event-landing__ticket-title {\n  font-size: var(--h3);\n  line-height: 1.2;\n  overflow-wrap: break-word;\n  min-width: 0;\n}\n.c-event-landing__ticket-description {\n  color: var(--event-muted);\n  font-size: var(--text-s);\n  line-height: 1.5;\n}\n.c-event-landing__ticket-price {\n  font-size: var(--text-l);\n  font-weight: 600;\n  white-space: nowrap;\n}\n.c-event-landing__ticket-buy {\n  grid-column: 2;\n  justify-self: end;\n}\n.c-event-landing__empty {\n  padding: var(--space-m);\n  border-inline-start: 2px solid var(--event-accent);\n  color: var(--event-muted);\n}\n.c-event-landing__hero-inner:not(:has(.c-event-landing__hero-media)) {\n  grid-template-columns: minmax(0, 1fr);\n}\n.c-event-landing__info-inner:not(:has(.c-event-landing__info-media)) {\n  grid-template-columns: minmax(0, 1fr);\n}\n.c-event-landing__button--secondary {\n  background: transparent;\n  color: var(--event-ink);\n}\n.c-event-landing__button:hover {\n  color: var(--event-ink);\n}\n.c-event-landing__button:active {\n  color: var(--event-ink);\n}\n.c-event-landing__cta .c-event-landing__section-title {\n  color: var(--event-on-accent);\n}\n.c-event-landing__cta .c-event-landing__button:hover {\n  color: var(--event-ink);\n}\n.c-event-landing__cta .c-event-landing__button:active {\n  color: var(--event-ink);\n}\n.c-event-landing__cta .c-event-landing__button:focus-visible {\n  outline-color: var(--event-paper);\n}\n.c-event-landing__ticket-buy :is(a,button,input):focus-visible {\n  outline: 2px solid var(--event-ink);\n  outline-offset: var(--space-xs);\n}\n.c-event-landing__video :is(a,button):focus-visible {\n  outline: 2px solid var(--event-ink);\n  outline-offset: var(--space-xs);\n}\n.c-event-landing__info {\n  row-gap: var(--space-xl);\n}\n.c-event-landing__pricing-copy {\n  display: grid;\n  gap: var(--space-m);\n}\n.c-event-landing__ticket-price .price {\n  color: var(--event-ink);\n  opacity: 1;\n}\n.c-event-landing__ticket-price .price :is(del,ins,bdi,span) {\n  color: var(--event-ink);\n  opacity: 1;\n}\n.c-event-landing__ticket-buy {\n  grid-column: 1 / -1;\n  justify-self: start;\n}\n.c-event-landing__cta-inner {\n  flex-direction: row;\n}\n.c-event-landing__quote-text {\n  background: transparent;\n  border: 0;\n  padding: 0;\n  font: inherit;\n  font-size: var(--text-l);\n  line-height: 1.55;\n}\nimg.c-event-landing__info-media {\n  width: 100%;\n  aspect-ratio: 4 / 3;\n  object-fit: cover;\n}"
+      },
+      "parent": 0,
+      "children": [
+        "84743b",
+        "04930f",
+        "bff7f0",
+        "42506e",
+        "82cfc2",
+        "c20c57",
+        "1c1e53"
+      ]
+    },
+    {
+      "id": "84743b",
+      "name": "section",
+      "settings": {
+        "_cssClasses": "c-event-landing__hero"
+      },
+      "label": "01 Hero",
+      "parent": "03b28c",
+      "children": [
+        "cc1180"
+      ]
+    },
+    {
+      "id": "cc1180",
+      "name": "container",
+      "settings": {
+        "_cssClasses": "c-event-landing__hero-inner"
+      },
+      "label": "Inner Wrapper (Grid)",
+      "parent": "84743b",
+      "children": [
+        "b045a2",
+        "92db8f"
+      ]
+    },
+    {
+      "id": "b045a2",
+      "name": "div",
+      "settings": {
+        "_cssClasses": "c-event-landing__hero-copy"
+      },
+      "label": "Content Wrapper",
+      "parent": "cc1180",
+      "children": [
+        "8eb8f6",
+        "d18570",
+        "7d0a7b"
+      ]
+    },
+    {
+      "id": "8eb8f6",
+      "name": "heading",
+      "label": "{post_title}",
+      "settings": {
+        "_cssClasses": "c-event-landing__title",
+        "text": "{post_title}",
+        "tag": "h1"
+      },
+      "parent": "b045a2",
+      "children": []
+    },
+    {
+      "id": "d18570",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "_cssClasses": "c-event-landing__lede",
+        "text": "{post_excerpt}",
+        "tag": "p",
+        "_conditions": [
+          [
+            {
+              "id": "26cda5",
+              "key": "dynamic_data",
+              "dynamic_data": "{post_excerpt}",
+              "compare": "empty_not"
+            }
+          ]
+        ]
+      },
+      "parent": "b045a2",
+      "children": []
+    },
+    {
+      "id": "7d0a7b",
+      "name": "div",
+      "label": "Actions",
+      "settings": {
+        "_cssClasses": "c-event-landing__actions"
+      },
+      "parent": "b045a2",
+      "children": [
+        "132b68",
+        "bb4647"
+      ]
+    },
+    {
+      "id": "132b68",
+      "name": "button",
+      "label": "Ticket anchor",
+      "settings": {
+        "_cssClasses": "c-event-landing__button",
+        "text": "Bespreek jou plek",
+        "link": {
+          "type": "external",
+          "url": "#event-kaartjies"
+        },
+        "style": "primary"
+      },
+      "parent": "7d0a7b",
+      "children": []
+    },
+    {
+      "id": "bb4647",
+      "name": "button",
+      "label": "Information anchor",
+      "settings": {
+        "_cssClasses": "c-event-landing__button c-event-landing__button--secondary",
+        "text": "Meer oor die geleentheid",
+        "link": {
+          "type": "external",
+          "url": "#event-inligting"
+        }
+      },
+      "parent": "7d0a7b",
+      "children": []
+    },
+    {
+      "id": "92db8f",
+      "name": "div",
+      "settings": {
+        "_cssClasses": "c-event-landing__hero-media",
+        "_conditions": [
+          [
+            {
+              "id": "01464f",
+              "key": "featured_image",
+              "compare": "==",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "label": "Media Wrapper",
+      "parent": "cc1180",
+      "children": [
+        "59b948"
+      ]
+    },
+    {
+      "id": "59b948",
+      "name": "image",
+      "label": "Event featured image",
+      "settings": {
+        "image": {
+          "useDynamicData": "{featured_image}",
+          "size": "large"
+        },
+        "loading": "eager",
+        "caption": "none",
+        "_conditions": [
+          [
+            {
+              "id": "07de86",
+              "key": "featured_image",
+              "compare": "==",
+              "value": true
+            }
+          ]
+        ]
+      },
+      "parent": "92db8f",
+      "children": []
+    },
+    {
+      "id": "04930f",
+      "name": "section",
+      "label": "02 Date, place and time",
+      "settings": {
+        "_cssClasses": "c-event-landing__facts"
+      },
+      "parent": "03b28c",
+      "children": [
+        "c7ef1d"
+      ]
+    },
+    {
+      "id": "c7ef1d",
+      "name": "container",
+      "label": "Event facts",
+      "settings": {
+        "_cssClasses": "c-event-landing__facts-inner"
+      },
+      "parent": "04930f",
+      "children": [
+        "3b8d43",
+        "ce5fff",
+        "bcf287"
+      ]
+    },
+    {
+      "id": "3b8d43",
+      "name": "block",
+      "label": "Datum",
+      "settings": {
+        "_cssClasses": "c-event-landing__fact"
+      },
+      "parent": "c7ef1d",
+      "children": [
+        "8ca306",
+        "37d986",
+        "843d12"
+      ]
+    },
+    {
+      "id": "8ca306",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "_cssClasses": "c-event-landing__fact-label",
+        "text": "Datum",
+        "tag": "p"
+      },
+      "parent": "3b8d43",
+      "children": []
+    },
+    {
+      "id": "37d986",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "_cssClasses": "c-event-landing__fact-value",
+        "text": "{vg_event_start_date_af_year}",
+        "tag": "p",
+        "_conditions": [
+          [
+            {
+              "id": "f4b73a",
+              "key": "dynamic_data",
+              "dynamic_data": "{vg_event_start_date_af_year}",
+              "compare": "empty_not"
+            }
+          ]
+        ]
+      },
+      "parent": "3b8d43",
+      "children": []
+    },
+    {
+      "id": "843d12",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "_cssClasses": "c-event-landing__fact-value",
+        "text": "Datum word bevestig",
+        "tag": "p",
+        "_conditions": [
+          [
+            {
+              "id": "e92172",
+              "key": "dynamic_data",
+              "dynamic_data": "{vg_event_start_date_af_year}",
+              "compare": "empty"
+            }
+          ]
+        ]
+      },
+      "parent": "3b8d43",
+      "children": []
+    },
+    {
+      "id": "ce5fff",
+      "name": "block",
+      "label": "Plek",
+      "settings": {
+        "_cssClasses": "c-event-landing__fact"
+      },
+      "parent": "c7ef1d",
+      "children": [
+        "7b2fcd",
+        "f75e4b",
+        "f1125f"
+      ]
+    },
+    {
+      "id": "7b2fcd",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "_cssClasses": "c-event-landing__fact-label",
+        "text": "Plek",
+        "tag": "p"
+      },
+      "parent": "ce5fff",
+      "children": []
+    },
+    {
+      "id": "f75e4b",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "_cssClasses": "c-event-landing__fact-value",
+        "text": "{cf_event_location @fallback:'Plek word bevestig'}",
+        "tag": "p",
+        "_conditions": [
+          [
+            {
+              "id": "e0380b",
+              "key": "dynamic_data",
+              "dynamic_data": "{cf_event_location @fallback:'Plek word bevestig'}",
+              "compare": "empty_not"
+            }
+          ]
+        ]
+      },
+      "parent": "ce5fff",
+      "children": []
+    },
+    {
+      "id": "f1125f",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "_cssClasses": "c-event-landing__fact-value",
+        "text": "Plek word bevestig",
+        "tag": "p",
+        "_conditions": [
+          [
+            {
+              "id": "9ae4c4",
+              "key": "dynamic_data",
+              "dynamic_data": "{cf_event_location @fallback:'Plek word bevestig'}",
+              "compare": "empty"
+            }
+          ]
+        ]
+      },
+      "parent": "ce5fff",
+      "children": []
+    },
+    {
+      "id": "bcf287",
+      "name": "block",
+      "label": "Tyd",
+      "settings": {
+        "_cssClasses": "c-event-landing__fact"
+      },
+      "parent": "c7ef1d",
+      "children": [
+        "bc4fff",
+        "f83c50",
+        "d7081b"
+      ]
+    },
+    {
+      "id": "bc4fff",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "_cssClasses": "c-event-landing__fact-label",
+        "text": "Tyd",
+        "tag": "p"
+      },
+      "parent": "bcf287",
+      "children": []
+    },
+    {
+      "id": "f83c50",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "_cssClasses": "c-event-landing__fact-value",
+        "text": "{vg_event_start_time}",
+        "tag": "p",
+        "_conditions": [
+          [
+            {
+              "id": "31ab2f",
+              "key": "dynamic_data",
+              "dynamic_data": "{vg_event_start_time}",
+              "compare": "empty_not"
+            }
+          ]
+        ]
+      },
+      "parent": "bcf287",
+      "children": []
+    },
+    {
+      "id": "d7081b",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "_cssClasses": "c-event-landing__fact-value",
+        "text": "Tyd word bevestig",
+        "tag": "p",
+        "_conditions": [
+          [
+            {
+              "id": "24e3a8",
+              "key": "dynamic_data",
+              "dynamic_data": "{vg_event_start_time}",
+              "compare": "empty"
+            }
+          ]
+        ]
+      },
+      "parent": "bcf287",
+      "children": []
+    },
+    {
+      "id": "bff7f0",
+      "name": "section",
+      "settings": {
+        "_cssClasses": "c-event-landing__proof",
+        "_conditions": [
+          [
+            {
+              "id": "1b7db2",
+              "key": "dynamic_data",
+              "dynamic_data": "{acf_event_landing_testimonials}",
+              "compare": "empty_not"
+            }
+          ]
+        ]
+      },
+      "label": "03 Testimonial or social proof",
+      "parent": "03b28c",
+      "children": [
+        "5b1f20"
+      ]
+    },
+    {
+      "id": "5b1f20",
+      "name": "container",
+      "label": "Social proof",
+      "settings": {
+        "_cssClasses": "c-event-landing__section-inner"
+      },
+      "parent": "bff7f0",
+      "children": [
+        "919dac",
+        "f236bb"
+      ]
+    },
+    {
+      "id": "919dac",
+      "name": "heading",
+      "label": "Wat ander sê",
+      "settings": {
+        "_cssClasses": "c-event-landing__section-title",
+        "text": "Wat ander sê",
+        "tag": "h2"
+      },
+      "parent": "5b1f20",
+      "children": []
+    },
+    {
+      "id": "f236bb",
+      "name": "div",
+      "label": "Selected testimonials",
+      "settings": {
+        "_cssClasses": "c-event-landing__quotes"
+      },
+      "parent": "5b1f20",
+      "children": [
+        "e1d476"
+      ]
+    },
+    {
+      "id": "e1d476",
+      "name": "block",
+      "settings": {
+        "_cssClasses": "c-event-landing__quote",
+        "hasLoop": true,
+        "query": {
+          "objectType": "acf_event_landing_testimonials"
+        }
+      },
+      "label": "Testimonial Card Alpha (CSS)",
+      "parent": "f236bb",
+      "children": [
+        "05dafb",
+        "ea1674",
+        "026ea9"
+      ]
+    },
+    {
+      "id": "05dafb",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "_cssClasses": "c-event-landing__quote-text",
+        "text": "{acf_testimonial_quote}",
+        "tag": "blockquote"
+      },
+      "parent": "e1d476",
+      "children": []
+    },
+    {
+      "id": "ea1674",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "_cssClasses": "c-event-landing__quote-author",
+        "text": "{acf_testimonial_author_name}",
+        "tag": "p"
+      },
+      "parent": "e1d476",
+      "children": []
+    },
+    {
+      "id": "026ea9",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "_cssClasses": "c-event-landing__quote-role",
+        "text": "{acf_testimonial_author_role}",
+        "tag": "p",
+        "_conditions": [
+          [
+            {
+              "id": "60f344",
+              "key": "dynamic_data",
+              "dynamic_data": "{acf_testimonial_author_role}",
+              "compare": "empty_not"
+            }
+          ]
+        ]
+      },
+      "parent": "e1d476",
+      "children": []
+    },
+    {
+      "id": "42506e",
+      "name": "section",
+      "settings": {
+        "_cssClasses": "c-event-landing__gallery",
+        "_conditions": [
+          [
+            {
+              "id": "131d0c",
+              "key": "dynamic_data",
+              "dynamic_data": "{acf_event_landing_gallery}",
+              "compare": "empty_not"
+            }
+          ],
+          [
+            {
+              "id": "bef5ea",
+              "key": "dynamic_data",
+              "dynamic_data": "{acf_event_landing_video}",
+              "compare": "empty_not"
+            }
+          ]
+        ]
+      },
+      "label": "04 Media and gallery",
+      "parent": "03b28c",
+      "children": [
+        "576b5f"
+      ]
+    },
+    {
+      "id": "576b5f",
+      "name": "container",
+      "settings": {
+        "_cssClasses": "c-event-landing__section-inner"
+      },
+      "label": "Gallery Alpha Wrapper",
+      "parent": "42506e",
+      "children": [
+        "b17307",
+        "d41587",
+        "04d57f"
+      ]
+    },
+    {
+      "id": "b17307",
+      "name": "heading",
+      "label": "Kyk na die geleentheid",
+      "settings": {
+        "_cssClasses": "c-event-landing__section-title",
+        "text": "Kyk na die geleentheid",
+        "tag": "h2"
+      },
+      "parent": "576b5f",
+      "children": []
+    },
+    {
+      "id": "d41587",
+      "name": "image-gallery",
+      "settings": {
+        "_cssClasses": "c-event-landing__gallery-grid",
+        "items": {
+          "useDynamicData": "{acf_event_landing_gallery}",
+          "size": "large"
+        },
+        "columns": 3,
+        "columns:mobile_landscape": 2,
+        "columns:mobile_portrait": 1,
+        "imageRatio": "4/3",
+        "_conditions": [
+          [
+            {
+              "id": "62b2fd",
+              "key": "dynamic_data",
+              "dynamic_data": "{acf_event_landing_gallery}",
+              "compare": "empty_not"
+            }
+          ]
+        ]
+      },
+      "label": "Gallery Alpha",
+      "parent": "576b5f",
+      "children": []
+    },
+    {
+      "id": "04d57f",
+      "name": "video",
+      "label": "Optional event video",
+      "settings": {
+        "_cssClasses": "c-event-landing__video",
+        "videoType": "meta",
+        "useDynamicData": "{acf_event_landing_video}",
+        "iframeTitle": "Video oor {post_title}",
+        "_conditions": [
+          [
+            {
+              "id": "b0d2db",
+              "key": "dynamic_data",
+              "dynamic_data": "{acf_event_landing_video}",
+              "compare": "empty_not"
+            }
+          ]
+        ]
+      },
+      "parent": "576b5f",
+      "children": []
+    },
+    {
+      "id": "82cfc2",
+      "name": "section",
+      "label": "05 CTA",
+      "settings": {
+        "_cssClasses": "c-event-landing__cta"
+      },
+      "parent": "03b28c",
+      "children": [
+        "97e32e"
+      ]
+    },
+    {
+      "id": "97e32e",
+      "name": "container",
+      "label": "Booking CTA",
+      "settings": {
+        "_cssClasses": "c-event-landing__cta-inner"
+      },
+      "parent": "82cfc2",
+      "children": [
+        "e99c25",
+        "c57a56"
+      ]
+    },
+    {
+      "id": "e99c25",
+      "name": "div",
+      "label": "CTA copy",
+      "settings": {
+        "_cssClasses": "c-event-landing__cta-copy"
+      },
+      "parent": "97e32e",
+      "children": [
+        "eb31c7",
+        "539de2"
+      ]
+    },
+    {
+      "id": "eb31c7",
+      "name": "heading",
+      "label": "Maak tyd vir hierdie geleentheid",
+      "settings": {
+        "_cssClasses": "c-event-landing__section-title",
+        "text": "Maak tyd vir hierdie geleentheid",
+        "tag": "h2"
+      },
+      "parent": "e99c25",
+      "children": []
+    },
+    {
+      "id": "539de2",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "text": "Kies jou kaartjie en bespreek jou plek.",
+        "tag": "p"
+      },
+      "parent": "e99c25",
+      "children": []
+    },
+    {
+      "id": "c57a56",
+      "name": "button",
+      "label": "Ticket anchor",
+      "settings": {
+        "_cssClasses": "c-event-landing__button",
+        "text": "Sien kaartjies",
+        "link": {
+          "type": "external",
+          "url": "#event-kaartjies"
+        },
+        "style": "primary"
+      },
+      "parent": "97e32e",
+      "children": []
+    },
+    {
+      "id": "c20c57",
+      "name": "section",
+      "settings": {
+        "_cssClasses": "c-event-landing__info",
+        "_cssId": "event-inligting"
+      },
+      "label": "06 Info and participants",
+      "parent": "03b28c",
+      "children": [
+        "72bcf3",
+        "c8be83"
+      ]
+    },
+    {
+      "id": "72bcf3",
+      "name": "container",
+      "settings": {
+        "_cssClasses": "c-event-landing__info-inner"
+      },
+      "label": "Inner",
+      "parent": "c20c57",
+      "children": [
+        "47558c",
+        "01253f"
+      ]
+    },
+    {
+      "id": "47558c",
+      "name": "block",
+      "settings": {
+        "_cssClasses": "c-event-landing__info-copy"
+      },
+      "label": "Content Wrapper",
+      "parent": "72bcf3",
+      "children": [
+        "f996b0",
+        "6ce035",
+        "8cc3f0"
+      ]
+    },
+    {
+      "id": "f996b0",
+      "name": "heading",
+      "label": "Oor die geleentheid",
+      "settings": {
+        "_cssClasses": "c-event-landing__section-title",
+        "text": "Oor die geleentheid",
+        "tag": "h2"
+      },
+      "parent": "47558c",
+      "children": []
+    },
+    {
+      "id": "6ce035",
+      "name": "post-content",
+      "label": "Event description",
+      "settings": {
+        "_cssClasses": "c-event-landing__body"
+      },
+      "parent": "47558c",
+      "children": []
+    },
+    {
+      "id": "8cc3f0",
+      "name": "text",
+      "label": "Programme",
+      "settings": {
+        "_cssClasses": "c-event-landing__body",
+        "text": "{acf_event_landing_programme}",
+        "_conditions": [
+          [
+            {
+              "id": "bc4483",
+              "key": "dynamic_data",
+              "dynamic_data": "{acf_event_landing_programme}",
+              "compare": "empty_not"
+            }
+          ]
+        ]
+      },
+      "parent": "47558c",
+      "children": []
+    },
+    {
+      "id": "01253f",
+      "name": "image",
+      "settings": {
+        "_cssClasses": "c-event-landing__info-media",
+        "image": {
+          "useDynamicData": "{acf_event_landing_info_image}",
+          "size": "large"
+        },
+        "loading": "lazy",
+        "caption": "none",
+        "_conditions": [
+          [
+            {
+              "id": "f82bd0",
+              "key": "dynamic_data",
+              "dynamic_data": "{acf_event_landing_info_image}",
+              "compare": "empty_not"
+            }
+          ]
+        ]
+      },
+      "parent": "72bcf3",
+      "children": []
+    },
+    {
+      "id": "c8be83",
+      "name": "container",
+      "label": "Event people",
+      "settings": {
+        "_cssClasses": "c-event-landing__section-inner vg-event-participants-section",
+        "_conditions": [
+          [
+            {
+              "id": "ae43f3",
+              "key": "dynamic_data",
+              "dynamic_data": "{query_results_count:68ac55}",
+              "compare": ">",
+              "value": "0"
+            }
+          ]
+        ]
+      },
+      "parent": "c20c57",
+      "children": [
+        "fc02c2",
+        "bda917"
+      ]
+    },
+    {
+      "id": "fc02c2",
+      "name": "heading",
+      "label": "Ontmoet die mense",
+      "settings": {
+        "_cssClasses": "c-event-landing__section-title",
+        "text": "Ontmoet die mense",
+        "tag": "h2"
+      },
+      "parent": "c8be83",
+      "children": []
+    },
+    {
+      "id": "bda917",
+      "name": "div",
+      "label": "Participant cards",
+      "settings": {
+        "_cssClasses": "c-event-landing__participants"
+      },
+      "parent": "c8be83",
+      "children": [
+        "68ac55"
+      ]
+    },
+    {
+      "id": "68ac55",
+      "name": "block",
+      "label": "Event participant",
+      "settings": {
+        "_cssClasses": "vg-event-participation-query",
+        "hasLoop": true,
+        "query": {
+          "objectType": "post",
+          "post_type": [
+            "event_participation"
+          ],
+          "posts_per_page": 30
+        }
+      },
+      "parent": "bda917",
+      "children": [
+        "e857ee"
+      ]
+    },
+    {
+      "id": "e857ee",
+      "name": "block",
+      "cid": "194bba",
+      "settings": [],
+      "parent": "68ac55",
+      "children": []
+    },
+    {
+      "id": "1c1e53",
+      "name": "section",
+      "settings": {
+        "_cssClasses": "c-event-landing__pricing",
+        "_cssId": "event-kaartjies"
+      },
+      "label": "07 Pricing",
+      "parent": "03b28c",
+      "children": [
+        "3f11ee"
+      ]
+    },
+    {
+      "id": "3f11ee",
+      "name": "container",
+      "label": "Ticket options",
+      "settings": {
+        "_cssClasses": "c-event-landing__pricing-inner"
+      },
+      "parent": "1c1e53",
+      "children": [
+        "2f2906",
+        "324b76"
+      ]
+    },
+    {
+      "id": "2f2906",
+      "name": "div",
+      "label": "Pricing introduction",
+      "settings": {
+        "_cssClasses": "c-event-landing__pricing-copy"
+      },
+      "parent": "3f11ee",
+      "children": [
+        "7043db",
+        "ed5040"
+      ]
+    },
+    {
+      "id": "7043db",
+      "name": "heading",
+      "label": "Kies jou kaartjie",
+      "settings": {
+        "_cssClasses": "c-event-landing__section-title",
+        "text": "Kies jou kaartjie",
+        "tag": "h2"
+      },
+      "parent": "2f2906",
+      "children": []
+    },
+    {
+      "id": "ed5040",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "text": "Beskikbare kaartjies en pryse vir hierdie geleentheid.",
+        "tag": "p"
+      },
+      "parent": "2f2906",
+      "children": []
+    },
+    {
+      "id": "324b76",
+      "name": "div",
+      "label": "Ticket products",
+      "settings": {
+        "_cssClasses": "c-event-landing__ticket-list"
+      },
+      "parent": "3f11ee",
+      "children": [
+        "5db98d",
+        "e8982f"
+      ]
+    },
+    {
+      "id": "5db98d",
+      "name": "block",
+      "settings": {
+        "_cssClasses": "c-event-landing__ticket",
+        "hasLoop": true,
+        "query": {
+          "objectType": "post",
+          "post_type": [
+            "product"
+          ],
+          "post_status": [
+            "publish"
+          ],
+          "posts_per_page": 30,
+          "meta_query": [
+            {
+              "id": "441371",
+              "key": "_event_name",
+              "compare": "=",
+              "value": "{post_id}"
+            }
+          ],
+          "orderby": [
+            "menu_order",
+            "ID"
+          ],
+          "order": "ASC"
+        }
+      },
+      "label": "Pricing Card Delta",
+      "parent": "324b76",
+      "children": [
+        "5d5b15",
+        "f2b680",
+        "6fb1b7"
+      ]
+    },
+    {
+      "id": "5d5b15",
+      "name": "div",
+      "label": "Ticket details",
+      "settings": {
+        "_cssClasses": "c-event-landing__ticket-main"
+      },
+      "parent": "5db98d",
+      "children": [
+        "f5242d",
+        "c5b99f"
+      ]
+    },
+    {
+      "id": "f5242d",
+      "name": "heading",
+      "label": "{post_title}",
+      "settings": {
+        "_cssClasses": "c-event-landing__ticket-title",
+        "text": "{post_title}",
+        "tag": "h3"
+      },
+      "parent": "5d5b15",
+      "children": []
+    },
+    {
+      "id": "c5b99f",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "_cssClasses": "c-event-landing__ticket-description",
+        "text": "{post_excerpt}",
+        "tag": "p"
+      },
+      "parent": "5d5b15",
+      "children": []
+    },
+    {
+      "id": "f2b680",
+      "name": "product-price",
+      "label": "Live ticket price",
+      "settings": {
+        "_cssClasses": "c-event-landing__ticket-price"
+      },
+      "parent": "5db98d",
+      "children": []
+    },
+    {
+      "id": "6fb1b7",
+      "name": "button",
+      "label": "Native ticket product purchase link",
+      "settings": {
+        "_cssClasses": "c-event-landing__ticket-buy c-event-landing__button",
+        "text": "Kies kaartjie",
+        "link": {
+          "type": "external",
+          "url": "{post_url}"
+        }
+      },
+      "parent": "5db98d",
+      "children": []
+    },
+    {
+      "id": "e8982f",
+      "name": "text-basic",
+      "label": "Text",
+      "settings": {
+        "_cssClasses": "c-event-landing__empty",
+        "text": "Kaartjiebesonderhede word binnekort bevestig.",
+        "tag": "p",
+        "_conditions": [
+          [
+            {
+              "id": "5a9c4e",
+              "key": "dynamic_data",
+              "dynamic_data": "{query_results_count:5db98d}",
+              "compare": "==",
+              "value": "0"
+            }
+          ]
+        ]
+      },
+      "parent": "324b76",
+      "children": []
+    }
+  ]
+}

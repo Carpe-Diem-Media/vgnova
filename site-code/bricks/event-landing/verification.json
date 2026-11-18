@@ -1,0 +1,460 @@
+{
+  "task": "VGN-51",
+  "date": "2026-11-11",
+  "template_id": 1919,
+  "template_status": "draft",
+  "template_conditions": [],
+  "template_document_digest": "bccb440448eca2ff554d0543c0710df0d19da3b696a10a83164ff4660c0e02fc",
+  "acf_group_id": 1913,
+  "acf_group_key": "group_vg_event_landing",
+  "protected_template_id": 774,
+  "protected_template_full_record_sha256": "12ef6f3c08236441edf61ed3b22f393f5a0c42526b2afcf8f8eec77e98cca231",
+  "protected_template_comparison": "unchanged after final runtime writes",
+  "runtime_acf_source": "/home/jcschoeman96/projects/runtime/vgnova-acf-sources/c450475971de722378a1658157a3a24838e467f7/site-code/acf-json",
+  "runtime_acf_source_worktree": "clean; symlink unchanged",
+  "hallmark": {
+    "final": {
+      "summary": {
+        "fails": 0,
+        "reflex": 0,
+        "warns": 2,
+        "waived": 2,
+        "rejected": 0,
+        "answered": 0,
+        "dismissed": 0,
+        "notes": 0,
+        "files": 3,
+        "render": "ran"
+      },
+      "findings": [
+        {
+          "gate": "77",
+          "grade": "WARN",
+          "tier": "reflex",
+          "file": "/tmp/vgnova-event-542.html",
+          "line": 1,
+          "evidence": "[1440px] 1 sections, hero and footer included",
+          "fix": "A landing strip, not a page: six to nine sections, five on a thin prompt (layout.md § 3)"
+        },
+        {
+          "gate": "77",
+          "grade": "WARN",
+          "tier": "reflex",
+          "file": "/tmp/vgnova-event-763.html",
+          "line": 1,
+          "evidence": "[1440px] 1 sections, hero and footer included",
+          "fix": "A landing strip, not a page: six to nine sections, five on a thin prompt (layout.md § 3)"
+        },
+        {
+          "gate": "79",
+          "grade": "WAIVED",
+          "tier": "reflex",
+          "file": "/tmp/vgnova-event-542.html",
+          "line": 1,
+          "evidence": "[1440px] 405px of nothing between the hero's last content (y 495) and the fold",
+          "fix": "Centre the content in the screen and grow the visual or the head (layout.md § 6); never fill it with copy"
+        },
+        {
+          "gate": "79",
+          "grade": "WAIVED",
+          "tier": "reflex",
+          "file": "/tmp/vgnova-event-763.html",
+          "line": 1,
+          "evidence": "[1440px] 679px of nothing between the hero's last content (y 221) and the fold",
+          "fix": "Centre the content in the screen and grow the visual or the head (layout.md § 6); never fill it with copy"
+        }
+      ]
+    },
+    "fixture": {
+      "summary": {
+        "fails": 0,
+        "reflex": 0,
+        "warns": 1,
+        "waived": 1,
+        "rejected": 0,
+        "answered": 0,
+        "dismissed": 0,
+        "notes": 0,
+        "files": 2,
+        "render": "ran"
+      },
+      "findings": [
+        {
+          "gate": "77",
+          "grade": "WARN",
+          "tier": "reflex",
+          "file": "/tmp/vgnova-event-fixture.html",
+          "line": 1,
+          "evidence": "[1440px] 1 sections, hero and footer included",
+          "fix": "A landing strip, not a page: six to nine sections, five on a thin prompt (layout.md § 3)"
+        },
+        {
+          "gate": "79",
+          "grade": "WAIVED",
+          "tier": "reflex",
+          "file": "/tmp/vgnova-event-fixture.html",
+          "line": 1,
+          "evidence": "[1440px] 405px of nothing between the hero's last content (y 495) and the fold",
+          "fix": "Centre the content in the screen and grow the visual or the head (layout.md § 6); never fill it with copy"
+        }
+      ]
+    }
+  },
+  "interaction_checks": {
+    "status": "PASS",
+    "checks": 15,
+    "evidence": [
+      {
+        "target": "/tmp/vgnova-event-542.html",
+        "width": 320,
+        "scrollWidth": 320,
+        "h1Count": 1,
+        "unresolvedTags": false,
+        "brokenAnchors": [],
+        "focusStyle": "solid",
+        "focusWidth": 3,
+        "activeIsPrimary": true,
+        "primaryBottom": 453.109375,
+        "primaryRight": 216.578125,
+        "invisibleRoot": false,
+        "motionDurations": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "sectionCount": 5,
+        "htmlOverflow": "clip",
+        "bodyOverflow": "clip"
+      },
+      {
+        "target": "/tmp/vgnova-event-542.html",
+        "width": 375,
+        "scrollWidth": 375,
+        "h1Count": 1,
+        "unresolvedTags": false,
+        "brokenAnchors": [],
+        "focusStyle": "solid",
+        "focusWidth": 3,
+        "activeIsPrimary": true,
+        "primaryBottom": 469.859375,
+        "primaryRight": 217.8125,
+        "invisibleRoot": false,
+        "motionDurations": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "sectionCount": 5,
+        "htmlOverflow": "clip",
+        "bodyOverflow": "clip"
+      },
+      {
+        "target": "/tmp/vgnova-event-542.html",
+        "width": 991,
+        "scrollWidth": 991,
+        "h1Count": 1,
+        "unresolvedTags": false,
+        "brokenAnchors": [],
+        "focusStyle": "solid",
+        "focusWidth": 3,
+        "activeIsPrimary": true,
+        "primaryBottom": 308.125,
+        "primaryRight": 275.3125,
+        "invisibleRoot": false,
+        "motionDurations": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "sectionCount": 5,
+        "htmlOverflow": "clip",
+        "bodyOverflow": "clip"
+      },
+      {
+        "target": "/tmp/vgnova-event-542.html",
+        "width": 1280,
+        "scrollWidth": 1280,
+        "h1Count": 1,
+        "unresolvedTags": false,
+        "brokenAnchors": [],
+        "focusStyle": "solid",
+        "focusWidth": 3,
+        "activeIsPrimary": true,
+        "primaryBottom": 367.28125,
+        "primaryRight": 302.15625,
+        "invisibleRoot": false,
+        "motionDurations": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "sectionCount": 5,
+        "htmlOverflow": "clip",
+        "bodyOverflow": "clip"
+      },
+      {
+        "target": "/tmp/vgnova-event-542.html",
+        "width": 1920,
+        "scrollWidth": 1920,
+        "h1Count": 1,
+        "unresolvedTags": false,
+        "brokenAnchors": [],
+        "focusStyle": "solid",
+        "focusWidth": 3,
+        "activeIsPrimary": true,
+        "primaryBottom": 417.375,
+        "primaryRight": 507.328125,
+        "invisibleRoot": false,
+        "motionDurations": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "sectionCount": 5,
+        "htmlOverflow": "clip",
+        "bodyOverflow": "clip"
+      },
+      {
+        "target": "/tmp/vgnova-event-763.html",
+        "width": 320,
+        "scrollWidth": 320,
+        "h1Count": 1,
+        "unresolvedTags": false,
+        "brokenAnchors": [],
+        "focusStyle": "solid",
+        "focusWidth": 3,
+        "activeIsPrimary": true,
+        "primaryBottom": 153.78125,
+        "primaryRight": 216.578125,
+        "invisibleRoot": false,
+        "motionDurations": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "sectionCount": 5,
+        "htmlOverflow": "clip",
+        "bodyOverflow": "clip"
+      },
+      {
+        "target": "/tmp/vgnova-event-763.html",
+        "width": 375,
+        "scrollWidth": 375,
+        "h1Count": 1,
+        "unresolvedTags": false,
+        "brokenAnchors": [],
+        "focusStyle": "solid",
+        "focusWidth": 3,
+        "activeIsPrimary": true,
+        "primaryBottom": 154.78125,
+        "primaryRight": 217.8125,
+        "invisibleRoot": false,
+        "motionDurations": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "sectionCount": 5,
+        "htmlOverflow": "clip",
+        "bodyOverflow": "clip"
+      },
+      {
+        "target": "/tmp/vgnova-event-763.html",
+        "width": 991,
+        "scrollWidth": 991,
+        "h1Count": 1,
+        "unresolvedTags": false,
+        "brokenAnchors": [],
+        "focusStyle": "solid",
+        "focusWidth": 3,
+        "activeIsPrimary": true,
+        "primaryBottom": 196.171875,
+        "primaryRight": 275.3125,
+        "invisibleRoot": false,
+        "motionDurations": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "sectionCount": 5,
+        "htmlOverflow": "clip",
+        "bodyOverflow": "clip"
+      },
+      {
+        "target": "/tmp/vgnova-event-763.html",
+        "width": 1280,
+        "scrollWidth": 1280,
+        "h1Count": 1,
+        "unresolvedTags": false,
+        "brokenAnchors": [],
+        "focusStyle": "solid",
+        "focusWidth": 3,
+        "activeIsPrimary": true,
+        "primaryBottom": 215.625,
+        "primaryRight": 302.15625,
+        "invisibleRoot": false,
+        "motionDurations": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "sectionCount": 5,
+        "htmlOverflow": "clip",
+        "bodyOverflow": "clip"
+      },
+      {
+        "target": "/tmp/vgnova-event-763.html",
+        "width": 1920,
+        "scrollWidth": 1920,
+        "h1Count": 1,
+        "unresolvedTags": false,
+        "brokenAnchors": [],
+        "focusStyle": "solid",
+        "focusWidth": 3,
+        "activeIsPrimary": true,
+        "primaryBottom": 221.40625,
+        "primaryRight": 507.328125,
+        "invisibleRoot": false,
+        "motionDurations": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "sectionCount": 5,
+        "htmlOverflow": "clip",
+        "bodyOverflow": "clip"
+      },
+      {
+        "target": "/tmp/vgnova-event-fixture.html",
+        "width": 320,
+        "scrollWidth": 320,
+        "h1Count": 1,
+        "unresolvedTags": false,
+        "brokenAnchors": [],
+        "focusStyle": "solid",
+        "focusWidth": 3,
+        "activeIsPrimary": true,
+        "primaryBottom": 453.109375,
+        "primaryRight": 216.578125,
+        "invisibleRoot": false,
+        "motionDurations": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "sectionCount": 7,
+        "htmlOverflow": "clip",
+        "bodyOverflow": "clip"
+      },
+      {
+        "target": "/tmp/vgnova-event-fixture.html",
+        "width": 375,
+        "scrollWidth": 375,
+        "h1Count": 1,
+        "unresolvedTags": false,
+        "brokenAnchors": [],
+        "focusStyle": "solid",
+        "focusWidth": 3,
+        "activeIsPrimary": true,
+        "primaryBottom": 469.859375,
+        "primaryRight": 217.8125,
+        "invisibleRoot": false,
+        "motionDurations": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "sectionCount": 7,
+        "htmlOverflow": "clip",
+        "bodyOverflow": "clip"
+      },
+      {
+        "target": "/tmp/vgnova-event-fixture.html",
+        "width": 991,
+        "scrollWidth": 991,
+        "h1Count": 1,
+        "unresolvedTags": false,
+        "brokenAnchors": [],
+        "focusStyle": "solid",
+        "focusWidth": 3,
+        "activeIsPrimary": true,
+        "primaryBottom": 308.125,
+        "primaryRight": 275.3125,
+        "invisibleRoot": false,
+        "motionDurations": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "sectionCount": 7,
+        "htmlOverflow": "clip",
+        "bodyOverflow": "clip"
+      },
+      {
+        "target": "/tmp/vgnova-event-fixture.html",
+        "width": 1280,
+        "scrollWidth": 1280,
+        "h1Count": 1,
+        "unresolvedTags": false,
+        "brokenAnchors": [],
+        "focusStyle": "solid",
+        "focusWidth": 3,
+        "activeIsPrimary": true,
+        "primaryBottom": 367.28125,
+        "primaryRight": 302.15625,
+        "invisibleRoot": false,
+        "motionDurations": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "sectionCount": 7,
+        "htmlOverflow": "clip",
+        "bodyOverflow": "clip"
+      },
+      {
+        "target": "/tmp/vgnova-event-fixture.html",
+        "width": 1920,
+        "scrollWidth": 1920,
+        "h1Count": 1,
+        "unresolvedTags": false,
+        "brokenAnchors": [],
+        "focusStyle": "solid",
+        "focusWidth": 3,
+        "activeIsPrimary": true,
+        "primaryBottom": 417.375,
+        "primaryRight": 507.328125,
+        "invisibleRoot": false,
+        "motionDurations": [
+          0.01,
+          0.01,
+          0.01
+        ],
+        "sectionCount": 7,
+        "htmlOverflow": "clip",
+        "bodyOverflow": "clip"
+      }
+    ]
+  },
+  "runtime_checks": [
+    "542: title, excerpt, date/time/location, featured image resolve; no ticket products or optional proof/media",
+    "551: second event resolves independently; no ticket products or optional proof/media",
+    "763: exactly four linked products, native Woo prices and product-page booking links; no empty-ticket message",
+    "request-only fixture: all seven sections, selected testimonial, two gallery images and programme render; no fixture records written"
+  ],
+  "limits": [
+    "Draft remains unassigned; no event route activation",
+    "No checkout, payment, order or ticket issuance transaction performed",
+    "Optional video field schema/binding inspected; external playback not tested",
+    "Existing header/footer and unrelated global CSS are outside this template QA; initial broad scan inherited findings are recorded in the handoff",
+    "Source changes are awaiting external independent PR review and merge authorization"
+  ],
+  "source_checks": {
+    "command": "bash site-code/bin/check-source.sh",
+    "exit_code": 0,
+    "php_version": "8.5.4",
+    "php_syntax_files": 148,
+    "final_output": "PASS: two exact-commit builds, independent archive verification, negative cases, and cleanup",
+    "base_commit": "fcb5fd8bb954b20ea957690b986eb78908f733ca"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "source": "https://bricks.getframes.io/",
+  "templates": [
+    {
+      "id": 571,
+      "title": "Hero Charlie",
+      "permalink": "https://bricks.getframes.io/template/hero-charlie/"
+    },
+    {
+      "id": 237,
+      "title": "Testimonial Section Alpha",
+      "permalink": "https://bricks.getframes.io/template/testimonial-section-alpha/"
+    },
+    {
+      "id": 2395,
+      "title": "Gallery Section Alpha",
+      "permalink": "https://bricks.getframes.io/template/gallery-section-alpha/"
+    },
+    {
+      "id": 876,
+      "title": "Content Section Alpha",
+      "permalink": "https://bricks.getframes.io/template/content-section-alpha/"
+    },
+    {
+      "id": 13087,
+      "title": "Pricing Section Delta",
+      "permalink": "https://bricks.getframes.io/template/pricing-section-delta/"
+    }
+  ],
+  "adaptation": "Native Frames hierarchy adapted for event-context data and scoped ACSS. Date/place/time cards and CTA are native Bricks compositions. No remote sample claims, avatars, prices or notes retained."
+}

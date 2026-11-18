@@ -1,0 +1,88 @@
+{
+    "key": "group_vg_event_landing",
+    "title": "Event: Landing page",
+    "fields": [
+        {
+            "key": "field_vg_event_landing_testimonials",
+            "name": "event_landing_testimonials",
+            "label": "Event: Getuigskrifte",
+            "type": "relationship",
+            "required": 0,
+            "instructions": "",
+            "post_type": [
+                "testimonial"
+            ],
+            "filters": [
+                "search"
+            ],
+            "return_format": "id",
+            "min": 0,
+            "max": 3,
+            "elements": [],
+            "bidirectional": 0
+        },
+        {
+            "key": "field_vg_event_landing_gallery",
+            "name": "event_landing_gallery",
+            "label": "Event: Galery",
+            "type": "gallery",
+            "required": 0,
+            "instructions": "",
+            "return_format": "array",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all",
+            "min": 0,
+            "max": 12
+        },
+        {
+            "key": "field_vg_event_landing_video",
+            "name": "event_landing_video",
+            "label": "Event: Video URL",
+            "type": "url",
+            "required": 0,
+            "instructions": "Opsionele openbare YouTube- of Vimeo-skakel. Gebruik slegs media wat vir hierdie geleentheid goedgekeur is."
+        },
+        {
+            "key": "field_vg_event_landing_programme",
+            "name": "event_landing_programme",
+            "label": "Event: Program en praktiese inligting",
+            "type": "wysiwyg",
+            "required": 0,
+            "instructions": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_vg_event_landing_info_image",
+            "name": "event_landing_info_image",
+            "label": "Event: Inligtingsfoto",
+            "type": "image",
+            "required": 0,
+            "instructions": "",
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "tc_events"
+            }
+        ]
+    ],
+    "menu_order": 20,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "Optional editorial content for the separate Frames event landing template. Tickera owns schedule and venue; WooCommerce owns ticket prices.",
+    "show_in_rest": 0
+}
