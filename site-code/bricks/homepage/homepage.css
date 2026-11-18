@@ -1,0 +1,26 @@
+/* Hallmark · brand: Voelgoed (inspected runtime ACSS, 2026-11-11) · genre: editorial · shape: index-first · theme: existing Voelgoed · hero: Ledge · signature: seven canonical topics · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E3 S4 R5 V4 · weakest: E, native Bricks form layout requires rendered checks. */
+/* Critique: A compact discovery page keeps the seven topics visible. Existing header, footer, fonts and tokens are preserved. */
+/* Hallmark · waive 79 · Ledge hero with a topic grid immediately below · The approved homepage prioritizes seven-topic navigation over a full-screen search hero. */
+/* Hallmark · waive 44a · Ledge posture, primary search visible in the first viewport · Compact search preserves room for the homepage topic grid. */
+@scope (html:has(.c-homepage)) { html, :scope, body { overflow-x: clip; } }
+.c-homepage { color: var(--text-dark); background: var(--white); }
+.c-homepage :is(h1,h2,h3) { overflow-wrap: break-word; min-width: 0; text-wrap: balance; }
+.c-homepage :is(a,button,input):focus-visible { outline: 3px solid var(--base-ultra-dark); outline-offset: 4px; transition: none; }
+.c-homepage__topic-grid { list-style: none; }
+.c-homepage__topic:first-child { grid-column: span 2; background: var(--primary-light); }
+.c-homepage__topic-link { height: 100%; }
+.c-homepage__topic-link:hover { background: var(--base-light); }
+.c-homepage__search form { gap: var(--space-xs); align-items: end; flex-wrap: wrap; }
+.c-homepage__search label { font-size: var(--text-s); margin-block-end: 0; flex-basis: 100%; }
+.c-homepage__search input { min-width: 0; font-size: var(--text-m); padding-inline: var(--space-s); }
+.c-homepage__search button { min-height: 3rem; padding-inline: var(--space-m); }
+.c-homepage .c-homepage__feature .c-homepage__feature-inner:not(:has(img)) { grid-template-columns: minmax(0,1fr); }
+@media (max-width: 991px) { .c-homepage .c-homepage__topic-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .c-homepage .c-homepage__feature-inner { grid-template-columns: minmax(0,1fr); } }
+@media (max-width: 478px) { .c-homepage .c-homepage__topic-grid { grid-template-columns: minmax(0,1fr); } .c-homepage .c-homepage__topic:first-child { grid-column: auto; } .c-homepage .c-homepage__search form { flex-wrap: wrap; } .c-homepage .c-homepage__search button { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .c-homepage *, .c-homepage *::before, .c-homepage *::after { animation-duration: 0.01ms; transition-duration: 0.01ms; scroll-behavior: auto; } }
+
+
+.c-homepage__search input { flex: 1 1 12rem; width: auto; }
+.c-homepage__search button:active { background: var(--base-dark); }
+.c-homepage__search button:disabled { background: var(--base-light); color: var(--text-dark); cursor: not-allowed; }

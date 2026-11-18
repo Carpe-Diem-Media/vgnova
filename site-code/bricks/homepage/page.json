@@ -1,0 +1,713 @@
+{
+  "title": "Voelgoed Tuis",
+  "slug": "voelgoed-tuis",
+  "status": "draft",
+  "elements": [
+    {
+      "id": "hm0001",
+      "name": "block",
+      "parent": 0,
+      "children": [
+        "hm0002",
+        "hm0008",
+        "hm0021"
+      ],
+      "settings": {
+        "_cssClasses": "c-homepage",
+        "_width": "100%",
+        "_rowGap": "0",
+        "_cssCustom": "@scope (html:has(.c-homepage)) { html, :scope, body { overflow-x: clip; } }\n@media (max-width: 991px) { .c-homepage .c-homepage__topic-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } .c-homepage .c-homepage__feature-inner { grid-template-columns: minmax(0,1fr); } }\n@media (max-width: 478px) { .c-homepage .c-homepage__topic-grid { grid-template-columns: minmax(0,1fr); } .c-homepage .c-homepage__topic:first-child { grid-column: auto; } .c-homepage .c-homepage__search form { flex-wrap: wrap; } .c-homepage .c-homepage__search button { width: 100%; } }\n@media (prefers-reduced-motion: reduce) { .c-homepage *, .c-homepage *::before, .c-homepage *::after { animation-duration: 0.01ms; transition-duration: 0.01ms; scroll-behavior: auto; } }\n.c-homepage {\n  color: var(--text-dark);\n  background: var(--white);\n}\n.c-homepage :is(h1,h2,h3) {\n  overflow-wrap: break-word;\n  min-width: 0;\n  text-wrap: balance;\n}\n.c-homepage :is(a,button,input):focus-visible {\n  outline: 3px solid var(--base-ultra-dark);\n  outline-offset: 4px;\n  transition: none;\n}\n.c-homepage__topic-grid {\n  list-style: none;\n}\n.c-homepage__topic:first-child {\n  grid-column: span 2;\n  background: var(--primary-light);\n}\n.c-homepage__topic-link {\n  height: 100%;\n}\n.c-homepage__topic-link:hover {\n  background: var(--base-light);\n}\n.c-homepage__search form {\n  gap: var(--space-xs);\n  align-items: end;\n  flex-wrap: wrap;\n}\n.c-homepage__search label {\n  font-size: var(--text-s);\n  margin-block-end: 0;\n  flex-basis: 100%;\n}\n.c-homepage__search input {\n  min-width: 0;\n  font-size: var(--text-m);\n  padding-inline: var(--space-s);\n}\n.c-homepage__search button {\n  min-height: 3rem;\n  padding-inline: var(--space-m);\n}\n.c-homepage .c-homepage__feature .c-homepage__feature-inner:not(:has(img)) {\n  grid-template-columns: minmax(0,1fr);\n}\n.c-homepage__search input {\n  flex: 1 1 12rem;\n  width: auto;\n}\n.c-homepage__search button:active {\n  background: var(--base-dark);\n}\n.c-homepage__search button:disabled {\n  background: var(--base-light);\n  color: var(--text-dark);\n  cursor: not-allowed;\n}"
+      },
+      "label": "Voelgoed homepage"
+    },
+    {
+      "id": "hm0002",
+      "name": "section",
+      "parent": "hm0001",
+      "children": [
+        "hm0003"
+      ],
+      "settings": {
+        "_cssClasses": "c-homepage__hero",
+        "_padding": {
+          "top": "var(--space-xl)",
+          "bottom": "var(--space-l)",
+          "left": "var(--gutter)",
+          "right": "var(--gutter)"
+        },
+        "_background": {
+          "color": {
+            "raw": "var(--base-ultra-light)"
+          }
+        }
+      },
+      "label": "Hero Charlie · Search"
+    },
+    {
+      "id": "hm0003",
+      "name": "container",
+      "parent": "hm0002",
+      "children": [
+        "hm0004"
+      ],
+      "settings": {
+        "_width": "var(--content-width)",
+        "_widthMax": "100%",
+        "_rowGap": "var(--space-m)"
+      },
+      "label": "Hero inner"
+    },
+    {
+      "id": "hm0004",
+      "name": "block",
+      "parent": "hm0003",
+      "children": [
+        "hm0005",
+        "hm0006",
+        "hm0007"
+      ],
+      "settings": {
+        "_widthMax": "var(--width-xl)",
+        "_rowGap": "var(--space-s)"
+      },
+      "label": "Hero content"
+    },
+    {
+      "id": "hm0005",
+      "name": "heading",
+      "parent": "hm0004",
+      "children": [],
+      "settings": {
+        "text": "Waarmee kan ons jou help?",
+        "tag": "h1",
+        "_cssClasses": "c-homepage__title",
+        "_widthMax": "19ch",
+        "_typography": {
+          "font-size": "var(--h1)",
+          "line-height": "1.1"
+        }
+      },
+      "label": "Homepage heading"
+    },
+    {
+      "id": "hm0006",
+      "name": "text-basic",
+      "parent": "hm0004",
+      "children": [],
+      "settings": {
+        "text": "Vind raad en inspirasie vir jou lewe.",
+        "tag": "p",
+        "_typography": {
+          "font-size": "var(--text-l)"
+        }
+      },
+      "label": "Hero introduction"
+    },
+    {
+      "id": "hm0007",
+      "name": "search",
+      "parent": "hm0004",
+      "children": [],
+      "settings": {
+        "searchType": "input",
+        "showLabel": true,
+        "labelText": "Soek artikels",
+        "placeholder": "Waaroor wil jy lees?",
+        "buttonText": "Soek",
+        "buttonAriaLabel": "Soek artikels",
+        "additionalParams": [
+          {
+            "id": "hparam",
+            "paramKey": "post_type",
+            "paramValue": "post"
+          }
+        ],
+        "_cssClasses": "c-homepage__search",
+        "_width": "100%",
+        "_widthMax": "42rem",
+        "inputHeight": "3rem",
+        "inputWidth": "100%",
+        "inputBackgroundColor": {
+          "raw": "var(--white)"
+        },
+        "placeholderColor": {
+          "raw": "var(--text-dark)"
+        },
+        "inputBorder": {
+          "width": {
+            "top": "1",
+            "right": "1",
+            "bottom": "1",
+            "left": "1"
+          },
+          "style": "solid",
+          "color": {
+            "raw": "var(--base-dark)"
+          }
+        },
+        "iconBackgroundColor": {
+          "raw": "var(--base-ultra-dark)"
+        },
+        "iconTypography": {
+          "color": {
+            "raw": "var(--white)"
+          },
+          "font-size": "var(--text-m)"
+        },
+        "labelTypography": {
+          "color": {
+            "raw": "var(--text-dark)"
+          }
+        }
+      },
+      "label": "Search articles"
+    },
+    {
+      "id": "hm0008",
+      "name": "section",
+      "parent": "hm0001",
+      "children": [
+        "hm0009"
+      ],
+      "settings": {
+        "_cssClasses": "c-homepage__topics",
+        "_padding": {
+          "top": "var(--space-xl)",
+          "bottom": "var(--space-xl)",
+          "left": "var(--gutter)",
+          "right": "var(--gutter)"
+        },
+        "_attributes": [
+          {
+            "id": "hattr1",
+            "name": "aria-labelledby",
+            "value": "home-topics-heading"
+          }
+        ]
+      },
+      "label": "Feature Section Romeo · Topic discovery"
+    },
+    {
+      "id": "hm0009",
+      "name": "container",
+      "parent": "hm0008",
+      "children": [
+        "hm0010",
+        "hm0011",
+        "hm0016"
+      ],
+      "settings": {
+        "_width": "var(--content-width)",
+        "_widthMax": "100%",
+        "_rowGap": "var(--space-m)"
+      },
+      "label": "Topics inner"
+    },
+    {
+      "id": "hm0010",
+      "name": "heading",
+      "parent": "hm0009",
+      "children": [],
+      "settings": {
+        "tag": "h2",
+        "text": "Ontdek jou onderwerp",
+        "_cssId": "home-topics-heading",
+        "_typography": {
+          "font-size": "var(--h3)"
+        }
+      },
+      "label": "Topics heading"
+    },
+    {
+      "id": "hm0011",
+      "name": "block",
+      "parent": "hm0009",
+      "children": [
+        "hm0012"
+      ],
+      "settings": {
+        "tag": "ul",
+        "_cssClasses": "c-homepage__topic-grid",
+        "_display": "grid",
+        "_gridTemplateColumns": "repeat(4, minmax(0, 1fr))",
+        "_gridGap": "var(--space-s)",
+        "_padding": {
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0"
+        },
+        "_margin": {
+          "top": "0",
+          "right": "0",
+          "bottom": "0",
+          "left": "0"
+        },
+        "_gridTemplateColumns:tablet_portrait": "repeat(2, minmax(0, 1fr))",
+        "_gridTemplateColumns:mobile_portrait": "minmax(0, 1fr)"
+      },
+      "label": "Feature Romeo · Static topic grid"
+    },
+    {
+      "id": "hm0012",
+      "name": "block",
+      "parent": "hm0011",
+      "children": [
+        "hm0013"
+      ],
+      "settings": {
+        "tag": "li",
+        "hasLoop": true,
+        "query": {
+          "objectType": "term",
+          "taxonomy": [
+            "content_topic"
+          ],
+          "parent": "0",
+          "show_empty": true,
+          "number": 7,
+          "include": [
+            349,
+            363,
+            370,
+            377,
+            388,
+            396,
+            404
+          ],
+          "orderby": "include",
+          "order": "ASC"
+        },
+        "_cssClasses": "c-homepage__topic",
+        "_position": "relative",
+        "_background": {
+          "color": {
+            "raw": "var(--base-ultra-light)"
+          }
+        }
+      },
+      "label": "Canonical topic"
+    },
+    {
+      "id": "hm0013",
+      "name": "block",
+      "parent": "hm0012",
+      "children": [
+        "hm0014",
+        "hm0015"
+      ],
+      "settings": {
+        "tag": "a",
+        "link": {
+          "type": "external",
+          "url": "{term_url}"
+        },
+        "_cssClasses": "c-homepage__topic-link",
+        "_padding": {
+          "top": "var(--space-m)",
+          "right": "var(--space-m)",
+          "bottom": "var(--space-m)",
+          "left": "var(--space-m)"
+        },
+        "_heightMin": "8rem",
+        "_justifyContent": "space-between",
+        "_typography": {
+          "color": {
+            "raw": "var(--text-dark)"
+          },
+          "text-decoration": "none"
+        },
+        "_rowGap": "var(--space-s)"
+      },
+      "label": "Topic link"
+    },
+    {
+      "id": "hm0014",
+      "name": "heading",
+      "parent": "hm0013",
+      "children": [],
+      "settings": {
+        "tag": "h3",
+        "text": "{term_name}",
+        "_typography": {
+          "font-size": "var(--h3)"
+        }
+      },
+      "label": "Canonical topic name"
+    },
+    {
+      "id": "hm0015",
+      "name": "text-basic",
+      "parent": "hm0013",
+      "children": [],
+      "settings": {
+        "tag": "span",
+        "text": "Ontdek",
+        "_typography": {
+          "font-size": "var(--text-s)"
+        }
+      },
+      "label": "Topic action"
+    },
+    {
+      "id": "hm0016",
+      "name": "block",
+      "parent": "hm0009",
+      "children": [
+        "hm0017",
+        "hm0018",
+        "hm0019",
+        "hm0020"
+      ],
+      "settings": {
+        "tag": "nav",
+        "_cssClasses": "c-homepage__actions",
+        "_attributes": [
+          {
+            "id": "hattr2",
+            "name": "aria-label",
+            "value": "Wat wil jy doen?"
+          }
+        ],
+        "_display": "flex",
+        "_direction": "row",
+        "_flexWrap": "wrap",
+        "_padding": {
+          "top": "var(--space-m)",
+          "bottom": "0"
+        },
+        "_rowGap": "var(--space-m)",
+        "_columnGap": "var(--space-m)"
+      },
+      "label": "What do you want to do"
+    },
+    {
+      "id": "hm0017",
+      "name": "text-link",
+      "parent": "hm0016",
+      "children": [],
+      "settings": {
+        "text": "Lees",
+        "link": {
+          "type": "external",
+          "url": "http://localhost:10039/?post_type=post"
+        },
+        "_cssClasses": "c-homepage__action",
+        "_typography": {
+          "color": {
+            "raw": "var(--text-dark)"
+          },
+          "font-size": "var(--text-m)",
+          "text-decoration": "underline"
+        }
+      },
+      "label": "Lees"
+    },
+    {
+      "id": "hm0018",
+      "name": "text-link",
+      "parent": "hm0016",
+      "children": [],
+      "settings": {
+        "text": "Leer",
+        "link": {
+          "type": "external",
+          "url": "http://localhost:10039/kursusse/"
+        },
+        "_cssClasses": "c-homepage__action",
+        "_typography": {
+          "color": {
+            "raw": "var(--text-dark)"
+          },
+          "font-size": "var(--text-m)",
+          "text-decoration": "underline"
+        }
+      },
+      "label": "Leer"
+    },
+    {
+      "id": "hm0019",
+      "name": "text-link",
+      "parent": "hm0016",
+      "children": [],
+      "settings": {
+        "text": "Woon by",
+        "link": {
+          "type": "external",
+          "url": "http://localhost:10039/events/"
+        },
+        "_cssClasses": "c-homepage__action",
+        "_typography": {
+          "color": {
+            "raw": "var(--text-dark)"
+          },
+          "font-size": "var(--text-m)",
+          "text-decoration": "underline"
+        }
+      },
+      "label": "Woon by"
+    },
+    {
+      "id": "hm0020",
+      "name": "text-link",
+      "parent": "hm0016",
+      "children": [],
+      "settings": {
+        "text": "Winkel",
+        "link": {
+          "type": "external",
+          "url": "http://localhost:10039/produkte/"
+        },
+        "_cssClasses": "c-homepage__action",
+        "_typography": {
+          "color": {
+            "raw": "var(--text-dark)"
+          },
+          "font-size": "var(--text-m)",
+          "text-decoration": "underline"
+        }
+      },
+      "label": "Winkel"
+    },
+    {
+      "id": "hm0021",
+      "name": "block",
+      "parent": "hm0001",
+      "children": [
+        "hm0022"
+      ],
+      "settings": {
+        "_conditions": [
+          [
+            {
+              "id": "hcond1",
+              "key": "dynamic_data",
+              "dynamic_data": "{acf_home_featured_destination:value}",
+              "compare": "empty_not",
+              "value": ""
+            }
+          ]
+        ],
+        "_cssClasses": "c-homepage__feature-wrapper"
+      },
+      "label": "Optional homepage destination"
+    },
+    {
+      "id": "hm0022",
+      "name": "block",
+      "parent": "hm0021",
+      "children": [
+        "hm0030"
+      ],
+      "settings": {
+        "hasLoop": true,
+        "query": {
+          "objectType": "post",
+          "post_type": [
+            "any"
+          ],
+          "posts_per_page": 1,
+          "post__in": [
+            "{acf_home_featured_destination}"
+          ],
+          "has_password": false,
+          "disable_query_merge": true
+        },
+        "_cssClasses": "c-homepage__feature-loop"
+      },
+      "label": "Selected destination loop"
+    },
+    {
+      "id": "hm0030",
+      "name": "section",
+      "parent": "hm0022",
+      "children": [
+        "hm0023"
+      ],
+      "settings": {
+        "_cssClasses": "c-homepage__feature",
+        "_padding": {
+          "top": "var(--section-space-s)",
+          "bottom": "var(--section-space-s)",
+          "left": "var(--gutter)",
+          "right": "var(--gutter)"
+        },
+        "_background": {
+          "color": {
+            "raw": "var(--base-ultra-light)"
+          }
+        },
+        "_conditions": [
+          [
+            {
+              "id": "htype0",
+              "key": "dynamic_data",
+              "dynamic_data": "{post_type}",
+              "compare": "==",
+              "value": "page"
+            }
+          ],
+          [
+            {
+              "id": "htype1",
+              "key": "dynamic_data",
+              "dynamic_data": "{post_type}",
+              "compare": "==",
+              "value": "product"
+            }
+          ],
+          [
+            {
+              "id": "htype2",
+              "key": "dynamic_data",
+              "dynamic_data": "{post_type}",
+              "compare": "==",
+              "value": "mto-course"
+            }
+          ],
+          [
+            {
+              "id": "htype3",
+              "key": "dynamic_data",
+              "dynamic_data": "{post_type}",
+              "compare": "==",
+              "value": "tc_events"
+            }
+          ]
+        ]
+      },
+      "label": "Content Section Alpha · Valid featured destination"
+    },
+    {
+      "id": "hm0023",
+      "name": "container",
+      "parent": "hm0030",
+      "children": [
+        "hm0024",
+        "hm0029"
+      ],
+      "settings": {
+        "_width": "var(--content-width)",
+        "_widthMax": "100%",
+        "_cssClasses": "c-homepage__feature-inner",
+        "_display": "grid",
+        "_gridTemplateColumns": "repeat(2, minmax(0, 1fr))",
+        "_gridGap": "var(--space-l)",
+        "_alignItemsGrid": "center",
+        "_gridTemplateColumns:tablet_portrait": "minmax(0, 1fr)"
+      },
+      "label": "Featured inner"
+    },
+    {
+      "id": "hm0024",
+      "name": "block",
+      "parent": "hm0023",
+      "children": [
+        "hm0026",
+        "hm0027",
+        "hm0028"
+      ],
+      "settings": {
+        "_rowGap": "var(--space-m)"
+      },
+      "label": "Featured content"
+    },
+    {
+      "id": "hm0026",
+      "name": "heading",
+      "parent": "hm0024",
+      "children": [],
+      "settings": {
+        "text": "{post_title}",
+        "tag": "h2",
+        "_cssClasses": "c-homepage__feature-title"
+      },
+      "label": "Canonical featured title"
+    },
+    {
+      "id": "hm0027",
+      "name": "text-basic",
+      "parent": "hm0024",
+      "children": [],
+      "settings": {
+        "text": "{post_excerpt:20}",
+        "tag": "p",
+        "_conditions": [
+          [
+            {
+              "id": "hcond2",
+              "key": "dynamic_data",
+              "dynamic_data": "{post_excerpt}",
+              "compare": "empty_not",
+              "value": ""
+            }
+          ]
+        ]
+      },
+      "label": "Canonical featured excerpt"
+    },
+    {
+      "id": "hm0028",
+      "name": "button",
+      "parent": "hm0024",
+      "children": [],
+      "settings": {
+        "text": "Besigtig",
+        "link": {
+          "type": "external",
+          "url": "{post_url}"
+        },
+        "_cssGlobalClasses": [
+          "acss_import_btn--primary"
+        ],
+        "_background": {
+          "color": {
+            "raw": "var(--base-ultra-dark)"
+          }
+        },
+        "_typography": {
+          "color": {
+            "raw": "var(--white)"
+          }
+        },
+        "_heightMin": "3rem",
+        "_display": "inline-flex",
+        "_alignItems": "center",
+        "_justifyContent": "center"
+      },
+      "label": "Featured destination link"
+    },
+    {
+      "id": "hm0029",
+      "name": "image",
+      "parent": "hm0023",
+      "children": [],
+      "settings": {
+        "image": {
+          "useDynamicData": "{featured_image}",
+          "size": "large"
+        },
+        "loading": "lazy",
+        "caption": "none",
+        "tag": "figure",
+        "_conditions": [
+          [
+            {
+              "id": "hcond3",
+              "key": "featured_image",
+              "compare": "==",
+              "value": "1"
+            }
+          ]
+        ],
+        "_aspectRatio": "4/3",
+        "_objectFit": "cover",
+        "_width": "100%",
+        "_cssClasses": "c-homepage__feature-image"
+      },
+      "label": "Canonical featured image"
+    }
+  ],
+  "postId": 1926,
+  "documentDigest": "46189b717c23ef7253be7a43465fe438483008ecbda51de4dc7a7875bc74cf44"
+}

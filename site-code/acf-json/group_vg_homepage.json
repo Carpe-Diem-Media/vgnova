@@ -1,0 +1,53 @@
+{
+    "key": "group_vg_homepage",
+    "title": "Home: Featured destination",
+    "fields": [
+        {
+            "key": "field_vg_home_featured_destination",
+            "label": "Home: Featured destination",
+            "name": "home_featured_destination",
+            "type": "post_object",
+            "instructions": "Optional. Select one published public page, event, course or product. The homepage displays its title, image and permalink. Leave empty to hide the section. Password-protected and unpublished records are excluded.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page",
+                "tc_events",
+                "mto-course",
+                "product"
+            ],
+            "post_status": [
+                "publish"
+            ],
+            "taxonomy": "",
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 1,
+            "ui": 1,
+            "bidirectional": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page",
+                "operator": "==",
+                "value": "1926"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "Optional destination for the approved Voelgoed homepage draft. Separate from article featured-content settings.",
+    "show_in_rest": 0
+}

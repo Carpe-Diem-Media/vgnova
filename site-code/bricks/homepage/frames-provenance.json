@@ -1,0 +1,88 @@
+{
+  "source": "https://bricks.getframes.io/",
+  "templates": [
+    {
+      "id": 571,
+      "name": "hero-charlie",
+      "url": "https://bricks.getframes.io/template/hero-charlie/",
+      "sourceElementIds": [
+        "5a4634",
+        "5f67bf",
+        "ff9a84",
+        "3b437f",
+        "34a739",
+        "a37383",
+        "0cda1c",
+        "315b22",
+        "d0b0df",
+        "arpclc"
+      ],
+      "sourceSha256": "fb3df42e638cdef4a06b0bcab7d4d195f3a858f6aa4f087430504401726ca2a5"
+    },
+    {
+      "id": 16871,
+      "name": "feature-section-romeo",
+      "url": "https://bricks.getframes.io/template/feature-section-romeo/",
+      "sourceElementIds": [
+        "gehuog",
+        "pefijk",
+        "gnulix",
+        "dqvfcb",
+        "lyzcuj",
+        "qnlhgk",
+        "xzutqa",
+        "ekihju",
+        "vseaoy",
+        "ilddmd",
+        "dklbue",
+        "ogwbca",
+        "uuqqfo",
+        "wrkzdd",
+        "uzgsws",
+        "xgxbli",
+        "edoiar",
+        "uhzren",
+        "phcvdc",
+        "rwiykm",
+        "ysvces",
+        "uewsrw",
+        "wqopze",
+        "xrlipv",
+        "acoiea",
+        "odenif",
+        "rakqkx",
+        "zeqicw",
+        "ceijuh",
+        "ruqhqa",
+        "lmaezs",
+        "ctqvvb",
+        "mnhigi",
+        "yveitm",
+        "pwsihi",
+        "xxrrsk"
+      ],
+      "sourceSha256": "fad03f314fd119c489b519b35686bcc8e9d95ded4b7aa0b5c79027af22f58408"
+    },
+    {
+      "id": 876,
+      "name": "content-section-alpha",
+      "url": "https://bricks.getframes.io/template/content-section-alpha/",
+      "sourceElementIds": [
+        "xdfnwj",
+        "fovzod",
+        "tnaqaj",
+        "gbirpz",
+        "eiorol",
+        "kzsbfj",
+        "mqtnnc"
+      ],
+      "sourceSha256": "734bec9c8ff118d4fc848bd1b04e517318472a052c0396eb20601e7de6c19985"
+    }
+  ],
+  "adaptations": [
+    "Hero Charlie content tree: removed media and CTA buttons; added native search.",
+    "Feature Section Romeo: static canonical-term grid; removed stock images, expanding hover behavior and duplicate vertical labels.",
+    "Content Section Alpha: optional current-post query; canonical title, excerpt, image and permalink.",
+    "No remote global classes or theme styles imported. Existing ACSS primary button reused."
+  ]
+}

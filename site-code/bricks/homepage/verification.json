@@ -1,0 +1,284 @@
+{
+  "task": "VGN-52",
+  "scope": "New unassigned draft homepage body and page-scoped ACF configuration",
+  "postId": 1926,
+  "acfGroupId": 1928,
+  "documentDigest": "46189b717c23ef7253be7a43465fe438483008ecbda51de4dc7a7875bc74cf44",
+  "protectedTemplates": {
+    "1919": "4135d170581ef9f2ca9de3bda2a9039a8201613cff45504ab6db08a948376b1f",
+    "1859": "9951d92ecf7429c09bf14dd4ff29439260505d30d4437d56ba47b2b1e8eed28f",
+    "1838": "b60f05839500e25b1daf66de8d0d1262c25f8d9764b1442793765e19a0024916",
+    "1734": "8885169d7118efb46ffae4af8a16a6183a32ceaeb48828b9d0533037da24c071",
+    "1733": "275d9383a8c43fcadf83479aa112dc572308e52b4a1c2dd5febffc72d0cfd708",
+    "1172": "66516015627423dac577121e296b0c80660777a33f50041f2f43ec1e3d68b075",
+    "1162": "bde1c49c293ba760c9bf858d957fc99df898499e4908f25d85b023bd320952b6",
+    "1127": "9040c492b597377fbb1b91f078c0f531ff7270c97838d81035cb8746473a58e8",
+    "1090": "c5d5b8a60630c0e55cffc50f0f7850cd02fbd95acbb0995a8d7d4730ec950717",
+    "879": "69b30f396b0e0053932001611d61eeef8c5a89d8b6000adbd21910dda697a79c",
+    "774": "0a3385a5856723ca374405638e17e5bba0426e234f63cf7e8b356dd610b82c2a",
+    "773": "3e0fae4198d3e3e9dca7cdac42b6718bd72ccc828c876cba12764cb19b80cf77",
+    "772": "48bee5597300af5d363991f627ce753f227d25706da91ff847b30d038762d9d6",
+    "731": "195d1900bd7eb9885590319ff72e023305e4ea040741b867dabfc94ad2b220e9",
+    "690": "c24703de70930d81d45bfd2fbfb80188e323f19d14feb5b11179db3661888489",
+    "614": "d991559dc35941d92259805855810257c56fbddb3f7c396c324a2411c780cc5b",
+    "428": "d7fd90dfa37b001e60c8c593446c36338060241747089cab23a5635a52a925ee",
+    "372": "40772f095d3c85f9630f2d3139315573c690bc535e29615fae711b8c05862cb2",
+    "369": "494ab4f248cdcd6571ab0d065838f984b336383680d6694c50b5e4c56f388ef8",
+    "320": "783ac55c576563c0206ea9fdad5f7544138c1a093971e041f241f834108f0242",
+    "280": "28e519840d1dd3f7b97c16fc7c14b3f0a3fd2071aa2fe1c6c8766ef57ca3eb91",
+    "137": "541b9ff8b72d551d2e6a660aaeb10e54c9c1ad90c6e0cd72c8167c0c3d704b08",
+    "134": "87ccf17d51da9435fe50f4ddb9edb587931941ac3b9697ffb8db4d54a6023eb6",
+    "128": "887e5510150c7074401bf05dbb101c1392634a05ff7cb009a0a1fc9e839fddd1",
+    "124": "42c15839867ffaf366688660f311542ad642f422b5dda7395b66c3a79e96a7f8",
+    "120": "db5caea5959d254ccc6915e0bcb8cafbc8bb7b2c8a89cb34c42fa1a4e310b283",
+    "114": "2ae2b0abd580567a71cda2619442223a984270ddf603acfad69ff24c9995a3c9",
+    "113": "5725cecb77fc6ba526daaeaba537aa4acd1429a126d45ce131b058f2c510dbf7",
+    "80": "d24de2b06b9e0721e4ab1cb1f14b21cc3618e1bc6a1cd056a3978e652dca59a9",
+    "79": "6aa2d77ad7501f68c226325fd08b49fb64bedb94e8c45ac4c51346db56fb0d44",
+    "78": "269292dfc263c932bdaab07358531e4cd4f8c5449615637ce306adff0bd766e8",
+    "77": "5de07546f943b9986856506692ce77cb9644d47e49d75f1dc055cf98a281b4fb"
+  },
+  "protectedResources": {
+    "bricks_global_classes": "27f8b33ac85a0f4a2544a0fb9d46ae17a68e26dbc6e40f5ab53863a9183d7e0a",
+    "bricks_global_variables": "da1cb548eea9bc169df66b7b94ed626db78cb3c0cf0014a9b5292081a8d1731c",
+    "bricks_components": "9f73a25ca3f980792b4f307e732214c46a80616b478c59c45be22b28cc2aca20",
+    "bricks_theme_styles": "693235dd81589a20650b577e4e87606cf7d4f844c0ea07595a9bcc974a41e329",
+    "bricks_breakpoints": "fcbcf165908dd18a9e49f7ff27810176db8e9f63b4352213741664245224f8aa"
+  },
+  "protectedComparison": "All32template hashes and5globalresource hashes equal baseline",
+  "frontOptions": [
+    "posts",
+    "0"
+  ],
+  "selectedFeature": null,
+  "fixtureStates": [
+    {
+      "selection": 0,
+      "featuredSection": false,
+      "image": false,
+      "mode": "request-only ACF filter; no stored fixture"
+    },
+    {
+      "selection": 542,
+      "featuredSection": true,
+      "image": true,
+      "mode": "request-only ACF filter; no stored fixture"
+    },
+    {
+      "selection": 763,
+      "featuredSection": true,
+      "image": false,
+      "mode": "request-only ACF filter; no stored fixture"
+    },
+    {
+      "selection": 99999999,
+      "featuredSection": false,
+      "image": false,
+      "mode": "request-only ACF filter; no stored fixture"
+    },
+    {
+      "selection": 1904,
+      "featuredSection": false,
+      "image": false,
+      "mode": "request-only ACF filter; no stored fixture"
+    },
+    {
+      "selection": 375,
+      "featuredSection": false,
+      "image": false,
+      "mode": "request-only ACF filter; no stored fixture"
+    },
+    {
+      "selection": 846,
+      "featuredSection": true,
+      "image": false,
+      "mode": "request-only ACF filter; no stored fixture"
+    }
+  ],
+  "passwordGuard": "Published native WP_Query requires an empty password. A read-only derived-row fixture gave selected event542 a nonempty password for this request only; the native predicate excluded it and no featured section rendered.",
+  "routes": [
+    {
+      "path": "/?post_type=post",
+      "status": 200,
+      "knownResult": true
+    },
+    {
+      "path": "/onderwerp/nuwe-jy/",
+      "status": 200,
+      "knownResult": true
+    },
+    {
+      "path": "/onderwerp/geloof/",
+      "status": 200,
+      "knownResult": false
+    },
+    {
+      "path": "/onderwerp/self/",
+      "status": 200,
+      "knownResult": false
+    },
+    {
+      "path": "/onderwerp/werk-geld/",
+      "status": 200,
+      "knownResult": false
+    },
+    {
+      "path": "/onderwerp/ouerskap/",
+      "status": 200,
+      "knownResult": false
+    },
+    {
+      "path": "/onderwerp/huwelik/",
+      "status": 200,
+      "knownResult": false
+    },
+    {
+      "path": "/onderwerp/mensstories/",
+      "status": 200,
+      "knownResult": false
+    },
+    {
+      "path": "/?s=Dink+nuut&post_type=post",
+      "status": 200,
+      "knownResult": true
+    },
+    {
+      "path": "/?s=zzzxxyyhomepageunmatched&post_type=post",
+      "status": 200,
+      "knownResult": false
+    }
+  ],
+  "hallmark": {
+    "command": "node /home/jcschoeman96/.agents/skills/hallmark/scripts/sloplint.mjs /tmp/vgnova-home-final-render.html /tmp/vgnova-home-feature542.html /tmp/vgnova-home-feature763.html --render --genre editorial --json",
+    "summary": {
+      "fails": 0,
+      "reflex": 0,
+      "warns": 6,
+      "waived": 0,
+      "rejected": 0,
+      "answered": 0,
+      "dismissed": 0,
+      "notes": 0,
+      "files": 3,
+      "render": "ran"
+    },
+    "findings": [
+      {
+        "gate": "77",
+        "grade": "WARN",
+        "tier": "reflex",
+        "file": "/tmp/vgnova-home-feature542.html",
+        "line": 1,
+        "evidence": "[1440px] 1 sections, hero and footer included",
+        "fix": "A landing strip, not a page: six to nine sections, five on a thin prompt (layout.md § 3)"
+      },
+      {
+        "gate": "77",
+        "grade": "WARN",
+        "tier": "reflex",
+        "file": "/tmp/vgnova-home-feature763.html",
+        "line": 1,
+        "evidence": "[1440px] 1 sections, hero and footer included",
+        "fix": "A landing strip, not a page: six to nine sections, five on a thin prompt (layout.md § 3)"
+      },
+      {
+        "gate": "77",
+        "grade": "WARN",
+        "tier": "reflex",
+        "file": "/tmp/vgnova-home-final-render.html",
+        "line": 1,
+        "evidence": "[1440px] 1 sections, hero and footer included",
+        "fix": "A landing strip, not a page: six to nine sections, five on a thin prompt (layout.md § 3)"
+      },
+      {
+        "gate": "F23",
+        "grade": "WARN",
+        "tier": "finish",
+        "file": "/tmp/vgnova-home-feature542.html",
+        "line": 1,
+        "evidence": "the document lacks a meta description",
+        "fix": "Name the language, title the page in its own words, and describe it in one sentence for link previews"
+      },
+      {
+        "gate": "F23",
+        "grade": "WARN",
+        "tier": "finish",
+        "file": "/tmp/vgnova-home-feature763.html",
+        "line": 1,
+        "evidence": "the document lacks a meta description",
+        "fix": "Name the language, title the page in its own words, and describe it in one sentence for link previews"
+      },
+      {
+        "gate": "F23",
+        "grade": "WARN",
+        "tier": "finish",
+        "file": "/tmp/vgnova-home-final-render.html",
+        "line": 1,
+        "evidence": "the document lacks a meta description",
+        "fix": "Name the language, title the page in its own words, and describe it in one sentence for link previews"
+      }
+    ],
+    "scope": "New body markup and generated styles; exact inherited styles loaded externally for runtime checks",
+    "warnDisposition": {
+      "77": "Outer Bricks wrapper counted1; approved compact decision-page composition has2mainsections and1optionalfeature. No catalogue expansion authorized.",
+      "F23": "Local draft harness lacks final SEO description; owner metadata review remains before activation."
+    }
+  },
+  "interactionCheck": {
+    "command": "node site-code/bricks/homepage/verify-render.mjs /tmp/vgnova-home-final-render.html /tmp/vgnova-home-feature542.html /tmp/vgnova-home-feature763.html",
+    "result": "PASS 15 viewport contexts and 2 native search submissions",
+    "widths": [
+      320,
+      375,
+      991,
+      1280,
+      1920
+    ]
+  },
+  "sourceCheck": {
+    "command": "bash site-code/bin/check-source.sh",
+    "result": "PASS exit0"
+  },
+  "gaps": [
+    "Full authenticated frontend/editor save roundtrip has not been exercised.",
+    "Existing header/footer and inherited global CSS are outside the new body verification scope.",
+    "Owner SEO metadata and optional campaign selection remain before activation.",
+    "ExactPRCI and external independent review remain before any merge recommendation."
+  ],
+  "assessment": {
+    "role": "Author self-assessment",
+    "taskType": "IMPLEMENTATION",
+    "acceptance": "PASS 8/8 approved draft-scope criteria; full frontend/editor roundtrip remains outside observed verification",
+    "implementationScore": 9,
+    "breakdown": {
+      "requirements": 4,
+      "observedVerification": 2,
+      "correctnessArchitectureRisk": 2,
+      "handoff": 1
+    },
+    "confidencePercent": 90,
+    "verificationStatus": "PARTIALLY_VERIFIED",
+    "reason": "Saved draft body and configuration verified; full authenticated frontend/editor roundtrip and owner final SEO metadata remain.",
+    "mergeReadiness": "NOT_VERIFIED_FOR_MERGE"
+  },
+  "protectedDestinationCheck": {
+    "fixture": "request-only derived row with nonempty password; no persisted change",
+    "applied": true,
+    "guard": true,
+    "featureVisible": false
+  },
+  "nativeSearchSubmissions": [
+    {
+      "term": "Dink nuut",
+      "url": "http://localhost:10039/?s=Dink+nuut&post_type=post",
+      "result": "PASS",
+      "mainText": "[VG QA] Dink nuut en beweeg vorentoe\nNovember 5, 2026\nTYDELIKE TOETSINHOUD — SLEGS VIR LOCALWP. Elke nuwe begin bestaan uit klein stappe. Kies vandag een eenvoudige verandering wat jy…"
+    },
+    {
+      "term": "zzzxxyyhomepageunmatched",
+      "url": "http://localhost:10039/?s=zzzxxyyhomepageunmatched&post_type=post",
+      "result": "PASS",
+      "mainText": "Nothing found."
+    }
+  ]
+}
