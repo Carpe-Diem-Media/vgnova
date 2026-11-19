@@ -1,8 +1,11 @@
 # VG Nova — Phase 0 baseline
 
-**Version:** 0.1.0  
-**Inspection date:** 2026-11-19, Africa/Johannesburg  
-**State:** PARTIAL; GitHub and Plane directly inspected, LocalWP runtime not directly reached from this ChatGPT connector context.  
+**Version:** 0.1.0
+
+**Inspection date:** 2026-11-19, Africa/Johannesburg
+
+**State:** PARTIAL; GitHub and Plane directly inspected, LocalWP runtime not directly reached from this ChatGPT connector context.
+
 **Tracking:** [VGN-55](https://app.plane.so/symphony-development/browse/VGN-55).
 
 ## 1. Current authoritative GitHub facts — SOURCE_CONFIRMED
