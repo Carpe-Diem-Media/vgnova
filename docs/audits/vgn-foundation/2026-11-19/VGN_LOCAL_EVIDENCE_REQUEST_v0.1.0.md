@@ -1,9 +1,13 @@
 # T3Code local agent — VG Nova foundation evidence request
 
-**Version:** 0.1.0  
-**Date:** 2026-11-19  
-**Scope:** Current on-host LocalWP audit of **`vgnova-local-10039` ONLY**.  
-**Companion tracking:** [VGN-55](https://app.plane.so/symphony-development/browse/VGN-55).  
+**Version:** 0.1.0
+
+**Date:** 2026-11-19
+
+**Scope:** Current on-host LocalWP audit of **`vgnova-local-10039` ONLY**.
+
+**Companion tracking:** [VGN-55](https://app.plane.so/symphony-development/browse/VGN-55).
+
 **Status:** READ-ONLY EVIDENCE REQUEST; NOT authority for runtime writes.
 
 ## Mission and mandatory boundary
