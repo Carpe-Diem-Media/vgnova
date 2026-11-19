@@ -36,7 +36,7 @@ LOCAL_DB_SOCKET="/home/jcschoeman96/.config/Local/run/nAZNpFs99/mysql/mysqld.soc
 git -C "$REPO_ROOT" rev-parse HEAD
 git -C "$REPO_ROOT" branch --show-current
 git -C "$REPO_ROOT" status --porcelain=v1
-git -C "$REPO_ROOT" remote -v
+git -C "$REPO_ROOT" remote  # Names only; do not print remote URLs that may embed tokens.
 
 # Confirm binaries and target paths first; no WP bootstrap from these commands.
 command -v php8.5
