@@ -1,8 +1,11 @@
 # VG Nova — Phase 0 contradiction and drift register
 
-**Version:** 0.1.0  
-**Date:** 2026-11-19, Africa/Johannesburg  
-**Scope:** Reconciliation of observed GitHub/Plane records and earlier documentation only. No fresh LocalWP inspection.  
+**Version:** 0.1.0
+
+**Date:** 2026-11-19, Africa/Johannesburg
+
+**Scope:** Reconciliation of observed GitHub/Plane records and earlier documentation only. No fresh LocalWP inspection.
+
 **Tracking:** [VGN-55](https://app.plane.so/symphony-development/browse/VGN-55).
 
 Status legend: `RESOLVED_AS_HISTORICAL` = chronology reconciles records, but current runtime may still need inspection; `OPEN_EVIDENCE` = unverified, not a proven defect; `ACTIVE_CONFLICT` = current authoritative observations genuinely disagree.
