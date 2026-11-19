@@ -1,8 +1,11 @@
 # VG Nova — Foundation audit phase execution ledger
 
-**Version:** 0.1.0  
-**As-of:** 2026-11-19, Africa/Johannesburg  
-**Tracking:** [VGN-55](https://app.plane.so/symphony-development/browse/VGN-55).  
+**Version:** 0.1.0
+
+**As-of:** 2026-11-19, Africa/Johannesburg
+
+**Tracking:** [VGN-55](https://app.plane.so/symphony-development/browse/VGN-55).
+
 **Baseline:** GitHub protected `main` `454346d9e6a2c36864a4bbd944e52596f16e09c1`.
 
 ## Status rules
