@@ -5,7 +5,7 @@
 **Created:** 21 November 2026 (Africa/Johannesburg)  
 **State:** `DISCOVERY — IN PROGRESS` (business requirements confirmed; implementation not approved)  
 **Latest accepted interview answer:** `S1-Q09A` — editorially defined season starts and endings  
-**Next interview question:** `S1-Q09B` — episode numbering across seasons  
+**Next interview question:** `S1-Q09B` — business rule for defining season boundaries and closure  
 **Authoritative business informant:** Voelgoed business owner (responses recorded in this conversation)  
 **Persistent tracker:** [Plane VGN-56](https://app.plane.so/symphony-development/browse/VGN-56)  
 **Historical evidence:** [November 2025 Google Drive planning folder](https://drive.google.com/drive/folders/1Dqnkm83XBbWm3QTNMLjUDfXf_DpkVEDt)  
@@ -447,54 +447,59 @@ No runtime test, implementation, new content type, migration or merge has been p
 
 ---
 
-## 10. Version 0.1.3 — Round 9A: editorially defined formal season boundaries
+## 10. Version 0.1.3 — Round 9A confirmed answer (append-only amendment)
 
 **Recorded:** 21 November 2026 (Africa/Johannesburg)  
-**Entry ID:** `S1-Q09A`  
-**Evidence class:** `OWNER-CONFIRMED — TO-BE BUSINESS REQUIREMENT`  
-**Implementation class:** `TECHNICALLY UNVERIFIED`  
-**Supersession:** Closes the earlier S1-Q09A OPEN classification only; retains all historical questions, answers and findings.
+**Question ID:** S1-Q09A  
+**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENT, not technical verification.  
+**Supersession:** S1-Q09A previously marked open in v0.1.2 is now answered; preserve that earlier question text as historical record.
 
-### 10.1 Question and verbatim owner response
+### 10.1 Exact question and owner response
 
-**Question asked:** "What determines when a Twintig Twintig season begins and ends?"
+**Question:** "What determines when a Twintig Twintig season begins and ends?"
 
-**Options presented:** Editorially defined boundaries; calendar-based boundaries; production-based planned episode count; flexible boundaries depending on programme or production; another arrangement.
+**Options offered:** Editorially defined; calendar-based; production-based/episode count; flexible by programme; other.
+
+**Owner-submitted answer:**
 
 > VG Nova Grilling Session 1 — Round 9A: Formal season boundaries.  
 > Owner-selected boundary rule: Editorially defined season starts and endings.  
 > Record this as an owner-confirmed business requirement in VGN-56 and the next cumulative versioned Markdown register. Keep technical implementation unverified, preserve earlier decisions, and continue with one focused question.
 
-**Confirmed target:** The editorial team determines when a Twintig Twintig season begins and ends. Formal season boundaries must not be forced by a calendar year or fixed episode count. Calendar dates and planned episode counts may be useful metadata, but neither is confirmed as a mandatory boundary trigger. This is not confirmation that other Voelgoed LIVE programmes must follow identical rules.
+**Owner-confirmed rule:** The Twintig Twintig editorial/production team determines when each formal season starts and ends. Season boundaries must not be inferred automatically solely from the calendar year or a fixed episode count. This is a choice of editorial authority, not yet a defined WordPress permission role, UI action, or technical workflow.
 
-### 10.2 Requirements and unresolved lifecycle semantics
+### 10.2 Explicit lifecycle governance — open design decisions
 
-| Aspect | Classification | Statement |
+The season is a meaningful lifecycle concept and must ultimately have explicitly defined **states, transitions, guards, side effects and terminal states**. The following is a DESIGN CHECKLIST, not an approved enum or implementation:
+
+- **Candidate states to validate:** planned/draft, active/open, completed/closed, and possibly cancelled/archived. Exact terminology and whether these are needed remain undecided.
+- **Candidate transitions to validate:** create season; publish/open season; editorially close season; reopen/correct a closed season (if allowed); cancel/archive.
+- **Candidate transition guards to validate:** who may authorise a start/end; whether a season can overlap with another; what happens when the season contains scheduled, draft, or unpublished episodes; whether published episodes may be reassigned.
+- **Candidate side effects to validate:** programme hub season navigation, latest-episode selection, archive grouping, ordering and numbering, stable permalink and SEO, and whether closing a season changes public access (no such change authorised).
+- **Terminal states to decide:** does closed mean terminal? Can editors reopen a season for corrections? How do cancellation, removal and restoration affect episode visibility?
+
+### 10.3 Requirements and technical verification separation
+
+| ID | Classification | Finding / needed check |
 |---|---|---|
-| Season identity | OWNER-CONFIRMED TO-BE (S1-Q09) | Distinct formal seasons and explicit episode numbering. |
-| Season boundaries | OWNER-CONFIRMED TO-BE (S1-Q09A) | Editorially determined starts and endings. |
-| Current production data | UNVERIFIED | No claim that existing seasons or season management already follow this target. |
-| Current VG Nova implementation | UNVERIFIED | Inspect canonical ACF definitions, programme/episode relationships and Bricks queries before proposing changes. |
-| Season lifecycle | DESIGN-CANDIDATE / OPEN | Exact states, transitions, authorised roles, closure guards, reopen policy and terminal semantics remain undecided. |
-| Episode numbering | OPEN | Whether numbering resets each season or runs across the programme remains unresolved. |
+| F-19 | OWNER-CONFIRMED TO-BE | Twintig Twintig formal season boundaries are editorially decided, not automatically determined by year or episode quota. |
+| F-20 | OPEN BUSINESS RULE | Decide whether episode numbering restarts at 1 in each new season, runs continuously across seasons, or uses another scheme. |
+| TV-14 | RUNTIME UNVERIFIED | Inspect current VG Nova programme/season/episode entities, ACF fields and Bricks templates for independent editorial start/end controls. |
+| TV-15 | RUNTIME UNVERIFIED | Verify draft, scheduled and published episodes stay linked to the correct season and display consistently after season closing, reopening or changes. |
+| TV-16 | GOVERNANCE UNDECIDED | Identify editorial permission/authority, collision rules, numbering uniqueness, season archive URLs and the permitted season lifecycle. |
 
-For later design review, evaluate candidate season states planned, active, closed and archived, with create, start, close, reopen and archive transitions. Define who can perform them, whether future dates are scheduled or informational, whether overlapping active seasons are permitted, how published/scheduled episodes constrain closure, whether closed seasons can accept corrections or bonus episodes, and what the terminal state means. Define side effects on discovery, episode assignment and the programme archive. These are questions and design candidates, not approved state names or lifecycle rules. Closing a season must not be assumed to unpublish its episodes; replay visibility needs its own explicit policy. No new data structure or runtime mutation is authorised.
+**No implementation approval:** Do not add season CPTs, taxonomy terms, ACF field definitions, custom code, migration logic, redirects or production changes based solely on this answer. Inspect existing architecture first.
 
-### 10.3 Additional findings and verification obligations
+### 10.4 Next single focused owner question — S1-Q09B (OPEN)
 
-| ID | Classification | Finding |
-|---|---|---|
-| F-19 | OWNER-CONFIRMED TO-BE | Editorial decisions determine formal season starts and endings, rather than mandatory calendar or fixed-count boundaries. |
-| F-20 | TECHNICALLY UNVERIFIED | Whether existing VG Nova configuration supports editorial season creation, closure and episode association remains unknown. |
-| TV-14 | UNVERIFIED | Inspect existing season-related content, fields, taxonomies and relationships against manually controlled boundaries. Reuse existing authorities where feasible. |
-| TV-15 | UNVERIFIED | After lifecycle decisions and engineering approval, independently test opening/closing, guard failures, authorised corrections, published episode retention and programme archive consistency. |
-| S1-Q09B | OPEN — NEXT | Does episode numbering restart at 1 for each season or continue across the programme? |
-| S1-Q10 | OPEN — FOLLOWING | Original episode metadata question remains on the backlog. |
+**Does Twintig Twintig episode numbering restart at Episode 1 in every season, continue globally across all seasons, or follow another numbering convention?**
 
-### 10.4 Revision history — appended amendment
+This is separate from the confirmed editorial authority to choose season boundaries. Following this answer, return to the wider interviewing roadmap (original S1-Q10 episode metadata/people and publishing questions), avoiding unnecessary tangents.
+
+### 10.5 Append-only revision entry
 
 | Version | Date | Change | Supersedes |
 |---|---|---|---|
-| 0.1.3 | 2026-11-21 | Append S1-Q09A owner answer, findings F-19–F-20, verification TV-14–TV-15, unresolved lifecycle details and next S1-Q09B | Previous S1-Q09A OPEN status only; earlier history retained. |
+| 0.1.3 | 2026-11-21 | Confirmed S1-Q09A editorial season start/end boundaries; added F-19–F-20, TV-14–TV-16, unresolved season-lifecycle rules and S1-Q09B numbering question. | Closes previous S1-Q09A OPEN status while retaining every earlier answer. |
 
 **End of v0.1.3. Next owner question: S1-Q09B (episode numbering across seasons).**
