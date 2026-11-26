@@ -1,14 +1,14 @@
 # VG Nova — Business Grilling & Requirements Register
 
-**Document version:** 0.2.6  
-**Filename:** `VGNOVA_BUSINESS_GRILLING_REQUIREMENTS_REGISTER_v0.2.6.md`  
-**Created:** 21 November 2026 (Africa/Johannesburg)  
-**State:** `DISCOVERY — IN PROGRESS` (business requirements confirmed; implementation not approved)  
-**Latest accepted interview answers:** `EV-01–EV-05` — first-pass Events and Ticketing checkpoint  
-**Next interview domain:** Programmes and Challenges (breadth-first); S2-Q01 shared identity and S1-Q12B broadcast override remain OPEN / DEFERRED.  
-**Authoritative business informant:** Voelgoed business owner (responses recorded in this conversation)  
-**Persistent tracker:** [Plane VGN-56](https://app.plane.so/symphony-development/browse/VGN-56)  
-**Historical evidence:** [November 2025 Google Drive planning folder](https://drive.google.com/drive/folders/1Dqnkm83XBbWm3QTNMLjUDfXf_DpkVEDt)  
+**Document version:** 0.2.6
+**Filename:** `VGNOVA_BUSINESS_GRILLING_REQUIREMENTS_REGISTER_v0.2.6.md`
+**Created:** 21 November 2026 (Africa/Johannesburg)
+**State:** `DISCOVERY — IN PROGRESS` (business requirements confirmed; implementation not approved)
+**Latest accepted interview answers:** `EV-01–EV-05` — first-pass Events and Ticketing checkpoint
+**Next interview domain:** Programmes and Challenges (breadth-first); S2-Q01 shared identity and S1-Q12B broadcast override remain OPEN / DEFERRED.
+**Authoritative business informant:** Voelgoed business owner (responses recorded in this conversation)
+**Persistent tracker:** [Plane VGN-56](https://app.plane.so/symphony-development/browse/VGN-56)
+**Historical evidence:** [November 2025 Google Drive planning folder](https://drive.google.com/drive/folders/1Dqnkm83XBbWm3QTNMLjUDfXf_DpkVEDt)
 **Current technical sources to verify:** [`Carpe-Diem-Media/vgnova`](https://github.com/Carpe-Diem-Media/vgnova), [VG Nova PR #96](https://github.com/Carpe-Diem-Media/vgnova/pull/96), Plane VGN-23 and VGN-55. Technical snapshot descriptions are **not** acceptance evidence for individual features.
 
 > **Purpose:** Preserve **every grilling question, owner answer, business fact, open decision, conflict, and verification obligation** before further development or migration. This is the cumulative interview record, not a parallel technical roadmap or an instruction to modify a website.
@@ -100,7 +100,7 @@ The old Google Drive folder contains 39 files (35 direct items plus five files i
 
 **Owner answer, verbatim:**
 
-> Current format: Live broadcast followed by replay availability  
+> Current format: Live broadcast followed by replay availability
 > Details: Live on socials using restream then replay on the site + snippets and highlights
 
 **Classification:** `OWNER-CONFIRMED` current operational pattern: live distributed through **Restream to social platforms**, then replay on Voelgoed website, plus snippets/highlights. Do not assume exact social destination names, archive source, Restream recording ownership, episode schedule or the way clips are entered in WP.
@@ -125,7 +125,7 @@ The old Google Drive folder contains 39 files (35 direct items plus five files i
 
 **Owner answer, verbatim:**
 
-> Current access: All full episodes and highlights are freely available.  
+> Current access: All full episodes and highlights are freely available.
 > Details: Broadcasts are free at the moment - might have restricted access using PMP in the future, but currently it is fully free
 
 **Classification:** `OWNER-CONFIRMED` public/free current policy, without required account or paid PMPro membership. `FUTURE OPTION, NOT APPROVED`: optional PMPro access restrictions for some broadcast content later. The existence of PMPro **does not justify** hiding currently public content; Mentorklas/other protected areas are different business domains.
@@ -152,7 +152,7 @@ The old Google Drive folder contains 39 files (35 direct items plus five files i
 
 **Owner answer, verbatim:**
 
-> Current workflow: One recurring programme page updated for each episode.  
+> Current workflow: One recurring programme page updated for each episode.
 > Details: But this needs to change and be improved. We need to move to: Both. We have a main Twintig Twintig programme page plus separate individual episode pages, and I think we already started setting this up on the new site.
 
 **AS-IS — OWNER-CONFIRMED:** Present production process updates one recurring page per new episode; this is inadequate for the desired archival model.
@@ -293,11 +293,11 @@ These are prompts to ensure we do not neglect domain state changes. Do not treat
 
 ## 8. Version 0.1.1 — Owner-submitted Round 8 / supersession addendum
 
-**Recorded:** 21 November 2026 (Africa/Johannesburg)  
-**Entry ID:** `S1-Q08`  
-**Decision scope:** Twintig Twintig programme hub presentation and editorial workflow  
-**Evidence class:** `OWNER-CONFIRMED — TO-BE BUSINESS REQUIREMENT`  
-**Implementation class:** `UNVERIFIED — DO NOT ASSERT BUILT`  
+**Recorded:** 21 November 2026 (Africa/Johannesburg)
+**Entry ID:** `S1-Q08`
+**Decision scope:** Twintig Twintig programme hub presentation and editorial workflow
+**Evidence class:** `OWNER-CONFIRMED — TO-BE BUSINESS REQUIREMENT`
+**Implementation class:** `UNVERIFIED — DO NOT ASSERT BUILT`
 **Previous record:** Section 2 `S1-Q08` in version 0.1.0, marked `OPEN` at that earlier time. That earlier record is preserved above as a truthful historical snapshot. **This later, owner-submitted answer closes the question** and takes precedence for subsequent interview planning.
 
 ### 8.1 Original question and owner-submitted answer
@@ -308,8 +308,8 @@ Choices presented: (a) fully automatic newest plus chronological archive; (b) au
 
 **Owner's actual submitted response (verbatim):**
 
-> VG Nova Grilling Session 1 — Round 8: Twintig Twintig programme hub publishing.  
-> Desired behaviour: Automatic latest published episode and archive, with optional editorial override for featured episodes or highlights.  
+> VG Nova Grilling Session 1 — Round 8: Twintig Twintig programme hub publishing.
+> Desired behaviour: Automatic latest published episode and archive, with optional editorial override for featured episodes or highlights.
 > Record as owner-confirmed target requirements in VGN-56, separate them from runtime-verified implementation, and continue with the next single focused grilling question.
 
 **Interpretation, approved as business intent only:** The Twintig Twintig main programme hub should automatically surface the newest **published** episode by default and maintain an archive of prior episodes. Editorial staff may override the **featured selection** to promote another episode or a highlight. This is neither fully manual curation nor an owner instruction to override the chronological archive itself.
@@ -360,11 +360,11 @@ These are **verification/design candidates**, not newly confirmed business rules
 
 ## 9. Version 0.1.2 — Owner-submitted Round 9: formal season identities and episode numbering
 
-**Recorded:** 21 November 2026 (Africa/Johannesburg)  
-**Entry ID:** `S1-Q09`  
-**Decision scope:** Twintig Twintig / Voelgoed LIVE programme-episode grouping and season identity  
-**Evidence class:** `OWNER-CONFIRMED — TO-BE BUSINESS REQUIREMENT`  
-**Implementation class:** `TECHNICALLY UNVERIFIED — NO IMPLEMENTATION CLAIM OR AUTHORITY`  
+**Recorded:** 21 November 2026 (Africa/Johannesburg)
+**Entry ID:** `S1-Q09`
+**Decision scope:** Twintig Twintig / Voelgoed LIVE programme-episode grouping and season identity
+**Evidence class:** `OWNER-CONFIRMED — TO-BE BUSINESS REQUIREMENT`
+**Implementation class:** `TECHNICALLY UNVERIFIED — NO IMPLEMENTATION CLAIM OR AUTHORITY`
 **Prior state:** `S1-Q09` was shown as `OPEN / NEXT` in earlier register versions and interview backlog. This new entry resolves that question for the business target without erasing its earlier status.
 
 ### 9.1 Question, options and actual owner response
@@ -381,8 +381,8 @@ These are **verification/design candidates**, not newly confirmed business rules
 
 **Owner's actual submitted response (verbatim):**
 
-> VG Nova Grilling Session 1 — Round 9: Seasons and episode organisation.  
-> Desired structure: Formal seasons with explicit season identity and episode numbering.  
+> VG Nova Grilling Session 1 — Round 9: Seasons and episode organisation.
+> Desired structure: Formal seasons with explicit season identity and episode numbering.
 > Record this in Plane VGN-56 and the next versioned cumulative Markdown register, distinguish owner requirements from technical verification, and continue with the next single focused grilling question.
 
 **Confirmed TO-BE requirement:** Twintig Twintig must support distinct, explicitly identifiable **seasons**, and episodes must have meaningful **episode numbering** within the programme's season structure. A single undifferentiated chronological list does **not** satisfy the target design.
@@ -449,9 +449,9 @@ No runtime test, implementation, new content type, migration or merge has been p
 
 ## 10. Version 0.1.3 — Round 9A confirmed answer (append-only amendment)
 
-**Recorded:** 21 November 2026 (Africa/Johannesburg)  
-**Question ID:** S1-Q09A  
-**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENT, not technical verification.  
+**Recorded:** 21 November 2026 (Africa/Johannesburg)
+**Question ID:** S1-Q09A
+**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENT, not technical verification.
 **Supersession:** S1-Q09A previously marked open in v0.1.2 is now answered; preserve that earlier question text as historical record.
 
 ### 10.1 Exact question and owner response
@@ -462,8 +462,8 @@ No runtime test, implementation, new content type, migration or merge has been p
 
 **Owner-submitted answer:**
 
-> VG Nova Grilling Session 1 — Round 9A: Formal season boundaries.  
-> Owner-selected boundary rule: Editorially defined season starts and endings.  
+> VG Nova Grilling Session 1 — Round 9A: Formal season boundaries.
+> Owner-selected boundary rule: Editorially defined season starts and endings.
 > Record this as an owner-confirmed business requirement in VGN-56 and the next cumulative versioned Markdown register. Keep technical implementation unverified, preserve earlier decisions, and continue with one focused question.
 
 **Owner-confirmed rule:** The Twintig Twintig editorial/production team determines when each formal season starts and ends. Season boundaries must not be inferred automatically solely from the calendar year or a fixed episode count. This is a choice of editorial authority, not yet a defined WordPress permission role, UI action, or technical workflow.
@@ -509,9 +509,9 @@ This is separate from the confirmed editorial authority to choose season boundar
 
 ## 11. Version 0.1.4 — Round 9B confirmed answer (append-only amendment)
 
-**Recorded:** 21 November 2026 (Africa/Johannesburg)  
-**Question ID:** S1-Q09B  
-**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENT; current technical implementation unverified.  
+**Recorded:** 21 November 2026 (Africa/Johannesburg)
+**Question ID:** S1-Q09B
+**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENT; current technical implementation unverified.
 **Supersession:** Closes S1-Q09B OPEN and the numbering question in F-20; earlier entries remain historical evidence. All other unresolved decisions remain open.
 
 ### 11.1 Exact question and owner response
@@ -522,8 +522,8 @@ This is separate from the confirmed editorial authority to choose season boundar
 
 **Owner-submitted answer:**
 
-> VG Nova Grilling Session 1 — Round 9B: Episode numbering across formal seasons.  
-> Owner-selected numbering policy: Episode numbering restarts at 1 within every season.  
+> VG Nova Grilling Session 1 — Round 9B: Episode numbering across formal seasons.
+> Owner-selected numbering policy: Episode numbering restarts at 1 within every season.
 > Record in Plane VGN-56 and the next cumulative Markdown register version, preserving all prior answers and separating confirmed requirements from technical verification. Continue with the next single focused question.
 
 **Owner-confirmed rule:** Each formal Twintig Twintig season has its own episode-number sequence beginning at 1. Season 1 Episode 1 and Season 2 Episode 1 are valid distinct episodes. A continuous programme-wide episode number is not required by this answer. This does not establish automatic number allocation, gap handling, numbering of specials, or a physical database identifier.
@@ -567,9 +567,9 @@ Ask the owner about a proposed minimum editorial metadata set: title, short desc
 
 ## 12. Version 0.1.5 — Round 10 confirmed answer (append-only amendment)
 
-**Recorded:** 21 November 2026 (Africa/Johannesburg)  
-**Question ID:** S1-Q10  
-**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENTS; technical implementation unverified.  
+**Recorded:** 21 November 2026 (Africa/Johannesburg)
+**Question ID:** S1-Q10
+**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENTS; technical implementation unverified.
 **Supersession:** Resolves the previous S1-Q10 OPEN classification only; all previous answers and outstanding decisions are preserved.
 
 ### 12.1 Question and exact owner-submitted answer
@@ -657,9 +657,9 @@ Determine whether the normal structure uses one presenter, multiple presenters/c
 
 ## 13. Version 0.1.6 — Round 11 confirmed answer (append-only amendment)
 
-**Recorded:** 21 November 2026 (Africa/Johannesburg)  
-**Question ID:** S1-Q11  
-**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENT; technical implementation unverified.  
+**Recorded:** 21 November 2026 (Africa/Johannesburg)
+**Question ID:** S1-Q11
+**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENT; technical implementation unverified.
 **Supersession:** Closes the previous S1-Q11 OPEN participant-cardinality question only. All earlier responses, unresolved decisions and technical verification requirements remain intact.
 
 ### 13.1 Exact question and owner response
@@ -719,8 +719,8 @@ This is a question about canonical identity reuse and editorial workflow, not wh
 
 ## 14. Version 0.1.7 — Round 11 clarification (append-only amendment)
 
-**Recorded:** 21 November 2026 (Africa/Johannesburg)  
-**Question ID:** S1-Q11A (owner clarification supplied before formal follow-up)  
+**Recorded:** 21 November 2026 (Africa/Johannesburg)
+**Question ID:** S1-Q11A (owner clarification supplied before formal follow-up)
 **Authority:** OWNER-CONFIRMED TO-BE business direction and owner-reported work-in-progress; technical implementation independently unverified.
 
 ### 14.1 Exact owner clarification
@@ -766,9 +766,9 @@ Possible owner choices: only after the replay is ready; publish an upcoming epis
 
 ## 15. Version 0.1.8 — Round 12 confirmed answer (append-only amendment)
 
-**Recorded:** 21 November 2026 (Africa/Johannesburg)  
-**Question ID:** S1-Q12  
-**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENT; technical implementation independently unverified.  
+**Recorded:** 21 November 2026 (Africa/Johannesburg)
+**Question ID:** S1-Q12
+**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENT; technical implementation independently unverified.
 **Supersession:** Closes S1-Q12 OPEN. Partially resolves the F-25 metadata-enforcement question from Round 10: a public upcoming episode page must be supported before a replay is available. Exact validation guards for every transition still require approval. All previous interview answers, open questions and verification obligations remain intact.
 
 ### 15.1 Exact question and owner-submitted answer
@@ -841,9 +841,9 @@ Options for discussion: (1) keep the latest replay featured and show upcoming/li
 
 ## 16. Version 0.1.9 — Round 12A confirmed answer (append-only amendment)
 
-**Recorded:** 21 November 2026 (Africa/Johannesburg)  
-**Question ID:** S1-Q12A  
-**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENT; technical implementation independently unverified.  
+**Recorded:** 21 November 2026 (Africa/Johannesburg)
+**Question ID:** S1-Q12A
+**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENT; technical implementation independently unverified.
 **Supersession:** Closes S1-Q12A OPEN; clarifies the automatic feature selection aspect of S1-Q08 and F-32 while preserving the archive and optional editorial override requirements. Earlier answers and unresolved decisions remain intact.
 
 ### 16.1 Exact question and owner-submitted answer
@@ -914,7 +914,7 @@ Clarify the precedence decision independently of the default automatic ordering.
 
 ## 17. Version 0.2.0 — Owner-directed breadth-first discovery reset
 
-**Recorded:** 21 November 2026 (Africa/Johannesburg)  
+**Recorded:** 21 November 2026 (Africa/Johannesburg)
 **Classification:** Owner-directed discovery scope adjustment; not technical acceptance or approval of additional business rules.
 
 ### 17.1 Exact owner direction
@@ -973,8 +973,8 @@ Clarify one shared login versus any intentionally separate account systems. Do n
 
 ## 18. Version 0.2.1 — Editorial / Leefstyl first-pass checkpoint
 
-**Recorded:** 22 November 2026 (Africa/Johannesburg)  
-**Authority:** OWNER-CONFIRMED business requirements; written engineering authority inspected separately; runtime UNVERIFIED.  
+**Recorded:** 22 November 2026 (Africa/Johannesburg)
+**Authority:** OWNER-CONFIRMED business requirements; written engineering authority inspected separately; runtime UNVERIFIED.
 **Supersession:** Discovery ordering only: proceed to Mense and Partners as explicitly requested by the owner. Earlier S2-Q01 and broadcast questions remain open, not answered or cancelled. All prior business requirements and history are preserved.
 
 ### 18.1 Exact owner responses
@@ -1058,15 +1058,15 @@ Proceed to these foundation questions and then the next domain checkpoint rather
 
 ## 19. Version 0.2.2 — Mense and Partners first-pass checkpoint
 
-**Recorded:** 22 November 2026 (Africa/Johannesburg)  
-**Authority:** OWNER-CONFIRMED business requirements; written engineering authority inspected independently; current runtime UNVERIFIED.  
+**Recorded:** 22 November 2026 (Africa/Johannesburg)
+**Authority:** OWNER-CONFIRMED business requirements; written engineering authority inspected independently; current runtime UNVERIFIED.
 **Scope:** First-pass domain checkpoint, not approved schema, implementation or migration. Preserve all earlier decisions and outstanding questions.
 
 ### 19.1 Exact questions and owner submission
 
-MP-01: Who should have a central Mense record?  
-MP-02: Should every person in Mense have a publicly accessible profile page?  
-MP-03: Which organisations should be managed through the central Partners system?  
+MP-01: Who should have a central Mense record?
+MP-02: Should every person in Mense have a publicly accessible profile page?
+MP-03: Which organisations should be managed through the central Partners system?
 MP-04: Should every commercial or promotional article be linked to a Partner record?
 
 > VG Nova breadth-first discovery — Mense and Partners checkpoint.
@@ -1139,17 +1139,17 @@ Customer identity S2-Q01 remains open; do not infer mandatory single-account ide
 
 ## 20. Version 0.2.3 — Vriendinneklub and memberships first-pass checkpoint
 
-**Recorded:** 22 November 2026 (Africa/Johannesburg)  
-**Authority:** OWNER-CONFIRMED TO-BE business rules; written engineering authorities independently inspected; historical runtime evidence only; current runtime UNVERIFIED.  
+**Recorded:** 22 November 2026 (Africa/Johannesburg)
+**Authority:** OWNER-CONFIRMED TO-BE business rules; written engineering authorities independently inspected; historical runtime evidence only; current runtime UNVERIFIED.
 **Scope:** Membership foundation first pass, not a final entitlement matrix or technical approval.
 
 ### 20.1 Exact questions and owner submission
 
-M-01: Which membership programmes should VG Nova support at launch?  
-M-02: Which membership billing options should be supported?  
-M-03A: Should higher membership tiers automatically inherit lower-tier benefits?  
-M-03B: Which benefit categories must the membership foundation support?  
-M-04A: After cancellation, what happens to existing membership access?  
+M-01: Which membership programmes should VG Nova support at launch?
+M-02: Which membership billing options should be supported?
+M-03A: Should higher membership tiers automatically inherit lower-tier benefits?
+M-03B: Which benefit categories must the membership foundation support?
+M-04A: After cancellation, what happens to existing membership access?
 M-04B: After a failed renewal payment, what happens to membership access?
 
 > VG Nova breadth-first discovery — Vriendinneklub and memberships checkpoint.
@@ -1230,16 +1230,16 @@ Proceed to high-level commerce discovery, then courses and learning. Historical 
 
 ## 21. Version 0.2.4 — Products and Commerce first-pass checkpoint
 
-**Recorded:** 22 November 2026 (Africa/Johannesburg)  
-**Authority:** OWNER-CONFIRMED TO-BE business requirements; independently inspected written engineering authority and historical audit evidence; current runtime UNVERIFIED.  
+**Recorded:** 22 November 2026 (Africa/Johannesburg)
+**Authority:** OWNER-CONFIRMED TO-BE business requirements; independently inspected written engineering authority and historical audit evidence; current runtime UNVERIFIED.
 **Scope:** First-pass commerce requirements. No implementation, pricing, product data, provider configuration, schema, migration, deployment or merge approval.
 
 ### 21.1 Questions and exact owner submission
 
-C-01 — Product catalogue.  
-C-02 — Shopping cart.  
-C-03 — Customer accounts.  
-C-04 — eBooks and audiobooks.  
+C-01 — Product catalogue.
+C-02 — Shopping cart.
+C-03 — Customer accounts.
+C-04 — eBooks and audiobooks.
 C-05 — Fulfilment and refunds.
 
 > VG Nova breadth-first discovery — Products and Commerce checkpoint.
@@ -1315,8 +1315,8 @@ Proceed to Events and Ticketing after the learning checkpoint. No detailed cours
 
 ## 22. Version 0.2.5 — Courses and Learning first-pass checkpoint
 
-**Recorded:** 22 November 2026 (Africa/Johannesburg)  
-**Authority:** OWNER-CONFIRMED TO-BE business requirements; written technical authority independently inspected; actual course functionality/runtime NOT VERIFIED.  
+**Recorded:** 22 November 2026 (Africa/Johannesburg)
+**Authority:** OWNER-CONFIRMED TO-BE business requirements; written technical authority independently inspected; actual course functionality/runtime NOT VERIFIED.
 **Scope:** Breadth-first requirement discovery. No LMS feature configuration, implementation, migration or merge approved.
 
 ### 22.1 Exact owner answer
@@ -1406,8 +1406,8 @@ Written authority in `AGENTS.md` (lines 501–530 and 895–919) assigns WooComm
 
 ## 23. Version 0.2.6 — Events and Ticketing first-pass checkpoint
 
-**Recorded:** 22 November 2026 (Africa/Johannesburg)  
-**Authority:** OWNER-CONFIRMED TO-BE business requirements; current source/runtime integration independently UNVERIFIED.  
+**Recorded:** 22 November 2026 (Africa/Johannesburg)
+**Authority:** OWNER-CONFIRMED TO-BE business requirements; current source/runtime integration independently UNVERIFIED.
 **Scope:** First-pass event/ticketing business scope; not acceptance of payment, issue, reconciliation, organiser analytics or scanner implementation.
 
 ### 23.1 Exact owner submission

@@ -1,13 +1,13 @@
 # VG Nova — Foundation Reconciliation Register
 
-**Version:** 0.1.10  
-**Filename:** `VGNOVA_FOUNDATION_RECONCILIATION_REGISTER_v0.1.10.md`  
-**Date:** 2026-11-25 (Africa/Johannesburg)  
+**Version:** 0.1.10
+**Filename:** `VGNOVA_FOUNDATION_RECONCILIATION_REGISTER_v0.1.10.md`
+**Date:** 2026-11-25 (Africa/Johannesburg)
 **Predecessor:** v0.1.9 (preserved immutable download; SHA-256 `b1068725a87e3d32aafe45d4517d054144d36f2d34cd9b026b1af238f7f70cbc`); v0.1.0–v0.1.8 retained
 **Status:** R-2 ORIGINAL AUDIT CORPUS INGESTION COMPLETE — B10 completes all 13 domain reports and supporting documents; targeted reconciliation/authority/freshness gaps remain OPEN; historical target PARTIALLY_VERIFIED; audit safety BLOCKED; no foundation acceptance
-**Persistence:** downloadable working copy; not committed or approved. Latest within this delivery only; check repository/Plane and other working copies before subsequent amendments.  
-**Scope:** `voelgoed.co.za`, `leer.voelgoed.co.za`, `winkel.voelgoed.co.za` → VG Nova LocalWP / future consolidated site.  
-**Owner:** Voelgoed business owner; Plane VGN-23 / VGN-55 / VGN-56.  
+**Persistence:** downloadable working copy; not committed or approved. Latest within this delivery only; check repository/Plane and other working copies before subsequent amendments.
+**Scope:** `voelgoed.co.za`, `leer.voelgoed.co.za`, `winkel.voelgoed.co.za` → VG Nova LocalWP / future consolidated site.
+**Owner:** Voelgoed business owner; Plane VGN-23 / VGN-55 / VGN-56.
 **Change authority:** documentation only. No code, configuration, test transaction, migration, deployment, deletion, merge or Plane mutation authorised by this register.
 
 ## 1. Executive summary and status
@@ -3552,4 +3552,3 @@ B10 documentary acceptance: 18/18 manifest entries independently rechecked, 13/1
 | 0.1.10 | 2026-11-25 | 0.1.9 | B10 RD complete, E121–E128, CF-117–122, LC-45; 42 analytical candidate rows and 21 LEG amendment proposals integrated into §14 with parent qualifications, 14 targeted verification questions, affected requirement/TV/component/dependency/risk/owner/Plane gates. All 18 manifest-listed identities independently rechecked, 13/13 domains and six support docs directly ingested. Original audit corpus complete; safety BLOCKED, no current behavior, LEG edit, runtime/source/tracker mutation, business or acceptance upgrade. Predecessor and BIZ preserved. |
 
 **Next input:** no remaining original audit report. Prioritize the exact pinned/current `LEGACY_DECOMMISSION_REGISTER.md` and locked authority documents already named in §2/E40 (including applicable nested AGENTS and accepted Member Perks release), then authorized three-source inventory and external-system evidence, and outstanding R-2 owner decisions. Proposed follow-up sequence is not implementation approval. Preserve v0.1.10 and all predecessors; further increments only for actual new evidence or decisions.
-

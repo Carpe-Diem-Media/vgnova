@@ -1,14 +1,14 @@
 # VG Nova — Business Grilling & Requirements Register
 
-**Document version:** 0.1.1  
-**Filename:** `VGNOVA_BUSINESS_GRILLING_REQUIREMENTS_REGISTER_v0.1.1.md`  
-**Created:** 21 November 2026 (Africa/Johannesburg)  
-**State:** `DISCOVERY — IN PROGRESS` (owner-confirmed business requirements; implementation not approved)  
-**Last answered:** S1-Q08 (programme hub default automation with editorial override)  
-**Next question:** S1-Q09 (seasons and episode numbering)  
-**Authoritative business informant:** Voelgoed business owner (responses recorded in this conversation)  
-**Persistent tracker:** [Plane VGN-56](https://app.plane.so/symphony-development/browse/VGN-56)  
-**Historical evidence:** [November 2025 Google Drive planning folder](https://drive.google.com/drive/folders/1Dqnkm83XBbWm3QTNMLjUDfXf_DpkVEDt)  
+**Document version:** 0.1.1
+**Filename:** `VGNOVA_BUSINESS_GRILLING_REQUIREMENTS_REGISTER_v0.1.1.md`
+**Created:** 21 November 2026 (Africa/Johannesburg)
+**State:** `DISCOVERY — IN PROGRESS` (owner-confirmed business requirements; implementation not approved)
+**Last answered:** S1-Q08 (programme hub default automation with editorial override)
+**Next question:** S1-Q09 (seasons and episode numbering)
+**Authoritative business informant:** Voelgoed business owner (responses recorded in this conversation)
+**Persistent tracker:** [Plane VGN-56](https://app.plane.so/symphony-development/browse/VGN-56)
+**Historical evidence:** [November 2025 Google Drive planning folder](https://drive.google.com/drive/folders/1Dqnkm83XBbWm3QTNMLjUDfXf_DpkVEDt)
 **Current technical sources to verify:** [`Carpe-Diem-Media/vgnova`](https://github.com/Carpe-Diem-Media/vgnova), [VG Nova PR #96](https://github.com/Carpe-Diem-Media/vgnova/pull/96), Plane VGN-23 and VGN-55. Technical snapshot descriptions are **not** acceptance evidence for individual features.
 
 > **Purpose:** Preserve **every grilling question, owner answer, business fact, open decision, conflict, and verification obligation** before further development or migration. This is the cumulative interview record, not a parallel technical roadmap or an instruction to modify a website.
@@ -100,7 +100,7 @@ The old Google Drive folder contains 39 files (35 direct items plus five files i
 
 **Owner answer, verbatim:**
 
-> Current format: Live broadcast followed by replay availability  
+> Current format: Live broadcast followed by replay availability
 > Details: Live on socials using restream then replay on the site + snippets and highlights
 
 **Classification:** `OWNER-CONFIRMED` current operational pattern: live distributed through **Restream to social platforms**, then replay on Voelgoed website, plus snippets/highlights. Do not assume exact social destination names, archive source, Restream recording ownership, episode schedule or the way clips are entered in WP.
@@ -125,7 +125,7 @@ The old Google Drive folder contains 39 files (35 direct items plus five files i
 
 **Owner answer, verbatim:**
 
-> Current access: All full episodes and highlights are freely available.  
+> Current access: All full episodes and highlights are freely available.
 > Details: Broadcasts are free at the moment - might have restricted access using PMP in the future, but currently it is fully free
 
 **Classification:** `OWNER-CONFIRMED` public/free current policy, without required account or paid PMPro membership. `FUTURE OPTION, NOT APPROVED`: optional PMPro access restrictions for some broadcast content later. The existence of PMPro **does not justify** hiding currently public content; Mentorklas/other protected areas are different business domains.
@@ -152,7 +152,7 @@ The old Google Drive folder contains 39 files (35 direct items plus five files i
 
 **Owner answer, verbatim:**
 
-> Current workflow: One recurring programme page updated for each episode.  
+> Current workflow: One recurring programme page updated for each episode.
 > Details: But this needs to change and be improved. We need to move to: Both. We have a main Twintig Twintig programme page plus separate individual episode pages, and I think we already started setting this up on the new site.
 
 **AS-IS — OWNER-CONFIRMED:** Present production process updates one recurring page per new episode; this is inadequate for the desired archival model.
@@ -293,9 +293,9 @@ These are prompts to ensure we do not neglect domain state changes. Do not treat
 
 ## 8. Version 0.1.1 — Round 8 confirmed answer (append-only amendment)
 
-**Recorded:** 21 November 2026 (Africa/Johannesburg)  
-**Question ID:** S1-Q08  
-**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENT; implementation not verified  
+**Recorded:** 21 November 2026 (Africa/Johannesburg)
+**Question ID:** S1-Q08
+**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENT; implementation not verified
 **Previous history:** The S1-Q08 section above states the question was OPEN at v0.1.0; it remains visible for audit history. This new entry supersedes the prior **open status only**, not any of the historical business answers.
 
 ### 8.1 Asked question and verbatim submitted answer
@@ -306,8 +306,8 @@ These are prompts to ensure we do not neglect domain state changes. Do not treat
 
 **Owner-submitted answer:**
 
-> VG Nova Grilling Session 1 — Round 8: Twintig Twintig programme hub publishing.  
-> Desired behaviour: Automatic latest published episode and archive, with optional editorial override for featured episodes or highlights.  
+> VG Nova Grilling Session 1 — Round 8: Twintig Twintig programme hub publishing.
+> Desired behaviour: Automatic latest published episode and archive, with optional editorial override for featured episodes or highlights.
 > Record as owner-confirmed target requirements in VGN-56, separate them from runtime-verified implementation, and continue with the next single focused grilling question.
 
 **Business decision:** The Twintig Twintig programme hub should show the newest published episode automatically by default and maintain an archive of past episodes. Editorial staff must also be able to override the featured slot with another episode or a highlight. The override does not inherently require reordering, duplicating or manually updating the entire archive.

@@ -1,14 +1,14 @@
 # VG Nova — Business Grilling & Requirements Register
 
-**Document version:** 0.1.3  
-**Filename:** `VGNOVA_BUSINESS_GRILLING_REQUIREMENTS_REGISTER_v0.1.3.md`  
-**Created:** 21 November 2026 (Africa/Johannesburg)  
-**State:** `DISCOVERY — IN PROGRESS` (business requirements confirmed; implementation not approved)  
-**Latest accepted interview answer:** `S1-Q09A` — editorially defined season starts and endings  
-**Next interview question:** `S1-Q09B` — business rule for defining season boundaries and closure  
-**Authoritative business informant:** Voelgoed business owner (responses recorded in this conversation)  
-**Persistent tracker:** [Plane VGN-56](https://app.plane.so/symphony-development/browse/VGN-56)  
-**Historical evidence:** [November 2025 Google Drive planning folder](https://drive.google.com/drive/folders/1Dqnkm83XBbWm3QTNMLjUDfXf_DpkVEDt)  
+**Document version:** 0.1.3
+**Filename:** `VGNOVA_BUSINESS_GRILLING_REQUIREMENTS_REGISTER_v0.1.3.md`
+**Created:** 21 November 2026 (Africa/Johannesburg)
+**State:** `DISCOVERY — IN PROGRESS` (business requirements confirmed; implementation not approved)
+**Latest accepted interview answer:** `S1-Q09A` — editorially defined season starts and endings
+**Next interview question:** `S1-Q09B` — business rule for defining season boundaries and closure
+**Authoritative business informant:** Voelgoed business owner (responses recorded in this conversation)
+**Persistent tracker:** [Plane VGN-56](https://app.plane.so/symphony-development/browse/VGN-56)
+**Historical evidence:** [November 2025 Google Drive planning folder](https://drive.google.com/drive/folders/1Dqnkm83XBbWm3QTNMLjUDfXf_DpkVEDt)
 **Current technical sources to verify:** [`Carpe-Diem-Media/vgnova`](https://github.com/Carpe-Diem-Media/vgnova), [VG Nova PR #96](https://github.com/Carpe-Diem-Media/vgnova/pull/96), Plane VGN-23 and VGN-55. Technical snapshot descriptions are **not** acceptance evidence for individual features.
 
 > **Purpose:** Preserve **every grilling question, owner answer, business fact, open decision, conflict, and verification obligation** before further development or migration. This is the cumulative interview record, not a parallel technical roadmap or an instruction to modify a website.
@@ -100,7 +100,7 @@ The old Google Drive folder contains 39 files (35 direct items plus five files i
 
 **Owner answer, verbatim:**
 
-> Current format: Live broadcast followed by replay availability  
+> Current format: Live broadcast followed by replay availability
 > Details: Live on socials using restream then replay on the site + snippets and highlights
 
 **Classification:** `OWNER-CONFIRMED` current operational pattern: live distributed through **Restream to social platforms**, then replay on Voelgoed website, plus snippets/highlights. Do not assume exact social destination names, archive source, Restream recording ownership, episode schedule or the way clips are entered in WP.
@@ -125,7 +125,7 @@ The old Google Drive folder contains 39 files (35 direct items plus five files i
 
 **Owner answer, verbatim:**
 
-> Current access: All full episodes and highlights are freely available.  
+> Current access: All full episodes and highlights are freely available.
 > Details: Broadcasts are free at the moment - might have restricted access using PMP in the future, but currently it is fully free
 
 **Classification:** `OWNER-CONFIRMED` public/free current policy, without required account or paid PMPro membership. `FUTURE OPTION, NOT APPROVED`: optional PMPro access restrictions for some broadcast content later. The existence of PMPro **does not justify** hiding currently public content; Mentorklas/other protected areas are different business domains.
@@ -152,7 +152,7 @@ The old Google Drive folder contains 39 files (35 direct items plus five files i
 
 **Owner answer, verbatim:**
 
-> Current workflow: One recurring programme page updated for each episode.  
+> Current workflow: One recurring programme page updated for each episode.
 > Details: But this needs to change and be improved. We need to move to: Both. We have a main Twintig Twintig programme page plus separate individual episode pages, and I think we already started setting this up on the new site.
 
 **AS-IS — OWNER-CONFIRMED:** Present production process updates one recurring page per new episode; this is inadequate for the desired archival model.
@@ -293,11 +293,11 @@ These are prompts to ensure we do not neglect domain state changes. Do not treat
 
 ## 8. Version 0.1.1 — Owner-submitted Round 8 / supersession addendum
 
-**Recorded:** 21 November 2026 (Africa/Johannesburg)  
-**Entry ID:** `S1-Q08`  
-**Decision scope:** Twintig Twintig programme hub presentation and editorial workflow  
-**Evidence class:** `OWNER-CONFIRMED — TO-BE BUSINESS REQUIREMENT`  
-**Implementation class:** `UNVERIFIED — DO NOT ASSERT BUILT`  
+**Recorded:** 21 November 2026 (Africa/Johannesburg)
+**Entry ID:** `S1-Q08`
+**Decision scope:** Twintig Twintig programme hub presentation and editorial workflow
+**Evidence class:** `OWNER-CONFIRMED — TO-BE BUSINESS REQUIREMENT`
+**Implementation class:** `UNVERIFIED — DO NOT ASSERT BUILT`
 **Previous record:** Section 2 `S1-Q08` in version 0.1.0, marked `OPEN` at that earlier time. That earlier record is preserved above as a truthful historical snapshot. **This later, owner-submitted answer closes the question** and takes precedence for subsequent interview planning.
 
 ### 8.1 Original question and owner-submitted answer
@@ -308,8 +308,8 @@ Choices presented: (a) fully automatic newest plus chronological archive; (b) au
 
 **Owner's actual submitted response (verbatim):**
 
-> VG Nova Grilling Session 1 — Round 8: Twintig Twintig programme hub publishing.  
-> Desired behaviour: Automatic latest published episode and archive, with optional editorial override for featured episodes or highlights.  
+> VG Nova Grilling Session 1 — Round 8: Twintig Twintig programme hub publishing.
+> Desired behaviour: Automatic latest published episode and archive, with optional editorial override for featured episodes or highlights.
 > Record as owner-confirmed target requirements in VGN-56, separate them from runtime-verified implementation, and continue with the next single focused grilling question.
 
 **Interpretation, approved as business intent only:** The Twintig Twintig main programme hub should automatically surface the newest **published** episode by default and maintain an archive of prior episodes. Editorial staff may override the **featured selection** to promote another episode or a highlight. This is neither fully manual curation nor an owner instruction to override the chronological archive itself.
@@ -360,11 +360,11 @@ These are **verification/design candidates**, not newly confirmed business rules
 
 ## 9. Version 0.1.2 — Owner-submitted Round 9: formal season identities and episode numbering
 
-**Recorded:** 21 November 2026 (Africa/Johannesburg)  
-**Entry ID:** `S1-Q09`  
-**Decision scope:** Twintig Twintig / Voelgoed LIVE programme-episode grouping and season identity  
-**Evidence class:** `OWNER-CONFIRMED — TO-BE BUSINESS REQUIREMENT`  
-**Implementation class:** `TECHNICALLY UNVERIFIED — NO IMPLEMENTATION CLAIM OR AUTHORITY`  
+**Recorded:** 21 November 2026 (Africa/Johannesburg)
+**Entry ID:** `S1-Q09`
+**Decision scope:** Twintig Twintig / Voelgoed LIVE programme-episode grouping and season identity
+**Evidence class:** `OWNER-CONFIRMED — TO-BE BUSINESS REQUIREMENT`
+**Implementation class:** `TECHNICALLY UNVERIFIED — NO IMPLEMENTATION CLAIM OR AUTHORITY`
 **Prior state:** `S1-Q09` was shown as `OPEN / NEXT` in earlier register versions and interview backlog. This new entry resolves that question for the business target without erasing its earlier status.
 
 ### 9.1 Question, options and actual owner response
@@ -381,8 +381,8 @@ These are **verification/design candidates**, not newly confirmed business rules
 
 **Owner's actual submitted response (verbatim):**
 
-> VG Nova Grilling Session 1 — Round 9: Seasons and episode organisation.  
-> Desired structure: Formal seasons with explicit season identity and episode numbering.  
+> VG Nova Grilling Session 1 — Round 9: Seasons and episode organisation.
+> Desired structure: Formal seasons with explicit season identity and episode numbering.
 > Record this in Plane VGN-56 and the next versioned cumulative Markdown register, distinguish owner requirements from technical verification, and continue with the next single focused grilling question.
 
 **Confirmed TO-BE requirement:** Twintig Twintig must support distinct, explicitly identifiable **seasons**, and episodes must have meaningful **episode numbering** within the programme's season structure. A single undifferentiated chronological list does **not** satisfy the target design.
@@ -449,9 +449,9 @@ No runtime test, implementation, new content type, migration or merge has been p
 
 ## 10. Version 0.1.3 — Round 9A confirmed answer (append-only amendment)
 
-**Recorded:** 21 November 2026 (Africa/Johannesburg)  
-**Question ID:** S1-Q09A  
-**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENT, not technical verification.  
+**Recorded:** 21 November 2026 (Africa/Johannesburg)
+**Question ID:** S1-Q09A
+**Authority:** OWNER-CONFIRMED TO-BE BUSINESS REQUIREMENT, not technical verification.
 **Supersession:** S1-Q09A previously marked open in v0.1.2 is now answered; preserve that earlier question text as historical record.
 
 ### 10.1 Exact question and owner response
@@ -462,8 +462,8 @@ No runtime test, implementation, new content type, migration or merge has been p
 
 **Owner-submitted answer:**
 
-> VG Nova Grilling Session 1 — Round 9A: Formal season boundaries.  
-> Owner-selected boundary rule: Editorially defined season starts and endings.  
+> VG Nova Grilling Session 1 — Round 9A: Formal season boundaries.
+> Owner-selected boundary rule: Editorially defined season starts and endings.
 > Record this as an owner-confirmed business requirement in VGN-56 and the next cumulative versioned Markdown register. Keep technical implementation unverified, preserve earlier decisions, and continue with one focused question.
 
 **Owner-confirmed rule:** The Twintig Twintig editorial/production team determines when each formal season starts and ends. Season boundaries must not be inferred automatically solely from the calendar year or a fixed episode count. This is a choice of editorial authority, not yet a defined WordPress permission role, UI action, or technical workflow.

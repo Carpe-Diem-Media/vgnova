@@ -1,11 +1,11 @@
 # VG Nova — Foundation Execution Register
 
-**Version:** 0.1.0  
-**Filename:** `VGNOVA_FOUNDATION_EXECUTION_REGISTER_v0.1.0.md`  
-**Date:** 25 November 2026 (Africa/Johannesburg)  
-**Status:** EXECUTION ROADMAP ESTABLISHED — development-first; implementation and acceptance remain gated.  
-**Owner:** Voelgoed business owner  
-**Governance:** Plane VGN-56 (foundation gate), VGN-55 (audit evidence), VGN-23 (source-to-target migration), VGN-30 (production cutover)  
+**Version:** 0.1.0
+**Filename:** `VGNOVA_FOUNDATION_EXECUTION_REGISTER_v0.1.0.md`
+**Date:** 25 November 2026 (Africa/Johannesburg)
+**Status:** EXECUTION ROADMAP ESTABLISHED — development-first; implementation and acceptance remain gated.
+**Owner:** Voelgoed business owner
+**Governance:** Plane VGN-56 (foundation gate), VGN-55 (audit evidence), VGN-23 (source-to-target migration), VGN-30 (production cutover)
 **Persistence:** Downloadable initial snapshot; Plane work packages, modules and dependency relationships created and read back. No GitHub commit or merge made for this document.
 
 ## 1. Purpose and controlling sequencing decision
