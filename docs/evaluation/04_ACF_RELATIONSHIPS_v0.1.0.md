@@ -1,7 +1,7 @@
 # ACF relationships and field consumers
 
-Audit snapshot: 2026-11-19  
-Task: VGN-55, read-only ACF schema and relationship research  
+Audit snapshot: 2026-11-19
+Task: VGN-55, read-only ACF schema and relationship research
 Repository baseline: `454346d9e6a2c36864a4bbd944e52596f16e09c1`
 
 ## 1. Executive Summary

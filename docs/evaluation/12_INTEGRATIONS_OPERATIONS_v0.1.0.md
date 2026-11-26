@@ -334,4 +334,3 @@ Completion assessment:
 - Score below 8: Current score 6/10, gap to 8.0 is 2 points, target is at least 8.0 only after fresh evidence. First, the owning project must assess the tool-output values and decide on containment. Then an authorized follow-up can inspect Bricks analytics configuration, external media/backup authority, host scheduling, and current ingress. No score increase is pre-awarded; those checks require owner access and must not invoke routes, callbacks, providers, or jobs without separate authorization.
 
 This research makes no implementation, runtime, security posture, or launch approval claim.
-

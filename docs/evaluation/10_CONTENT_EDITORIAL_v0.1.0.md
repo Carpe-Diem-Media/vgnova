@@ -1,8 +1,8 @@
 # Content and Editorial Inventory: v0.1.0
 
-**Inspection date:** 2026-11-19  
-**Runtime target:** LocalWP site vgnova-local-10039, site ID nAZNpFs99, WordPress root /home/jcschoeman96/Local Sites/voelgoed-novamira/app/public/  
-**Source baseline:** main at 454346d9e6a2c36864a4bbd944e52596f16e09c1  
+**Inspection date:** 2026-11-19
+**Runtime target:** LocalWP site vgnova-local-10039, site ID nAZNpFs99, WordPress root /home/jcschoeman96/Local Sites/voelgoed-novamira/app/public/
+**Source baseline:** main at 454346d9e6a2c36864a4bbd944e52596f16e09c1
 **Scope:** Read-only content, classification, relationships, editorial metadata, media, route and migration assessment. No runtime writes, HTTP requests, source-site access, exports, transactions, cleanup or tracker updates.
 
 ## 1. Executive Summary
@@ -293,16 +293,16 @@ These are scoped investigation candidates only. No cleanup, content edit, migrat
 
 **Assessment role:** Research self-assessment.
 
-**Acceptance criteria:** 9/10 covered; 1 partially covered.  
-1. Coordination brief and Parent Baseline read fully: verified.  
-2. Reports 01 to 06 and required current architecture/evidence read: verified.  
-3. Current local database identity/row count and in-scope status counts independently checked: verified.  
-4. Published public IDs/slugs and known fixture provenance inventoried; nonpublic IDs/slugs withheld: verified for the scoped public-domain types.  
-5. Topics/categories/duplicate classifications independently counted: verified.  
-6. Person/Course/Product/Event relationship edges and stale fixture reference reviewed: verified.  
-7. Editorial field, featured-media, SEO key and local file-presence coverage assessed: verified as metadata/presence checks only.  
-8. Legacy three-site migration, digital media, rights and approval gates mapped to live issues: verified as governance evidence, not source-data verification.  
-9. Native-first recommendations and lifecycle/launch limits stated: verified.  
+**Acceptance criteria:** 9/10 covered; 1 partially covered.
+1. Coordination brief and Parent Baseline read fully: verified.
+2. Reports 01 to 06 and required current architecture/evidence read: verified.
+3. Current local database identity/row count and in-scope status counts independently checked: verified.
+4. Published public IDs/slugs and known fixture provenance inventoried; nonpublic IDs/slugs withheld: verified for the scoped public-domain types.
+5. Topics/categories/duplicate classifications independently counted: verified.
+6. Person/Course/Product/Event relationship edges and stale fixture reference reviewed: verified.
+7. Editorial field, featured-media, SEO key and local file-presence coverage assessed: verified as metadata/presence checks only.
+8. Legacy three-site migration, digital media, rights and approval gates mapped to live issues: verified as governance evidence, not source-data verification.
+9. Native-first recommendations and lifecycle/launch limits stated: verified.
 10. Exhaustive route/link, rendered SEO/schema and source-media rights check: partially covered because current HTTP, source-site requests, exports and private content inspection were prohibited.
 
 **Implementation Score:** N/A: no implementation was authorized or performed.
@@ -326,4 +326,3 @@ These are scoped investigation candidates only. No cleanup, content edit, migrat
 | LAUNCH_READY | NO: incomplete source inventory, rights, classifications, product downloads, SEO/schema, destinations, route/link checks and course/commercial acceptance remain. |
 
 **Known gaps / highest-risk assumption / next action:** The highest-risk assumption is treating published local staging content or present media files as genuine, licensed and migration-approved Voelgoed content. The parent task owner should use VGN-24 to obtain the authorized source map, resolve content/rights/editorial approval, then keep VGN-32 and VGN-25 blocked until their documented migration and media gates pass. Preserve the synthetic markers and unresolved records until their own governed lifecycle decisions are made.
-

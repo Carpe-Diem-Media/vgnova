@@ -1,9 +1,9 @@
 # Bricks Frontend Evaluation
 
-Snapshot: 2026-11-19  
-Task: VGN-55 Phase 6, read-only Bricks frontend research  
-Repository HEAD: `454346d9e6a2c36864a4bbd944e52596f16e09c1`  
-Runtime: LocalWP `vgnova-local-10039`, site ID `nAZNpFs99`, `http://localhost:10039`  
+Snapshot: 2026-11-19
+Task: VGN-55 Phase 6, read-only Bricks frontend research
+Repository HEAD: `454346d9e6a2c36864a4bbd944e52596f16e09c1`
+Runtime: LocalWP `vgnova-local-10039`, site ID `nAZNpFs99`, `http://localhost:10039`
 Observed platform versions: WordPress 7.1.5, Bricks 2.4.5, Automatic.css 4.0.3, Frames 1.5.13
 
 ## 1. Executive Summary

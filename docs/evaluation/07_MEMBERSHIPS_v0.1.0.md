@@ -1,9 +1,9 @@
 # Memberships & Entitlements Evaluation v0.1.0
 
-Project: Voelgoed Platform Consolidation (VG Nova)  
-Assessment date: 2026-11-19, Africa/Johannesburg  
-Source baseline: `main` at `454346d9e6a2c36864a4bbd944e52596f16e09c1`  
-Runtime target: LocalWP `vgnova-local-10039`, `http://localhost:10039`  
+Project: Voelgoed Platform Consolidation (VG Nova)
+Assessment date: 2026-11-19, Africa/Johannesburg
+Source baseline: `main` at `454346d9e6a2c36864a4bbd944e52596f16e09c1`
+Runtime target: LocalWP `vgnova-local-10039`, `http://localhost:10039`
 Status: Read-only research. No users, memberships, subscriptions, orders, enrolments, intents, messages, settings, plugin files, or Bricks records were changed.
 
 ## 1. Executive Summary
@@ -560,16 +560,16 @@ The no-write policy prevented live billing or account-transition verification. T
 
 **Domain assessment:** The system has the expected division of authority in source and current configuration: Woo Subscriptions bills, PMPro controls access, Member Perks defines benefits, Woo owns prices, and Masteriyo owns course access. Seven price-bearing recurring tiers are mapped, but their parent products are drafts and direct PMPro signups are disabled. There is no verified member-price or course-claim path in the current configuration. Current PMPro content restriction tables are empty. My Voelgoed and Journey Intent provide projection/return structure, but membership activation and post-purchase completion have not been verified.
 
-**Coverage:** PARTIAL.  
-**Confidence:** MEDIUM. Current configuration, product prices, mapping, source files, and code hooks were directly observed. Main uncertainties are the exact approved runtime code, persisted Bricks bindings, and unexecuted lifecycle behavior.  
-**Runtime verification:** PARTIAL — current selected runtime values and product metadata verified; frontend, checkout, payment, entitlement, cancellation, and renewal behavior not verified.  
+**Coverage:** PARTIAL.
+**Confidence:** MEDIUM. Current configuration, product prices, mapping, source files, and code hooks were directly observed. Main uncertainties are the exact approved runtime code, persisted Bricks bindings, and unexecuted lifecycle behavior.
+**Runtime verification:** PARTIAL — current selected runtime values and product metadata verified; frontend, checkout, payment, entitlement, cancellation, and renewal behavior not verified.
 **Verification Status:** `PARTIALLY_VERIFIED`.
 
-**Task type:** RESEARCH.  
-**Task / issue:** Read-only VGN-18 and VGN-5 membership/entitlement evaluation, resulting only in this assigned report.  
-**Assessment role:** Research.  
-**Implementation Score:** N/A. No implementation was requested or performed.  
-**Task Execution Score:** 8/10 — authority and scope 3/3; current evidence collection 3/4; synthesis and handoff 2/2. The evidence point is deducted for missing persisted Bricks inspection and unexecuted lifecycle/customer-facing price checks.  
+**Task type:** RESEARCH.
+**Task / issue:** Read-only VGN-18 and VGN-5 membership/entitlement evaluation, resulting only in this assigned report.
+**Assessment role:** Research.
+**Implementation Score:** N/A. No implementation was requested or performed.
+**Task Execution Score:** 8/10 — authority and scope 3/3; current evidence collection 3/4; synthesis and handoff 2/2. The evidence point is deducted for missing persisted Bricks inspection and unexecuted lifecycle/customer-facing price checks.
 **Acceptance criteria:** 5 verified, 6 partially verified, 0 failed, 0 not done; the eleven criteria and evidence limits are listed in §7.
 
 **Evidence:** Main source `454346d9e6a2c36864a4bbd944e52596f16e09c1`; Member Perks source `972a279be7a753594888e974132562e1cc099e24`; current LocalWP runtime `http://localhost:10039`; serialized WP-CLI reads and SHA-256 comparison described above; installed PMPro/PMPro Woo/WCS/Member Perks/Masteriyo source; live VGN-18 comment `ac9fc988-d58d-4c40-97a9-be117bfa8e6f`; live VGN-5 comment `d6b942d4-e0dd-4d9a-a73a-f57730a2ea87`.

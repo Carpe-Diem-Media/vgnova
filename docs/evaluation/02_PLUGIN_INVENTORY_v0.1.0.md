@@ -1,9 +1,9 @@
 # Plugin Inventory v0.1.0
 
-Project: Voelgoed Platform Consolidation (VG Nova)  
-Inventory date: 2026-11-19, Africa/Johannesburg  
-Source baseline: vgnova main at 454346d9e6a2c36864a4bbd944e52596f16e09c1  
-Runtime target: LocalWP site "Voelgoed", http://localhost:10039  
+Project: Voelgoed Platform Consolidation (VG Nova)
+Inventory date: 2026-11-19, Africa/Johannesburg
+Source baseline: vgnova main at 454346d9e6a2c36864a4bbd944e52596f16e09c1
+Runtime target: LocalWP site "Voelgoed", http://localhost:10039
 Status: Read-only inventory. No runtime setting, plugin, theme, database, or content was changed.
 
 ## 1. Executive summary
@@ -375,13 +375,12 @@ The main gaps are operational provenance and completion evidence. Platform Core 
 This document records inventory evidence only. It does not authorize plugin removal, runtime changes, migration, payment processing, business policy, or launch.
 
 Task / Issue: VGN-55 plugin inventory. Expected outcome: write docs/evaluation/02_PLUGIN_INVENTORY_v0.1.0.md with the installed plugin and integration inventory.
-Task type: RESEARCH / DOCUMENTATION  
-Assessment role: Research author  
-Acceptance criteria: 6/6 assessed in Section 7; 5/6 verified, 1/6 partially verified; no failed criteria. Detailed settings and behavior remain explicitly unknown where noted.  
-Implementation Score: N/A  
-Task Execution Score: 8/10. Deductions reflect uninspected settings for several plugins and no current browser or functional verification.  
-Confidence Score: 92%. High confidence in installed identity/state, selected safe settings, and source/runtime comparisons. The main uncertainty is uninspected plugin configuration and user-facing behavior.  
-Verification Status: PARTIALLY_VERIFIED. The current filesystem, active-plugin set, selected safe options, source/runtime file comparisons, and document scope were verified. Functional behavior, complete vendor settings, external integration health, business approval, and launch readiness were not.  
-Evidence: Read-only plugin/theme metadata, whitelisted option reads and aggregate counts; 63-file Platform Core manifest comparison; Member Perks source/runtime comparison; Fluent Snippets source/runtime diff; affected artifact is this document. No tests or CI were run.  
+Task type: RESEARCH / DOCUMENTATION
+Assessment role: Research author
+Acceptance criteria: 6/6 assessed in Section 7; 5/6 verified, 1/6 partially verified; no failed criteria. Detailed settings and behavior remain explicitly unknown where noted.
+Implementation Score: N/A
+Task Execution Score: 8/10. Deductions reflect uninspected settings for several plugins and no current browser or functional verification.
+Confidence Score: 92%. High confidence in installed identity/state, selected safe settings, and source/runtime comparisons. The main uncertainty is uninspected plugin configuration and user-facing behavior.
+Verification Status: PARTIALLY_VERIFIED. The current filesystem, active-plugin set, selected safe options, source/runtime file comparisons, and document scope were verified. Functional behavior, complete vendor settings, external integration health, business approval, and launch readiness were not.
+Evidence: Read-only plugin/theme metadata, whitelisted option reads and aggregate counts; 63-file Platform Core manifest comparison; Member Perks source/runtime comparison; Fluent Snippets source/runtime diff; affected artifact is this document. No tests or CI were run.
 Known gaps / highest-risk assumption / next action: Do not treat matching version labels as proof of source parity. Member Perks and Fluent Snippets show file drift. The project owner should resolve those source/runtime boundaries. The commerce owner should verify the non-live checkout path before a removal or launch conclusion.
-

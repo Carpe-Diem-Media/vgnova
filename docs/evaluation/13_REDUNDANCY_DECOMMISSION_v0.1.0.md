@@ -1,9 +1,9 @@
 # Agent13 Cross-domain Redundancy and Decommission Review v0.1.0
 
-**Task:** VGN-55 Phase 6 research input; cross-domain redundancy and decommission review  
-**Source baseline:** main, 454346d9e6a2c36864a4bbd944e52596f16e09c1  
-**Runtime target:** vgnova-local-10039 / localhost:10039, as evidenced by reports 01–12  
-**Review date:** 2026-11-19  
+**Task:** VGN-55 Phase 6 research input; cross-domain redundancy and decommission review
+**Source baseline:** main, 454346d9e6a2c36864a4bbd944e52596f16e09c1
+**Runtime target:** vgnova-local-10039 / localhost:10039, as evidenced by reports 01–12
+**Review date:** 2026-11-19
 **Role:** Research sub-agent; this report proposes amendments to the active register but does not replace it.
 
 ## 1. Executive Summary
@@ -333,4 +333,3 @@ The register owner should reconcile these proposals against the exact current re
 - **Known gaps / highest-risk assumptions / next action:** Main risk is treating persisted or source-defined components as executed or consumer-free. The register owner should reconcile the proposed amendments and domain owners should resolve the explicitly listed source, consumer, business, and security questions before any retirement. No merge, runtime, or security approval is provided.
 
 This report is a research input only. The active register remains the lifecycle authority.
-

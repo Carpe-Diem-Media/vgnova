@@ -1,8 +1,8 @@
 # 1. Executive Summary
 
-**Inspection date:** 2026-11-19  
-**Runtime:** `vgnova-local-10039`, LocalWP WordPress root `/home/jcschoeman96/Local Sites/voelgoed-novamira/app/public`  
-**Database:** MySQL Community Server 8.0.35, database `local`, prefix `wp_`; actual socket `/home/jcschoeman96/.config/Local/run/nAZNpFs99/mysql/mysqld.sock`  
+**Inspection date:** 2026-11-19
+**Runtime:** `vgnova-local-10039`, LocalWP WordPress root `/home/jcschoeman96/Local Sites/voelgoed-novamira/app/public`
+**Database:** MySQL Community Server 8.0.35, database `local`, prefix `wp_`; actual socket `/home/jcschoeman96/.config/Local/run/nAZNpFs99/mysql/mysqld.sock`
 **Repository baseline:** `main` at `454346d9e6a2c36864a4bbd944e52596f16e09c1`, matching `origin/main` per the parent baseline.
 
 WooCommerce configuration is **partially complete**. The runtime contains 24 parent products and 14 published variations, including four published Masteriyo course products, seven draft variable-subscription parents mapped to PMPro levels, four published test event-ticket products, physical catalogue drafts, and QA fixtures. Product records carry ZAR price metadata, but this is configuration evidence, not proof of what a current public page renders.
@@ -314,18 +314,18 @@ The previous runtime foundation report’s safe access recipe names the actual M
 | `BUSINESS_APPROVED` | NO / not established | No broad commerce, tax, payment-provider or launch approval was observed. The prior one-option SSL authorization is consumed and does not authorize other changes. |
 | `LAUNCH_READY` | NO | Payment, tax, route, fulfillment, email and subscription behavior remain open. |
 
-**Coverage:** PARTIAL.  
-**Confidence Score:** MEDIUM overall; HIGH for selected SQL/configuration and installed source inspected; LOW for current public behavior. No numerical confidence is assigned for this research task.  
+**Coverage:** PARTIAL.
+**Confidence Score:** MEDIUM overall; HIGH for selected SQL/configuration and installed source inspected; LOW for current public behavior. No numerical confidence is assigned for this research task.
 **Runtime verification:** PARTIAL — selected current runtime state was verified directly; transaction and route behavior were not.
 
-**Task / Issue:** Bounded Agent 06 WooCommerce evaluation supporting VGN-18 and VGN-53; scope is read-only runtime/source inventory and lifecycle assessment.  
-**Task type:** RESEARCH (documentation artifact).  
-**Assessment role:** Independent bounded research.  
-**Task Execution Score:** 9/10. The requested inventory, lifecycle review, issue-comment review and source/runtime reconciliation are documented; one point is withheld because current route and transaction behavior are intentionally unverified under the read-only/no-side-effect boundary.  
-**Verification Status:** PARTIALLY_VERIFIED — selected live configuration and installed source were observed; current purchase and fulfillment behavior was not tested.  
-**Implementation Score:** N/A. No implementation was requested or performed.  
+**Task / Issue:** Bounded Agent 06 WooCommerce evaluation supporting VGN-18 and VGN-53; scope is read-only runtime/source inventory and lifecycle assessment.
+**Task type:** RESEARCH (documentation artifact).
+**Assessment role:** Independent bounded research.
+**Task Execution Score:** 9/10. The requested inventory, lifecycle review, issue-comment review and source/runtime reconciliation are documented; one point is withheld because current route and transaction behavior are intentionally unverified under the read-only/no-side-effect boundary.
+**Verification Status:** PARTIALLY_VERIFIED — selected live configuration and installed source were observed; current purchase and fulfillment behavior was not tested.
+**Implementation Score:** N/A. No implementation was requested or performed.
 **Acceptance criteria:** 6/6 investigation criteria evaluated as listed in §7; live commerce acceptance remains unverified.
 
-**Highest-risk assumption:** The historical checkout and route observations still match the current guest experience. That has not been established.  
-**Blocker:** A guest checkout had no payment methods at the latest observed browser check; no current route or order behavior is proven.  
+**Highest-risk assumption:** The historical checkout and route observations still match the current guest experience. That has not been established.
+**Blocker:** A guest checkout had no payment methods at the latest observed browser check; no current route or order behavior is proven.
 **Next action:** Parent/owner should reconcile VGN-18 and VGN-53 and arrange separately authorized, side-effect-assessed commerce verification. No Plane updates, runtime mutations, commits, or other repository changes were made by this report author.

@@ -113,4 +113,3 @@ Orca was started and produced speech output for browser activity during successf
 ## Authority reconciliation
 
 Assembly v1.5 status header is stale. PLATFORM_CORE_RUNTIME_DEPLOYMENT_v1.0.1.md Authority status explicitly traces PR85 merge and supersession clause to effective assembly v1.5; this is stronger than presence-in-main alone. PE008 deployment approval and execution are separate; VGN50 subsequent comments record one-use approval and completion, which do not authorize audit writes. No numerical confidence assigned to this research scope as requested. No tracker updates, commits, deployments or merge actions by parent.
-

@@ -1,8 +1,8 @@
 # 1. Executive Summary
 
-**Inspection date:** 2026-11-19 (UTC)  
-**Repository:** `/home/jcschoeman96/projects/current/vgnova`  
-**Runtime target:** `vgnova-local-10039`, LocalWP site ID `nAZNpFs99`, WordPress root `/home/jcschoeman96/Local Sites/voelgoed-novamira/app/public`  
+**Inspection date:** 2026-11-19 (UTC)
+**Repository:** `/home/jcschoeman96/projects/current/vgnova`
+**Runtime target:** `vgnova-local-10039`, LocalWP site ID `nAZNpFs99`, WordPress root `/home/jcschoeman96/Local Sites/voelgoed-novamira/app/public`
 **Source baseline:** branch `main`, `454346d9e6a2c36864a4bbd944e52596f16e09c1`; `origin/main` matched at inspection. Remote is `git@github.com:Carpe-Diem-Media/vgnova.git`.
 
 The target identity and local services were verified from LocalWP’s registry, live process/socket state, the WordPress root, and selected database settings. Observed versions are WordPress 7.1.5, LocalWP PHP-FPM 8.5.12, MySQL Community Server 8.0.35, and Nginx 1.26.1. The actual active theme is Bricks 2.4.5 with Bricks Child Theme 1.1. The FPM PHP version meets the repository’s PHP 8.5 minimum.
@@ -341,4 +341,3 @@ Platform Core is source-controlled under `site-code/voelgoed-platform-core/` and
 - **Verification Status:** PARTIALLY_VERIFIED — identifies the exact state verified above; it does not assert end-to-end WordPress, commerce, course, accessibility, or launch verification.
 - **Evidence:** Git baseline and remote; LocalWP registry and live sockets/processes; scoped PHP/WordPress/database configuration; `/readme.html` 200; current PE-007 status; current PE-008 status and finalized journal; independent 63-file runtime/manifest fingerprint; Plane comments cited above.
 - **Highest-risk assumptions / next action:** Do not infer that deployment-file parity proves application readiness or that loopback listeners settle cloudflared exposure. The project owner should reconcile PE-008 status documents and direct the separate outstanding runtime/accessibility/commerce checks through their existing gates.
-
