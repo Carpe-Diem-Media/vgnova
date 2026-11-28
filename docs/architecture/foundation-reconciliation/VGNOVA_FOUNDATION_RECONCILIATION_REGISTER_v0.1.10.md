@@ -5,7 +5,7 @@
 **Date:** 2026-11-25 (Africa/Johannesburg)
 **Predecessor:** v0.1.9 (preserved immutable download; SHA-256 `b1068725a87e3d32aafe45d4517d054144d36f2d34cd9b026b1af238f7f70cbc`); v0.1.0–v0.1.8 retained
 **Status:** R-2 ORIGINAL AUDIT CORPUS INGESTION COMPLETE — B10 completes all 13 domain reports and supporting documents; targeted reconciliation/authority/freshness gaps remain OPEN; historical target PARTIALLY_VERIFIED; audit safety BLOCKED; no foundation acceptance
-**Persistence:** downloadable working copy; not committed or approved. Latest within this delivery only; check repository/Plane and other working copies before subsequent amendments.
+**Persistence:** At creation on 25 November 2026, this was a downloadable working copy with no repository commit or approval. It was the latest copy within that delivery only. Check the repository, Plane and other working copies before making later amendments.
 **Scope:** `voelgoed.co.za`, `leer.voelgoed.co.za`, `winkel.voelgoed.co.za` → VG Nova LocalWP / future consolidated site.
 **Owner:** Voelgoed business owner; Plane VGN-23 / VGN-55 / VGN-56.
 **Change authority:** documentation only. No code, configuration, test transaction, migration, deployment, deletion, merge or Plane mutation authorised by this register.
@@ -1936,7 +1936,7 @@ The `course_visibility` taxonomy has one term, `free`. The published QA Course 1
 | Setting or page | Current value | Interpretation and limit |
 |---|---|---|
 | Masteriyo account page | ID 433, `Account`, `/account/` | Configured; page rendering and account access were not tested |
-| Masteriyo Courses page | ID 57, `Course Catalog`, `/kursusse/` | Configured archive page; `/kursusse/` is transitional in the [Legacy Decommission Register](../architecture/LEGACY_DECOMMISSION_REGISTER.md#26-course-routes-leer-and-kursusse) |
+| Masteriyo Courses page | ID 57, `Course Catalog`, `/kursusse/` | Configured archive page; `/kursusse/` is transitional in the [Legacy Decommission Register](../LEGACY_DECOMMISSION_REGISTER.md#26-course-routes-leer-and-kursusse) |
 | Masteriyo checkout page | ID 434, `Checkout`, slug `checkout-1` | Masteriyo page setting only; not proof of Woo checkout configuration |
 | Masteriyo learn page | ID 435, `Learn`, `/learn/` | Configured page; no lesson access journey tested |
 | Course content without enrollment | `general.course_access.enable_course_content_access_without_enrollment=true` | Masteriyo helper grants this bypass to admins and instructors, with instructor restriction governed by `restrict_instructors`; it does not create an anonymous learner bypass. Source: runtime `includes/Helper/course.php:907-930` |

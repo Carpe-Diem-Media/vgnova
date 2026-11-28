@@ -6,15 +6,15 @@
 **Status:** EXECUTION ROADMAP ESTABLISHED — development-first; implementation and acceptance remain gated.
 **Owner:** Voelgoed business owner
 **Governance:** Plane VGN-56 (foundation gate), VGN-55 (audit evidence), VGN-23 (source-to-target migration), VGN-30 (production cutover)
-**Persistence:** Downloadable initial snapshot; Plane work packages, modules and dependency relationships created and read back. No GitHub commit or merge made for this document.
+**Persistence:** At creation on 25 November 2026, this was a downloadable initial snapshot without a GitHub commit or merge. Plane work packages, modules and dependency relationships had been created and read back.
 
 ## 1. Purpose and controlling sequencing decision
 
-Finish the consolidated VG Nova target foundation using the existing WordPress-native architecture. Reuse the completed target inventory and reconciliation. Do not restart a broad audit or invent replacement subsystems simply because runtime behavior remains unverified.
+Finish the consolidated VG Nova target foundation using the existing WordPress-native architecture. Reuse the target inventory and the ingested original technical audit corpus. Do not restart the broad R-0/R-1 audit. Resolve remaining R-2 authority, model, policy and freshness gaps just in time for the applicable development slice.
 
 Owner direction, 25 November 2026: move the broad F-00 security audit until after functional development; record security findings in Plane as encountered and address them in the later hardening phase. Keep development focused on the current goal. The execution register translates requirements into dependency-ordered work packages; Plane is the live operational backlog. Neither document nor ticket creation authorizes every underlying runtime write or migration.
 
-**Development-first is not a security or integrity waiver.** Source provenance, actual target identity, scoped authorization, safe fixtures, guard correctness, rollback and exact authority checks necessary for the current task remain just-in-time prerequisites. If an issue presents ongoing exposure or would cause unauthorized access, money movement, corruption, irreversible side effects or unsafe test execution, stop only the affected work, record the issue and seek narrow containment authorization; continue independent work. The reported audit-output incidents remain distinct and unresolved; the audit safety gate remains BLOCKED. No secret values or raw credential-bearing artifacts may be copied into Plane, GitHub or this register.
+**Development-first is not a security or integrity waiver.** Source provenance, actual target identity, scoped authorization, safe fixtures, financial correctness, access control, data integrity, rollback and exact authority checks necessary for the current task remain just-in-time prerequisites. If an issue presents ongoing exposure or would cause unauthorized access, money movement, corruption, irreversible side effects or unsafe test execution, stop only the affected work, record the issue and seek narrow containment authorization; continue independent work. The reported audit-output incidents remain distinct and unresolved; the audit safety gate remains BLOCKED. No secret values or raw credential-bearing artifacts may be copied into Plane, GitHub or this register.
 
 ## 2. Authority and baseline
 
@@ -35,8 +35,8 @@ The execution order below supersedes the proposed F-00-first sequence only; it d
 |---|---|
 | R-0 baseline | Reuse dated evidence; refresh only affected source/runtime authority. Audit safety remains blocked. |
 | R-1 inventory | Target inventory delivered; production-source and external-provider inventory remains outstanding under VGN-23/domain source plans. |
-| R-2 reconciliation | Original audit corpus integrated; remaining targeted authority, policy and verification gaps handled as each work package starts. |
-| R-3/R-4 | Primary work now: approved small development slices and behavioral proof. Model/lifecycle decisions just in time; no blanket contract-writing phase before all code. |
+| R-2 reconciliation | Original audit corpus ingested. Resolve targeted authority, model, policy and freshness gaps for each applicable slice. The next proposed read-only reconciliation is F-01.1. |
+| R-3/R-4 | R-3 records the approved model and lifecycle contract for each bounded slice. R-4 verifies the resulting behavior under separately authorized test and runtime scopes. Obtain separate implementation approval for each slice. |
 | F-00 broad security/hardening | Deferred until functional development completed; record findings immediately, apply narrow stop conditions when required. |
 | R-5 | Evaluate and approve only specific legacy dispositions after consumer, replacement, retention and rollback proof. |
 | R-6 | Integrated foundation acceptance, then separately authorized source rehearsals and migration/cutover. |
@@ -76,7 +76,7 @@ Native dependency relations are conservative package-completion gates, not a pro
 
 - **Reuse:** existing Platform Core `content_topic` (seven roots, 55 terms at historical baseline); ACF schema and supported simple bidirectional Person relationships; Event Participation/Product Contribution contextual ownership; existing native provider entities and Bricks consumers.
 - **Evidence:** RECON §4.2/4.3, E53–E63, E122–E123; LC-20/24–27. Legacy `content_category` and detached core category are distinct; 15 source-matched JSON files, 28 effective groups/247 fields reported; DB-only schemas and consumer precedence still require scoped reconciliation. No registration-count-only acceptance.
-- **First slice F-01.1:** inspect current root and exact Topic/Person/relationship contracts and corresponding source. Select the smallest unresolved canonical model gap needed for real cross-domain reuse. Compare against historical RECON, identify actual consumers and current authorized LocalWP evidence only if needed. Produce the precise retain/reconcile/complete decision, one implementation ticket or existing issue handoff, and acceptance tests. Keep competition, broadcast series and unrelated template redesign in their own packages.
+- **Proposed read-only R-2 task F-01.1:** inspect current root and exact Topic/Person/relationship contracts and corresponding source. Select the smallest unresolved canonical model gap needed for real cross-domain reuse. Compare against historical RECON, identify actual consumers and current authorized LocalWP evidence only if needed. Deliver a precise model decision, bounded implementation scope and acceptance-test plan. Obtain separate approval before implementing that scope. Approval applies only to the named slice. Keep competition, broadcast series and unrelated template redesign in their own packages.
 - **Acceptance:** canonical model has one editable owner per fact; semantic Topics distinct from commerce/event/format/commercial/folder taxonomy; validated forward and derived reverse relations; approved positive/negative save/query/visibility tests; no silent deletion, unapproved rename, fixture migration, blind backfill or legacy consumer breakage. Reuse VGN-21, VGN-24, VGN-43/44, VGN-55 where their scope matches.
 
 ### F-02 — Mense / Vennote (VGN-58)
@@ -214,13 +214,13 @@ Active finding record: VGN-71 comprehensive audit; VGN-72 Frames incident; VGN-7
 
 ## 9. Immediate agent handoff — F-01.1
 
-Start [VGN-57](https://app.plane.so/symphony-development/browse/VGN-57), not F-00. Read BIZ domain E/MP and RECON relevant §4/§7/§11/§12, applicable current GitHub authorities and existing VGN-21/24/43/44/55. Pin the actual branch/commit and permitted scope. Establish the smallest remaining canonical schema/relationship decision needed for the next real development slice. Distinguish already implemented, incomplete, conflicting and unknown. Do not inventory the whole site again. Preserve existing Topic/Person/contextual relationships and transitional consumers. Present one bounded implementation plan with tests and exact authorities; use existing issue where it matches or create a child only for genuine gap. Owner approval and scope before implementation. Record unrelated findings and continue.
+Use [VGN-57](https://app.plane.so/symphony-development/browse/VGN-57) for the next proposed, bounded read-only R-2 reconciliation. Read BIZ domain E/MP and RECON relevant §4/§7/§11/§12, applicable current GitHub authorities and existing VGN-21/24/43/44/55. Pin the actual branch/commit and permitted scope. Establish the smallest remaining canonical schema/relationship decision needed for the next real development slice. Distinguish already implemented, incomplete, conflicting and unknown. Do not inventory the whole site again. Preserve existing Topic/Person/contextual relationships and transitional consumers. Return the model decision, proposed implementation scope and acceptance-test plan with exact authorities. Reuse the existing issue where it matches. Seek separate owner approval for the slice before implementation. Record unrelated findings and continue.
 
 ## 10. Completion of this planning transaction
 
 - 17 new Plane children VGN-57–73 created and verified via module list; 14 development and 3 deferred/security follow-up items. Direct dependency lists for all 17 were read back; 24 edges. No existing issue closed, moved or deleted. No runtime changes.
 - RECON v0.1.10 remains the detailed evidence working copy; this new register does not amend it. Reported manifest identity and historical tests have not been independently repeated in this transaction. No security incident resolved, no source/CI or live application proof granted, no full LEG review or migration performed.
-- Proposed repository location `docs/architecture/foundation-reconciliation/VGNOVA_FOUNDATION_EXECUTION_REGISTER_v0.1.0.md`; verify existing repo convention and approved branch before commit. No repository write authorized or performed in this planning transaction; downloadable artifact and actual Plane board are current outputs.
+- Proposed repository location `docs/architecture/foundation-reconciliation/VGNOVA_FOUNDATION_EXECUTION_REGISTER_v0.1.0.md`; verify existing repo convention and approved branch before commit. On 25 November 2026, the planning transaction produced the downloadable artifact and Plane roadmap without a repository write. Plane remains the live operational roadmap.
 - Future register changes: SemVer in metadata and filename; preserve old versions, exact changed decision and issue references; Plane live status is authoritative for active work. No duplicate roadmap. Record owner/security triage decision separate from development completion.
 
 ## 11. Revision history
